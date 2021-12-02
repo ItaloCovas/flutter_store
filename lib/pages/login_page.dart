@@ -3,12 +3,10 @@ import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({ Key? key }) : super(key: key);
-
+  const LoginPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: primaryBlack,
       body: ContainerPlus(
@@ -22,7 +20,6 @@ class LoginPage extends StatelessWidget {
               width: 280,
               height: 280,
             ),
-            
           ],
         ),
       ),
