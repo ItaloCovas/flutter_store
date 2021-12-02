@@ -77,6 +77,9 @@ class LoginPage extends StatelessWidget {
                                   SizedBox(height: 25),
                                   Center(
                                     child: ButtonPlus(
+                                      onPressed: () {
+                                        navigatorPlus.show(NextScreen());
+                                      },
                                       height: 60,
                                       width: 300,
                                       radius: RadiusPlus.all(16),
