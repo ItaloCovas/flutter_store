@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/screens/next_screen.dart';
+import 'package:flutter_store/pages/home_page.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
                                   Center(
                                     child: ButtonPlus(
                                       onPressed: () {
-                                        navigatorPlus.show(NextScreen());
+                                        navigatorPlus.show(HomePage());
                                       },
                                       height: 60,
                                       width: 300,
@@ -106,5 +106,4 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
-
-
+}
