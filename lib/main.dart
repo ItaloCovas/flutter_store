@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/pages/login_page.dart';
 
 void main() {
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return FlutterAppPlus(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,

@@ -32,7 +32,7 @@ class LoginPage extends StatelessWidget {
                 child: DefaultTabController(
                   length: 2,
                   child: ContainerPlus(
-                    height: 350,
+                    height: 365,
                     color: secondaryBlack,
                     radius: RadiusPlus.all(12),
                     child: Column(
@@ -67,14 +67,29 @@ class LoginPage extends StatelessWidget {
                                     SizedBox(height: 15),
                                     TextPlus("Senha", color: Colors.white),
                                     SizedBox(height: 5,),
-                                    TextFieldPlus(
+                                    Container(
                                       height: 30,
-                                      backgroundColor: Colors.white,
-                                      radius: RadiusPlus.all(10),
-                                      controller: passController,
-                                      placeholder: TextPlus("••••••••", color: Colors.grey, fontSize: 14,),
-                                      prefixWidget: Icon(Icons.lock, size: 18, color: Colors.black), 
-                                      suffixWidget: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
+                                      child: TextFormField(
+                                        obscureText: true,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                        prefixIconConstraints: BoxConstraints(maxHeight: 20,),
+                                        contentPadding: EdgeInsets.only(top: 0),
+                                        filled: true,
+                                        hintText: "••••••••",
+                                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+                                        prefixIcon: Icon(Icons.lock, size: 18, color: Colors.black),
+                                        suffixIcon: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
+                                        fillColor: Colors.white,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        ),
+                                        ),
+                                        controller: passController,
+                                      ),
                                     ),
                                     SizedBox(height: 15,),
                                     TextPlus("Esqueceu sua senha?", color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
@@ -95,7 +110,105 @@ class LoginPage extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              Text("Aeee"),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 15, left: 15, right: 15, top: 0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: <Widget>[
+                                    TextPlus("Endereço de e-mail", color: Colors.white),
+                                    SizedBox(height: 5,),
+                                    TextFieldPlus(
+                                      height: 25,
+                                      fontSize: 14,
+                                      backgroundColor: Colors.white,
+                                      radius: RadiusPlus.all(10),
+                                      textInputType: TextInputType.emailAddress,
+                                      placeholder: TextPlus("padawans@frwk.com.br", color: Colors.grey, fontSize: 14,),
+                                      prefixWidget: Icon(Icons.alternate_email, size: 18, color: Colors.black),
+                                    ),
+                                    SizedBox(height: 15),
+                                    TextPlus("Nome de usuário", color: Colors.white),
+                                    SizedBox(height: 5,),
+                                    TextFieldPlus(
+                                      height: 25,
+                                      fontSize: 14,
+                                      backgroundColor: Colors.white,
+                                      radius: RadiusPlus.all(10),
+                                      textInputType: TextInputType.emailAddress,
+                                      placeholder: TextPlus("JohnDoe", color: Colors.grey, fontSize: 14,),
+                                      prefixWidget: Icon(Icons.alternate_email, size: 18, color: Colors.black),
+                                    ),
+                                    SizedBox(height: 15),
+                                    TextPlus("Senha", color: Colors.white),
+                                    SizedBox(height: 5,),
+                                    Container(
+                                      height: 28,
+                                      child: TextFormField(
+                                        obscureText: true,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                        prefixIconConstraints: BoxConstraints(maxHeight: 20,),
+                                        contentPadding: EdgeInsets.zero,
+                                        filled: true,
+                                        hintText: "••••••••",
+                                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+                                        prefixIcon: Icon(Icons.lock, size: 18, color: Colors.black), 
+                                        suffixIcon: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
+                                        fillColor: Colors.white,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        ),
+                                        ),
+                                        controller: passController,
+                                      ),
+                                    ),
+                                    SizedBox(height: 15),
+                                    TextPlus("Repita sua senha", color: Colors.white),
+                                    SizedBox(height: 5,),
+                                    Container(
+                                      height: 28,
+                                      child: TextFormField(
+                                        obscureText: true,
+                                        style: TextStyle(color: Colors.black),
+                                        decoration: InputDecoration(
+                                        prefixIconConstraints: BoxConstraints(maxHeight: 20,),
+                                        contentPadding: EdgeInsets.zero,
+                                        filled: true,
+                                        hintText: "••••••••",
+                                        hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
+                                        prefixIcon: Icon(Icons.lock, size: 18, color: Colors.black), 
+                                        suffixIcon: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
+                                        fillColor: Colors.white,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        ),
+                                        ),
+                                        controller: passController,
+                                      ),
+                                    ),
+                                    SizedBox(height: 15),
+                                    Center(
+                                      child: ButtonPlus(
+                                        onPressed: () {
+                                          navigatorPlus.show(HomePage());
+                                        },
+                                        height: 40,
+                                        width: 300,
+                                        radius: RadiusPlus.all(16),
+                                        color: buttonColor,
+                                        enabled: true,
+                                        child: TextPlus("Registrar-se", color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold,),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
                             ],
                           ),
                         ),
