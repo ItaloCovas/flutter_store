@@ -41,7 +41,7 @@ class LoginPage extends StatelessWidget {
                           indicatorColor: Colors.white,
                           indicatorWeight: 2,
                           tabs: const [
-                          Tab(text: "Login"),
+                          Tab(text: "Login",),
                           Tab(text: "Registrar-se"),
                         ]),
                         SizedBox(height: 10),
@@ -78,7 +78,10 @@ class LoginPage extends StatelessWidget {
                                         filled: true,
                                         hintText: "••••••••",
                                         hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                                        prefixIcon: Icon(Icons.lock, size: 18, color: Colors.black),
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(left: 5, right: 5),
+                                          child: Icon(Icons.lock, size: 18, color: Colors.black,),
+                                        ),
                                         suffixIcon: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
                                         fillColor: Colors.white,
                                         enabledBorder: OutlineInputBorder(
@@ -139,7 +142,7 @@ class LoginPage extends StatelessWidget {
                                       prefixWidget: Icon(Icons.alternate_email, size: 18, color: Colors.black),
                                     ),
                                     SizedBox(height: 15),
-                                    TextPlus("Senha", color: Colors.white),
+                                    TextPlus("Senha", color: Colors.white,),
                                     SizedBox(height: 5,),
                                     Container(
                                       height: 28,
@@ -152,7 +155,10 @@ class LoginPage extends StatelessWidget {
                                         filled: true,
                                         hintText: "••••••••",
                                         hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                                        prefixIcon: Icon(Icons.lock, size: 18, color: Colors.black), 
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(left: 5, right: 5),
+                                          child: Icon(Icons.lock, size: 18, color: Colors.black,),
+                                        ), 
                                         suffixIcon: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
                                         fillColor: Colors.white,
                                         enabledBorder: OutlineInputBorder(
@@ -179,7 +185,10 @@ class LoginPage extends StatelessWidget {
                                         filled: true,
                                         hintText: "••••••••",
                                         hintStyle: TextStyle(color: Colors.grey, fontSize: 14),
-                                        prefixIcon: Icon(Icons.lock, size: 18, color: Colors.black), 
+                                        prefixIcon: Padding(
+                                          padding: const EdgeInsets.only(left: 5, right: 5),
+                                          child: Icon(Icons.lock, size: 18, color: Colors.black,),
+                                        ), 
                                         suffixIcon: Icon(Icons.remove_red_eye_outlined, size: 18, color: Colors.black),
                                         fillColor: Colors.white,
                                         enabledBorder: OutlineInputBorder(
@@ -203,7 +212,7 @@ class LoginPage extends StatelessWidget {
                                         radius: RadiusPlus.all(16),
                                         color: buttonColor,
                                         enabled: true,
-                                        child: TextPlus("Registrar-se", color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold,),
+                                        child: TextPlus("Registrar-se", color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold, ),
                                       ),
                                     ),
                                   ],
