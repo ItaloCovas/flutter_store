@@ -205,7 +205,7 @@ class LoginPage extends StatelessWidget {
                                     Center(
                                       child: ButtonPlus(
                                         onPressed: () {
-                                          navigatorPlus.show(HomePage());
+                                          navigatorPlus.show(LoginPage());
                                         },
                                         height: 40,
                                         width: 300,
