@@ -27,6 +27,25 @@ abstract class _LoginStore with Store {
   @computed
   bool get isFormValid => isEmailValid && isPasswordValid; // Essa computed junta as outras duas
 
+  @observable
+  bool passwordVisible = false;
+
+  @action 
+  void togglePasswordVisibility() => passwordVisible = !passwordVisible;
+
+  @observable
+  bool loading = false;
+
+  @action
+  Future<void> login() async {
+    loading = true;
+
+    // FAZER OQ TIVER Q SER FEITO
+    await Future.delayed(Duration(seconds:10));
+
+    loading = false;
+  }
+
   // ******* PARTE DO REGISTRO ************
   @observable
   String registerEmail = "";
@@ -57,6 +76,4 @@ abstract class _LoginStore with Store {
 
   @computed
   bool get isRegisterFormValid => isRegisterEmailValid && isRegisterPasswordValid & isUserNameValid; // Essa computed junta as outras duas
-
-
 }
