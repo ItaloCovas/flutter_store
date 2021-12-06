@@ -37,7 +37,8 @@ dependencies:
   flutter_plus: ^1.0.0
   flutter_mobx: ^2.0.2
   mobx: ^2.0.5
-  
+  shared_preferences: ^2.0.9
+  dio: ^4.0.4
 
 dev_dependencies:
   flutter_test:
