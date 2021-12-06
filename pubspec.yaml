@@ -37,6 +37,7 @@ dependencies:
   flutter_plus: ^1.0.0
   flutter_mobx: ^2.0.2
   mobx: ^2.0.5
+  
 
 dev_dependencies:
   flutter_test:
