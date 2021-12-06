@@ -41,7 +41,7 @@ abstract class _LoginStore with Store {
     loading = true;
 
     // FAZER OQ TIVER Q SER FEITO
-    await Future.delayed(Duration(seconds:10));
+    await Future.delayed(Duration(seconds:4));
 
     loading = false;
   }

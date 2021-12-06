@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/pages/home_page.dart';
-import 'package:flutter_store/controllers/login_store.dart';
+import 'package:flutter_store/api/users_api.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class LoginPage extends StatelessWidget {
