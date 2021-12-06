@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/pages/home_page.dart';
+import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
-  final nameController = TextEditingController();
-  final passController = TextEditingController();
+  LoginStore loginStore = LoginStore();
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +67,9 @@ class LoginPage extends StatelessWidget {
                                         height: 30,
                                         backgroundColor: Colors.white,
                                         radius: RadiusPlus.all(10),
+                                        onChanged: loginStore.setEmail,
                                         textInputType:
                                             TextInputType.emailAddress,
-                                        controller: nameController,
                                         placeholder: TextPlus(
                                           "padawans@frwk.com.br",
                                           color: Colors.grey,
@@ -87,6 +89,7 @@ class LoginPage extends StatelessWidget {
                                         height: 30,
                                         child: TextFormField(
                                           obscureText: true,
+                                          onChanged: loginStore.setPassword,
                                           style: TextStyle(color: Colors.black),
                                           decoration: InputDecoration(
                                             prefixIconConstraints:
@@ -122,9 +125,7 @@ class LoginPage extends StatelessWidget {
                                               borderRadius: BorderRadius.all(
                                                   Radius.circular(10)),
                                             ),
-                                          ),
-                                          controller: passController,
-                                        ),
+                                          ),                                        ),
                                       ),
                                       SizedBox(
                                         height: 15,
@@ -134,7 +135,9 @@ class LoginPage extends StatelessWidget {
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15),
                                       SizedBox(height: 25),
-                                      Center(
+                                      Observer(
+                                        builder: (_) {
+                                          return Center(
                                         child: ButtonPlus(
                                           onPressed: () {
                                             navigatorPlus.show(HomePage());
@@ -142,15 +145,17 @@ class LoginPage extends StatelessWidget {
                                           height: 60,
                                           width: 300,
                                           radius: RadiusPlus.all(16),
-                                          color: buttonColor,
-                                          enabled: true,
+                                          color: loginStore.isFormValid ? buttonColor : buttonColor.withOpacity(0.4),
+                                          enabled: loginStore.isFormValid ? true : false,
                                           child: TextPlus(
                                             "Login",
-                                            color: Colors.white,
+                                            color: loginStore.isFormValid ? Colors.white : Colors.white54,
                                             fontSize: 16,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight:FontWeight.bold,
                                           ),
                                         ),
+                                      );
+                                        },
                                       ),
                                     ],
                                   ),
@@ -176,6 +181,7 @@ class LoginPage extends StatelessWidget {
                                           fontSize: 14,
                                           backgroundColor: Colors.white,
                                           radius: RadiusPlus.all(10),
+                                          onChanged: loginStore.setRegisterEmail,
                                           textInputType:
                                               TextInputType.emailAddress,
                                           placeholder: TextPlus(
@@ -199,6 +205,7 @@ class LoginPage extends StatelessWidget {
                                           fontSize: 14,
                                           backgroundColor: Colors.white,
                                           radius: RadiusPlus.all(10),
+                                          onChanged: loginStore.setUserName,
                                           textInputType:
                                               TextInputType.emailAddress,
                                           placeholder: TextPlus(
@@ -223,6 +230,7 @@ class LoginPage extends StatelessWidget {
                                           height: 28,
                                           child: TextFormField(
                                             obscureText: true,
+                                            onChanged: loginStore.setRegisterPassword,
                                             style:
                                                 TextStyle(color: Colors.black),
                                             decoration: InputDecoration(
@@ -259,7 +267,6 @@ class LoginPage extends StatelessWidget {
                                                     Radius.circular(10)),
                                               ),
                                             ),
-                                            controller: passController,
                                           ),
                                         ),
                                         SizedBox(height: 15),
@@ -272,6 +279,7 @@ class LoginPage extends StatelessWidget {
                                           height: 28,
                                           child: TextFormField(
                                             obscureText: true,
+                                            onChanged: loginStore.setRegisterPassword,
                                             style:
                                                 TextStyle(color: Colors.black),
                                             decoration: InputDecoration(
@@ -308,7 +316,6 @@ class LoginPage extends StatelessWidget {
                                                     Radius.circular(10)),
                                               ),
                                             ),
-                                            controller: passController,
                                           ),
                                         ),
                                         SizedBox(height: 15),
@@ -320,11 +327,11 @@ class LoginPage extends StatelessWidget {
                                             height: 40,
                                             width: 300,
                                             radius: RadiusPlus.all(16),
-                                            color: buttonColor,
-                                            enabled: true,
+                                            color: loginStore.isRegisterFormValid ? buttonColor : buttonColor.withOpacity(0.4),
+                                            enabled: loginStore.isRegisterFormValid ? true : false,
                                             child: TextPlus(
                                               "Registrar-se",
-                                              color: Colors.white,
+                                              color: loginStore.isRegisterFormValid ? Colors.white : Colors.white54,
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                             ),
