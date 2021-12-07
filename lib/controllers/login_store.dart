@@ -1,16 +1,17 @@
 import 'package:mobx/mobx.dart';
-
+import 'package:flutter_store/api/users_api.dart';
 part 'login_store.g.dart';
 
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
+
   // ******* PARTE DO LOGIN ************
   @observable
-  String email = "";
+  String username = "";
 
   @action
-  void setEmail(String value) => email = value; //Setando email
+  void setUser(String value) => username = value; //Setando email
 
   @observable
   String password = "";
@@ -19,13 +20,13 @@ abstract class _LoginStore with Store {
   void setPassword(String value) => password = value; //Setando senha
 
   @computed
-  bool get isEmailValid => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email);
+  bool get isUsernameValid => username.isNotEmpty;
 
   @computed
-  bool get isPasswordValid => password.length >= 8;
+  bool get isPasswordValid => password.isNotEmpty;
 
   @computed
-  bool get isFormValid => isEmailValid && isPasswordValid; // Essa computed junta as outras duas
+  bool get isFormValid => isUsernameValid && isPasswordValid; // Essa computed junta as outras duas
 
   @observable
   bool passwordVisible = false;
@@ -40,18 +41,18 @@ abstract class _LoginStore with Store {
   Future<void> login() async {
     loading = true;
 
-    // FAZER OQ TIVER Q SER FEITO
-    await Future.delayed(Duration(seconds:4));
+    // PROCESSO
+    UsersApi api = UsersApi();
+    api.authenticate({ 
+        'username': username,
+        'password': password
+    });
 
     loading = false;
   }
 
-  // ******* PARTE DO REGISTRO ************
-  @observable
-  String registerEmail = "";
 
-  @action
-  void setRegisterEmail(String value) => registerEmail = value; 
+  // ******* PARTE DO REGISTRO ************
 
   @observable
   String userName = "";
@@ -65,15 +66,13 @@ abstract class _LoginStore with Store {
   @action
   void setRegisterPassword(String value) => registerPassword = value; 
 
-  @computed
-  bool get isRegisterEmailValid => RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(registerEmail);
 
   @computed
-  bool get isUserNameValid => userName.length >=8;
+  bool get isUserNameValid => userName.isNotEmpty;
 
   @computed
-  bool get isRegisterPasswordValid => registerPassword.length >= 8;
+  bool get isRegisterPasswordValid => registerPassword.isNotEmpty;
 
   @computed
-  bool get isRegisterFormValid => isRegisterEmailValid && isRegisterPasswordValid & isUserNameValid; // Essa computed junta as outras duas
+  bool get isRegisterFormValid => isRegisterPasswordValid & isUserNameValid; // Essa computed junta as outras duas
 }

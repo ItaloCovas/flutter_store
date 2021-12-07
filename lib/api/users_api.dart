@@ -1,12 +1,16 @@
+import 'dart:convert';
 import 'package:dio/dio.dart';
 
-var dio = Dio();
 
-void getHttp() async {
+var dio = Dio();
+const url = "https://fakestoreapi.com/auth/login";
+
+class UsersApi {
+  void authenticate(user) async {
   try {
-    var response = await dio.get('https://fakestoreapi.com/auth/login');
-    print(response);
+    Response response = await dio.post(url, data: jsonEncode(user));
   } catch (e) {
     print(e);
   }
+}
 }

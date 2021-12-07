@@ -1,4 +1,7 @@
 import 'package:flutter_store/api/products_api.dart';
+import 'package:dio/dio.dart';
+
+var dio = Dio();
 
 class ProductsModel {
   final int id;

@@ -9,12 +9,12 @@ part of 'login_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$LoginStore on _LoginStore, Store {
-  Computed<bool>? _$isEmailValidComputed;
+  Computed<bool>? _$isUsernameValidComputed;
 
   @override
-  bool get isEmailValid =>
-      (_$isEmailValidComputed ??= Computed<bool>(() => super.isEmailValid,
-              name: '_LoginStore.isEmailValid'))
+  bool get isUsernameValid =>
+      (_$isUsernameValidComputed ??= Computed<bool>(() => super.isUsernameValid,
+              name: '_LoginStore.isUsernameValid'))
           .value;
   Computed<bool>? _$isPasswordValidComputed;
 
@@ -30,13 +30,6 @@ mixin _$LoginStore on _LoginStore, Store {
       (_$isFormValidComputed ??= Computed<bool>(() => super.isFormValid,
               name: '_LoginStore.isFormValid'))
           .value;
-  Computed<bool>? _$isRegisterEmailValidComputed;
-
-  @override
-  bool get isRegisterEmailValid => (_$isRegisterEmailValidComputed ??=
-          Computed<bool>(() => super.isRegisterEmailValid,
-              name: '_LoginStore.isRegisterEmailValid'))
-      .value;
   Computed<bool>? _$isUserNameValidComputed;
 
   @override
@@ -59,18 +52,18 @@ mixin _$LoginStore on _LoginStore, Store {
               name: '_LoginStore.isRegisterFormValid'))
       .value;
 
-  final _$emailAtom = Atom(name: '_LoginStore.email');
+  final _$usernameAtom = Atom(name: '_LoginStore.username');
 
   @override
-  String get email {
-    _$emailAtom.reportRead();
-    return super.email;
+  String get username {
+    _$usernameAtom.reportRead();
+    return super.username;
   }
 
   @override
-  set email(String value) {
-    _$emailAtom.reportWrite(value, super.email, () {
-      super.email = value;
+  set username(String value) {
+    _$usernameAtom.reportWrite(value, super.username, () {
+      super.username = value;
     });
   }
 
@@ -119,21 +112,6 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
-  final _$registerEmailAtom = Atom(name: '_LoginStore.registerEmail');
-
-  @override
-  String get registerEmail {
-    _$registerEmailAtom.reportRead();
-    return super.registerEmail;
-  }
-
-  @override
-  set registerEmail(String value) {
-    _$registerEmailAtom.reportWrite(value, super.registerEmail, () {
-      super.registerEmail = value;
-    });
-  }
-
   final _$userNameAtom = Atom(name: '_LoginStore.userName');
 
   @override
@@ -174,11 +152,11 @@ mixin _$LoginStore on _LoginStore, Store {
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
-  void setEmail(String value) {
+  void setUser(String value) {
     final _$actionInfo =
-        _$_LoginStoreActionController.startAction(name: '_LoginStore.setEmail');
+        _$_LoginStoreActionController.startAction(name: '_LoginStore.setUser');
     try {
-      return super.setEmail(value);
+      return super.setUser(value);
     } finally {
       _$_LoginStoreActionController.endAction(_$actionInfo);
     }
@@ -201,17 +179,6 @@ mixin _$LoginStore on _LoginStore, Store {
         name: '_LoginStore.togglePasswordVisibility');
     try {
       return super.togglePasswordVisibility();
-    } finally {
-      _$_LoginStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void setRegisterEmail(String value) {
-    final _$actionInfo = _$_LoginStoreActionController.startAction(
-        name: '_LoginStore.setRegisterEmail');
-    try {
-      return super.setRegisterEmail(value);
     } finally {
       _$_LoginStoreActionController.endAction(_$actionInfo);
     }
@@ -242,17 +209,15 @@ mixin _$LoginStore on _LoginStore, Store {
   @override
   String toString() {
     return '''
-email: ${email},
+username: ${username},
 password: ${password},
 passwordVisible: ${passwordVisible},
 loading: ${loading},
-registerEmail: ${registerEmail},
 userName: ${userName},
 registerPassword: ${registerPassword},
-isEmailValid: ${isEmailValid},
+isUsernameValid: ${isUsernameValid},
 isPasswordValid: ${isPasswordValid},
 isFormValid: ${isFormValid},
-isRegisterEmailValid: ${isRegisterEmailValid},
 isUserNameValid: ${isUserNameValid},
 isRegisterPasswordValid: ${isRegisterPasswordValid},
 isRegisterFormValid: ${isRegisterFormValid}

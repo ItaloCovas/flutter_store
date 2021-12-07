@@ -58,7 +58,7 @@ class LoginPage extends StatelessWidget {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      TextPlus("Endereço de e-mail",
+                                      TextPlus("Nome de usuário",
                                           color: Colors.white),
                                       SizedBox(
                                         height: 5,
@@ -71,11 +71,11 @@ class LoginPage extends StatelessWidget {
                                         backgroundColor: Colors.white,
                                         enabled: !loginStore.loading,
                                         radius: RadiusPlus.all(10),
-                                        onChanged: loginStore.setEmail,
+                                        onChanged: loginStore.setUser,
                                         textInputType:
                                             TextInputType.emailAddress,
                                         placeholder: TextPlus(
-                                          "padawans@frwk.com.br",
+                                          "seu_usuario",
                                           color: Colors.grey,
                                           fontSize: 14,
                                         ),
@@ -191,30 +191,6 @@ class LoginPage extends StatelessWidget {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: <Widget>[
-                                        TextPlus("Endereço de e-mail",
-                                            color: Colors.white),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
-                                        TextFieldPlus(
-                                          height: 25,
-                                          fontSize: 14,
-                                          backgroundColor: Colors.white,
-                                          radius: RadiusPlus.all(10),
-                                          onChanged: loginStore.setRegisterEmail,
-                                          textInputType:
-                                              TextInputType.emailAddress,
-                                          placeholder: TextPlus(
-                                            "padawans@frwk.com.br",
-                                            color: Colors.grey,
-                                            fontSize: 14,
-                                          ),
-                                          prefixWidget: Icon(
-                                              Icons.alternate_email,
-                                              size: 18,
-                                              color: Colors.black),
-                                        ),
-                                        SizedBox(height: 15),
                                         TextPlus("Nome de usuário",
                                             color: Colors.white),
                                         SizedBox(
