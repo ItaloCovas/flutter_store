@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/constant/categorias.dart';
+import 'package:flutter_store/model/products_model.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class HomePage extends StatefulWidget {
@@ -143,7 +145,9 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
                   ),
                 ),
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    ProductsApi();
+                  },
                   icon: Icon(
                     Icons.search,
                     color: Colors.white,
