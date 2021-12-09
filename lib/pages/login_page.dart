@@ -158,7 +158,6 @@ class LoginPage extends StatelessWidget {
                                         child: ButtonPlus(
                                           onPressed: loginStore.isFormValid ? () async {
                                             await loginStore.login();
-                                            navigatorPlus.show(HomePage());
                                           } : null,
                                           height: 60,
                                           width: 300,
@@ -309,8 +308,8 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(height: 15),
                                         Center(
                                           child: ButtonPlus(
-                                            onPressed: loginStore.isRegisterFormValid ? () {
-                                              navigatorPlus.show(LoginPage());
+                                            onPressed: loginStore.isRegisterFormValid ? () async {
+                                              await loginStore.register();
                                             } : null,
                                             height: 40,
                                             width: 300,
