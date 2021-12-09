@@ -8,6 +8,8 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
+  
+  UsersApi api = UsersApi();
 
   // ******* PARTE DO LOGIN ************
   @observable
@@ -45,7 +47,6 @@ abstract class _LoginStore with Store {
     loading = true;
 
     // PROCESSO
-    UsersApi api = UsersApi();
     var r = await api.authenticate({ 
         'username': username,
         'password': password,
