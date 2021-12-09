@@ -84,24 +84,7 @@ class _HomePageState extends State<HomePage> {
               SizedBox(
                 height: 30,
               ),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    left: 15,
-                  ),
-                  child: Row(
-                    children: List.generate(categorias.length, (index) {
-                      return NomeCategoria(
-                        nome: categorias[index],
-                      );
-                    }),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
+              Categorias(),
             ],
           ),
         ),
@@ -140,17 +123,15 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.home,
-                    color: Colors.white,
+                    color: Colors.grey.shade800,
                     size: 30,
                   ),
                 ),
                 IconButton(
-                  onPressed: () {
-                    ProductsApi();
-                  },
+                  onPressed: () {},
                   icon: Icon(
                     Icons.search,
-                    color: Colors.white,
+                    color: Colors.grey.shade800,
                     size: 30,
                   ),
                 ),
@@ -158,7 +139,7 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.local_grocery_store,
-                    color: Colors.white,
+                    color: Colors.grey.shade800,
                     size: 30,
                   ),
                 ),
@@ -166,7 +147,7 @@ class _BottomNavigationBarState extends State<BottomNavigationBar> {
                   onPressed: () {},
                   icon: Icon(
                     Icons.person,
-                    color: Colors.white,
+                    color: Colors.grey.shade800,
                     size: 30,
                   ),
                 ),

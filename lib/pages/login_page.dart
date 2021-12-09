@@ -66,24 +66,24 @@ class LoginPage extends StatelessWidget {
                                       Observer(
                                         builder: (_) {
                                           return TextFieldPlus(
-                                        height: 30,
-                                        fontSize: 15,
-                                        backgroundColor: Colors.white,
-                                        enabled: !loginStore.loading,
-                                        radius: RadiusPlus.all(10),
-                                        onChanged: loginStore.setUser,
-                                        textInputType:
-                                            TextInputType.emailAddress,
-                                        placeholder: TextPlus(
-                                          "seu_usuario",
-                                          color: Colors.grey,
-                                          fontSize: 14,
-                                        ),
-                                        prefixWidget: Icon(
-                                            Icons.alternate_email,
-                                            size: 18,
-                                            color: Colors.black),
-                                      );
+                                            height: 30,
+                                            fontSize: 15,
+                                            backgroundColor: Colors.white,
+                                            enabled: !loginStore.loading,
+                                            radius: RadiusPlus.all(10),
+                                            onChanged: loginStore.setUser,
+                                            textInputType:
+                                                TextInputType.emailAddress,
+                                            placeholder: TextPlus(
+                                              "seu_usuario",
+                                              color: Colors.grey,
+                                              fontSize: 14,
+                                            ),
+                                            prefixWidget: Icon(
+                                                Icons.alternate_email,
+                                                size: 18,
+                                                color: Colors.black),
+                                          );
                                         },
                                       ),
                                       SizedBox(height: 15),
@@ -94,54 +94,70 @@ class LoginPage extends StatelessWidget {
                                       Observer(
                                         builder: (_) {
                                           return Container(
-                                        height: 30,
-                                        child: TextFormField(
-                                          obscureText: !loginStore.passwordVisible,
-                                          onChanged: loginStore.setPassword,
-                                          style: TextStyle(color: Colors.black, fontSize: 15),
-                                          decoration: InputDecoration(
-                                            prefixIconConstraints:
-                                                BoxConstraints(
-                                              maxHeight: 20,
-                                            ),
-                                            contentPadding:
-                                                EdgeInsets.only(top: 0),
-                                            filled: true,
-                                            enabled: !loginStore.loading,
-                                            hintText: "••••••••",
-                                            hintStyle: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 14),
-                                            prefixIcon: Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 5, right: 5),
-                                              child: Icon(
-                                                Icons.lock,
-                                                size: 18,
-                                                color: Colors.black,
+                                            height: 30,
+                                            child: TextFormField(
+                                              obscureText:
+                                                  !loginStore.passwordVisible,
+                                              onChanged: loginStore.setPassword,
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 15),
+                                              decoration: InputDecoration(
+                                                prefixIconConstraints:
+                                                    BoxConstraints(
+                                                  maxHeight: 20,
+                                                ),
+                                                contentPadding:
+                                                    EdgeInsets.only(top: 0),
+                                                filled: true,
+                                                enabled: !loginStore.loading,
+                                                hintText: "••••••••",
+                                                hintStyle: TextStyle(
+                                                    color: Colors.grey,
+                                                    fontSize: 14),
+                                                prefixIcon: Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          left: 5, right: 5),
+                                                  child: Icon(
+                                                    Icons.lock,
+                                                    size: 18,
+                                                    color: Colors.black,
+                                                  ),
+                                                ),
+                                                suffixIcon: IconButton(
+                                                  icon: loginStore
+                                                          .passwordVisible
+                                                      ? Icon(Icons.visibility)
+                                                      : Icon(
+                                                          Icons.visibility_off),
+                                                  iconSize: 18,
+                                                  color: Colors.black,
+                                                  onPressed: loginStore
+                                                      .togglePasswordVisibility,
+                                                ),
+                                                fillColor: Colors.white,
+                                                enabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                ),
+                                                focusedBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                ),
+                                                disabledBorder:
+                                                    OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.all(
+                                                          Radius.circular(10)),
+                                                ),
                                               ),
                                             ),
-                                            suffixIcon: IconButton(
-                                                icon: loginStore.passwordVisible ? Icon(Icons.visibility) : Icon(Icons.visibility_off),
-                                                iconSize: 18,
-                                                color: Colors.black,
-                                                onPressed: loginStore.togglePasswordVisibility,
-                                                ),
-                                            fillColor: Colors.white,
-                                            enabledBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10)),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10)),
-                                            ),
-                                            disabledBorder: OutlineInputBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(10)),
-                                            ),
-                                          ),                                        ),
-                                      );
+                                          );
                                         },
                                       ),
                                       SizedBox(
@@ -155,26 +171,42 @@ class LoginPage extends StatelessWidget {
                                       Observer(
                                         builder: (_) {
                                           return Center(
-                                        child: ButtonPlus(
-                                          onPressed: loginStore.isFormValid ? () async {
-                                            await loginStore.login();
-                                            navigatorPlus.show(HomePage());
-                                          } : null,
-                                          height: 60,
-                                          width: 300,
-                                          radius: RadiusPlus.all(16),
-                                          color: loginStore.isFormValid ? buttonColor : buttonColor.withOpacity(0.4),
-                                          enabled: loginStore.isFormValid ? true : false,
-                                          child: loginStore.loading ? CircularProgressIndicator(
-                                            valueColor: AlwaysStoppedAnimation(Colors.white),
-                                          ) : TextPlus(
-                                            "Login",
-                                            color: loginStore.isFormValid ? Colors.white : Colors.white54,
-                                            fontSize: 16,
-                                            fontWeight:FontWeight.bold,
-                                          ),
-                                        ),
-                                      );
+                                            child: ButtonPlus(
+                                              onPressed: loginStore.isFormValid
+                                                  ? () async {
+                                                      await loginStore.login();
+                                                      navigatorPlus
+                                                          .show(HomePage());
+                                                    }
+                                                  : null,
+                                              height: 60,
+                                              width: 300,
+                                              radius: RadiusPlus.all(16),
+                                              color: loginStore.isFormValid
+                                                  ? buttonColor
+                                                  : buttonColor
+                                                      .withOpacity(0.4),
+                                              enabled: loginStore.isFormValid
+                                                  ? true
+                                                  : false,
+                                              child: loginStore.loading
+                                                  ? CircularProgressIndicator(
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation(
+                                                              Colors.white),
+                                                    )
+                                                  : TextPlus(
+                                                      "Login",
+                                                      color:
+                                                          loginStore.isFormValid
+                                                              ? Colors.white
+                                                              : Colors.white54,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                            ),
+                                          );
                                         },
                                       ),
                                     ],
@@ -226,7 +258,8 @@ class LoginPage extends StatelessWidget {
                                           height: 28,
                                           child: TextFormField(
                                             obscureText: true,
-                                            onChanged: loginStore.setRegisterPassword,
+                                            onChanged:
+                                                loginStore.setRegisterPassword,
                                             style:
                                                 TextStyle(color: Colors.black),
                                             decoration: InputDecoration(
@@ -275,7 +308,8 @@ class LoginPage extends StatelessWidget {
                                           height: 28,
                                           child: TextFormField(
                                             obscureText: true,
-                                            onChanged: loginStore.setRegisterPassword,
+                                            onChanged:
+                                                loginStore.setRegisterPassword,
                                             style:
                                                 TextStyle(color: Colors.black),
                                             decoration: InputDecoration(
@@ -317,17 +351,30 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(height: 15),
                                         Center(
                                           child: ButtonPlus(
-                                            onPressed: loginStore.isRegisterFormValid ? () {
-                                              navigatorPlus.show(LoginPage());
-                                            } : null,
-                                            height: 40,
+                                            onPressed:
+                                                loginStore.isRegisterFormValid
+                                                    ? () {
+                                                        navigatorPlus
+                                                            .show(LoginPage());
+                                                      }
+                                                    : null,
+                                            height: 60,
                                             width: 300,
                                             radius: RadiusPlus.all(16),
-                                            color: loginStore.isRegisterFormValid ? buttonColor : buttonColor.withOpacity(0.4),
-                                            enabled: loginStore.isRegisterFormValid ? true : false,
+                                            color: loginStore
+                                                    .isRegisterFormValid
+                                                ? buttonColor
+                                                : buttonColor.withOpacity(0.4),
+                                            enabled:
+                                                loginStore.isRegisterFormValid
+                                                    ? true
+                                                    : false,
                                             child: TextPlus(
                                               "Registrar-se",
-                                              color: loginStore.isRegisterFormValid ? Colors.white : Colors.white54,
+                                              color:
+                                                  loginStore.isRegisterFormValid
+                                                      ? Colors.white
+                                                      : Colors.white54,
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold,
                                             ),
