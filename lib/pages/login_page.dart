@@ -171,6 +171,7 @@ class LoginPage extends StatelessWidget {
                                       Observer(
                                         builder: (_) {
                                           return Center(
+<<<<<<< HEAD
                                             child: ButtonPlus(
                                               onPressed: loginStore.isFormValid
                                                   ? () async {
@@ -207,6 +208,27 @@ class LoginPage extends StatelessWidget {
                                                     ),
                                             ),
                                           );
+=======
+                                        child: ButtonPlus(
+                                          onPressed: loginStore.isFormValid ? () async {
+                                            await loginStore.login();
+                                          } : null,
+                                          height: 60,
+                                          width: 300,
+                                          radius: RadiusPlus.all(16),
+                                          color: loginStore.isFormValid ? buttonColor : buttonColor.withOpacity(0.4),
+                                          enabled: loginStore.isFormValid ? true : false,
+                                          child: loginStore.loading ? CircularProgressIndicator(
+                                            valueColor: AlwaysStoppedAnimation(Colors.white),
+                                          ) : TextPlus(
+                                            "Login",
+                                            color: loginStore.isFormValid ? Colors.white : Colors.white54,
+                                            fontSize: 16,
+                                            fontWeight:FontWeight.bold,
+                                          ),
+                                        ),
+                                      );
+>>>>>>> 18790e8c2e26e34302d653bb09ebf3e4209bdee3
                                         },
                                       ),
                                     ],
@@ -282,10 +304,6 @@ class LoginPage extends StatelessWidget {
                                                   color: Colors.black,
                                                 ),
                                               ),
-                                              suffixIcon: Icon(
-                                                  Icons.remove_red_eye_outlined,
-                                                  size: 18,
-                                                  color: Colors.black),
                                               fillColor: Colors.white,
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
@@ -332,10 +350,6 @@ class LoginPage extends StatelessWidget {
                                                   color: Colors.black,
                                                 ),
                                               ),
-                                              suffixIcon: Icon(
-                                                  Icons.remove_red_eye_outlined,
-                                                  size: 18,
-                                                  color: Colors.black),
                                               fillColor: Colors.white,
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
@@ -351,6 +365,7 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(height: 15),
                                         Center(
                                           child: ButtonPlus(
+<<<<<<< HEAD
                                             onPressed:
                                                 loginStore.isRegisterFormValid
                                                     ? () {
@@ -359,6 +374,12 @@ class LoginPage extends StatelessWidget {
                                                       }
                                                     : null,
                                             height: 60,
+=======
+                                            onPressed: loginStore.isRegisterFormValid ? () async {
+                                              await loginStore.register();
+                                            } : null,
+                                            height: 40,
+>>>>>>> 18790e8c2e26e34302d653bb09ebf3e4209bdee3
                                             width: 300,
                                             radius: RadiusPlus.all(16),
                                             color: loginStore

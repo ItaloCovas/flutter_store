@@ -1,3 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/pages/home_page.dart';
+import 'package:flutter_store/pages/login_page.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/users_api.dart';
 part 'login_store.g.dart';
@@ -5,6 +9,8 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
+  
+  UsersApi api = UsersApi();
 
   // ******* PARTE DO LOGIN ************
   @observable
@@ -42,12 +48,27 @@ abstract class _LoginStore with Store {
     loading = true;
 
     // PROCESSO
-    UsersApi api = UsersApi();
-    api.authenticate({ 
+    var r = await api.authenticate({ 
         'username': username,
-        'password': password
+        'password': password,
     });
 
+    //Verificação de erro da requisição
+    if(r.data['status'] == "Error") {
+      loading = false;
+      dialogPlus.showDefault(
+        title: 'ERRO',
+        message: "Erro no Login! Confira seus dados e tente novamente.",
+        elementsSpacing: 16,
+        buttonOneText: 'Tentar novamente',
+        buttonOneColor: Colors.red,
+        buttonOneCallback: () {
+        navigatorPlus.back();
+      });
+      return;
+    } else {
+      navigatorPlus.show(HomePage());
+    }
     loading = false;
   }
 
@@ -75,4 +96,61 @@ abstract class _LoginStore with Store {
 
   @computed
   bool get isRegisterFormValid => isRegisterPasswordValid & isUserNameValid; // Essa computed junta as outras duas
+
+  @action
+  Future<void> register() async {
+    loading = true;
+
+    // PROCESSO
+    var r = await api.registerNewUser(
+      {
+                    'email':'John@gmail.com',
+                    'username':userName,
+                    'password': password,
+                    'name':{
+                        'firstname':'John',
+                        'lastname':'Doe'
+                    },
+                    'address':{
+                        'city':'kilcoole',
+                        'street':'7835 new road',
+                        'number':3,
+                        'zipcode':'12926-3874',
+                        'geolocation':{
+                            'lat':'-37.3159',
+                            'long':'81.1496'
+                        }
+                    },
+                    'phone':'1-570-236-7033'
+                }
+    );
+
+    //Verificação de erro da requisição
+    if(r.data['status'] == "Error") {
+      loading = false;
+      dialogPlus.showDefault(
+        title: 'ERRO',
+        message: "Erro no Registro! Confira seus dados e tente novamente.",
+        elementsSpacing: 16,
+        buttonOneText: 'Tentar novamente',
+        buttonOneColor: Colors.red,
+        buttonOneCallback: () {
+        navigatorPlus.back();
+      });
+      return;
+    } else {
+      loading = false;
+      dialogPlus.showDefault(
+        title: 'SUCESSO',
+        message: "Usuário registrado com sucesso!",
+        elementsSpacing: 16,
+        buttonOneText: 'OK',
+        buttonOneColor: Colors.green,
+        buttonOneCallback: () {
+        navigatorPlus.back();
+      });
+    }
+
+    loading = false;
+  }
 }
