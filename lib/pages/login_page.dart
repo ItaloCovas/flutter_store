@@ -249,10 +249,6 @@ class LoginPage extends StatelessWidget {
                                                   color: Colors.black,
                                                 ),
                                               ),
-                                              suffixIcon: Icon(
-                                                  Icons.remove_red_eye_outlined,
-                                                  size: 18,
-                                                  color: Colors.black),
                                               fillColor: Colors.white,
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(
@@ -298,10 +294,6 @@ class LoginPage extends StatelessWidget {
                                                   color: Colors.black,
                                                 ),
                                               ),
-                                              suffixIcon: Icon(
-                                                  Icons.remove_red_eye_outlined,
-                                                  size: 18,
-                                                  color: Colors.black),
                                               fillColor: Colors.white,
                                               enabledBorder: OutlineInputBorder(
                                                 borderRadius: BorderRadius.all(

@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/pages/home_page.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/users_api.dart';
 part 'login_store.g.dart';
@@ -43,11 +46,27 @@ abstract class _LoginStore with Store {
 
     // PROCESSO
     UsersApi api = UsersApi();
-    api.authenticate({ 
+    var r = await api.authenticate({ 
         'username': username,
-        'password': password
+        'password': password,
     });
 
+    //Verificação de erro da requisição
+    if(r.data['status'] == "Error") {
+      loading = false;
+      dialogPlus.showDefault(
+        title: 'ERRO',
+        message: "Erro no Login! Confira seus dados e tente novamente.",
+        elementsSpacing: 16,
+        buttonOneText: 'Tentar novamente',
+        buttonOneColor: Colors.red,
+        buttonOneCallback: () {
+        navigatorPlus.back();
+      });
+      return;
+    } else {
+      navigatorPlus.show(HomePage());
+    }
     loading = false;
   }
 
