@@ -1,40 +1,34 @@
 import 'package:flutter_store/api/products_api.dart';
 import 'package:dio/dio.dart';
 
-var dio = Dio();
+import 'package:meta/meta.dart';
 
-class ProductsModel {
+class ProductsModel{
   final int id;
   final String title;
   final double price;
   final String category;
   final String description;
   final String image;
+  bool listCar = false;
 
-  ProductsModel(
-      {required this.id,
-      required this.title,
-      required this.price,
-      required this.category,
-      required this.description,
-      required this.image});
+  ProductsModel({
+        required this.id,
+        required this.title,
+        required this.price,
+        required this.category,
+        required this.description,
+        required this.image});
 
-  Future<List<ProductsModel>> getProducts() async {
-    final response = await dio.get('https://fakestoreapi.com/products');
-    final body = response.data as List;
-    final products = body
-        .map(
-          (map) => ProductsModel(
-            id: map['id'],
-            title: map['title'],
-            price: map['price'],
-            category: map['category'],
-            description: map['description'],
-            image: map['image'],
-          ),
-        )
-        .toList();
+  factory ProductsModel.fromJson(Map<String, dynamic> json){
+    return ProductsModel(
+        id: json["id"],
+        title:  json["title"],
+        price: json["price"].toDouble(),
+        category:  json["category"],
+        description:  json["description"],
+        image:  json["image"]
+    );
 
-    return products;
   }
 }
