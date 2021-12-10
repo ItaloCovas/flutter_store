@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/pages/home_page.dart';
-import 'package:flutter_store/api/users_api.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class LoginPage extends StatelessWidget {
@@ -171,7 +170,6 @@ class LoginPage extends StatelessWidget {
                                       Observer(
                                         builder: (_) {
                                           return Center(
-<<<<<<< HEAD
                                             child: ButtonPlus(
                                               onPressed: loginStore.isFormValid
                                                   ? () async {
@@ -208,27 +206,6 @@ class LoginPage extends StatelessWidget {
                                                     ),
                                             ),
                                           );
-=======
-                                        child: ButtonPlus(
-                                          onPressed: loginStore.isFormValid ? () async {
-                                            await loginStore.login();
-                                          } : null,
-                                          height: 60,
-                                          width: 300,
-                                          radius: RadiusPlus.all(16),
-                                          color: loginStore.isFormValid ? buttonColor : buttonColor.withOpacity(0.4),
-                                          enabled: loginStore.isFormValid ? true : false,
-                                          child: loginStore.loading ? CircularProgressIndicator(
-                                            valueColor: AlwaysStoppedAnimation(Colors.white),
-                                          ) : TextPlus(
-                                            "Login",
-                                            color: loginStore.isFormValid ? Colors.white : Colors.white54,
-                                            fontSize: 16,
-                                            fontWeight:FontWeight.bold,
-                                          ),
-                                        ),
-                                      );
->>>>>>> 18790e8c2e26e34302d653bb09ebf3e4209bdee3
                                         },
                                       ),
                                     ],
@@ -365,21 +342,10 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(height: 15),
                                         Center(
                                           child: ButtonPlus(
-<<<<<<< HEAD
-                                            onPressed:
-                                                loginStore.isRegisterFormValid
-                                                    ? () {
-                                                        navigatorPlus
-                                                            .show(LoginPage());
-                                                      }
-                                                    : null,
-                                            height: 60,
-=======
                                             onPressed: loginStore.isRegisterFormValid ? () async {
                                               await loginStore.register();
                                             } : null,
                                             height: 40,
->>>>>>> 18790e8c2e26e34302d653bb09ebf3e4209bdee3
                                             width: 300,
                                             radius: RadiusPlus.all(16),
                                             color: loginStore

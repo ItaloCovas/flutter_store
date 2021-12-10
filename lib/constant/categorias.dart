@@ -12,14 +12,14 @@ class Categorias extends StatefulWidget {
 
 class _CategoriasState extends State<Categorias> {
   List<String> categorias = [
-    "All",
-    "Electronics",
-    "Jewelery",
-    "men's clothing",
-    "women's clothing",
+    "Todos",
+    "Eletrônicos",
+    "Jóias",
+    "Roupas masculinas",
+    "Roupas femininas",
   ];
 
-  int selecteIndex = 0;
+  int selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -38,7 +38,7 @@ class _CategoriasState extends State<Categorias> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          selecteIndex = index;
+          selectedIndex = index;
         });
       },
       child: Padding(
@@ -49,14 +49,14 @@ class _CategoriasState extends State<Categorias> {
             TextPlus(
               categorias[index],
               color:
-                  selecteIndex == index ? Colors.white : Colors.grey.shade800,
+                  selectedIndex == index ? Colors.white : Colors.grey.shade800,
               fontWeight: FontWeight.w600,
             ),
             ContainerPlus(
               margin: EdgeInsets.only(top: 4),
               height: 2,
               width: 22,
-              color: selecteIndex == index ? Colors.white : Colors.transparent,
+              color: selectedIndex == index ? Colors.white : Colors.transparent,
             )
           ],
         ),
