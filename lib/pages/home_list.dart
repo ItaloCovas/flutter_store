@@ -38,7 +38,7 @@ class _HomeListState extends State<HomeList> {
         color: primaryBlack,
         child: Column(
           children: [
-            TextPlus('Olá! Seja Bem-Vindo à Loja Padawns. 👋',
+            TextPlus('Olá! Seja Bem-Vindo à Loja Padawans. 👋',
                 color: Colors.white,
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
@@ -72,25 +72,26 @@ class _HomeListState extends State<HomeList> {
               height: 30,
             ),
             Categorias(),
-            Expanded(child: ContainerPlus(child: Observer(
+            Observer(
               builder: (BuildContext context) {
-                HomeApiStore _productsapi =
-                    homeApiStore.productsapi as HomeApiStore;
-                if ((_productsapi.productsapi != null)) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(_productsapi.productsapi!.title[index]),
-                      );
-                    },
-                  );
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
+                return ContainerPlus(
+                  height: MediaQuery.of(context).size.height,
+                  width: MediaQuery.of(context).size.width,
+                  child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 5.0,
+                  mainAxisSpacing: 5.0,
+                  ), 
+                  itemBuilder: (context, index) {
+                    return Container(
+                      color: Colors.white,
+                      child: Text('TEXTO AQUI, IMAGEM DEPOIS'),
+                    );
+                  },
+                  ),
+                );
               },
-            )))
+            ),
           ],
         ),
       ),
