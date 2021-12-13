@@ -30,6 +30,8 @@ class _HomeListState extends State<HomeList> {
 
   @override
   Widget build(BuildContext context) {
+    HomeApiStore homeApiStore = HomeApiStore();
+    homeApiStore.getProductsList();
     var size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: ContainerPlus(
@@ -70,23 +72,25 @@ class _HomeListState extends State<HomeList> {
               height: 30,
             ),
             Categorias(),
-            Expanded(
-              child: ContainerPlus(
-                  child: Observer(
-                      name: 'Products',
-                      builder: (BuildContext context) {
-                        ProductsModel? productsModel = homeApiStore.productsapi;
-                        return (productsModel != null)
-                            ? ListView.builder(itemBuilder: (context, index) {
-                                return ListTile(
-                                  title: Text(productsModel.title[index]),
-                                );
-                              })
-                            : Center(
-                                child: CircularProgressIndicator(),
-                              );
-                      })),
-            )
+            Expanded(child: ContainerPlus(child: Observer(
+              builder: (BuildContext context) {
+                HomeApiStore _productsapi =
+                    homeApiStore.productsapi as HomeApiStore;
+                if ((_productsapi.productsapi != null)) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(_productsapi.productsapi!.title[index]),
+                      );
+                    },
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            )))
           ],
         ),
       ),
