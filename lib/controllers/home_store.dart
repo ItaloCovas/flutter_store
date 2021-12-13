@@ -10,10 +10,10 @@ class HomeApiStore = _HomeApiStoreBase with _$HomeApiStore;
 
 abstract class _HomeApiStoreBase with Store {
   @observable
-  late ProductsModel _productsModel;
+  ProductsModel? _productsModel;
 
   @computed
-  ProductsModel get productsapi => _productsModel;
+  ProductsModel? get productsapi => _productsModel;
 
   @action
   getProductsList() {

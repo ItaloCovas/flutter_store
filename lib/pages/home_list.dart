@@ -75,11 +75,11 @@ class _HomeListState extends State<HomeList> {
                   child: Observer(
                       name: 'Products',
                       builder: (BuildContext context) {
-                        ProductsModel productsModel = homeApiStore.productsapi;
+                        ProductsModel? productsModel = homeApiStore.productsapi;
                         return (productsModel != null)
                             ? ListView.builder(itemBuilder: (context, index) {
                                 return ListTile(
-                                  title: Text(productsModel.title),
+                                  title: Text(productsModel.title[index]),
                                 );
                               })
                             : Center(
