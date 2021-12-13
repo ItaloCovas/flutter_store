@@ -2,9 +2,10 @@ import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/constant/categorias.dart';
-import 'package:flutter_store/controllers/home_controller.dart';
+import 'package:flutter_store/controllers/home_store.dart';
 import 'package:get/get.dart';
 import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/model/products_model.dart';
@@ -19,14 +20,12 @@ class HomeList extends StatefulWidget {
 }
 
 class _HomeListState extends State<HomeList> {
-
-
-  final homeController = HomeController();
-
+  final homeApiStore = HomeApiStore();
+  @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    homeController.loadProducts();
+    homeApiStore.getProductsList();
   }
 
   @override
@@ -35,7 +34,6 @@ class _HomeListState extends State<HomeList> {
     return SingleChildScrollView(
       child: ContainerPlus(
         color: primaryBlack,
-
         child: Column(
           children: [
             TextPlus('Olá! Seja Bem-Vindo à Loja Padawns. 👋',
@@ -72,36 +70,22 @@ class _HomeListState extends State<HomeList> {
               height: 30,
             ),
             Categorias(),
-            Stack(
-                children: [
-                  ContainerPlus(
-                    padding: EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width,
-                    color: primaryBlack,
-                    height: MediaQuery
-                        .of(context)
-                        .size
-                        .height ,
-                    child: GridView.builder(
-                      padding: EdgeInsets.only(left: 7, right: 7),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            crossAxisSpacing: 1,
-                            mainAxisSpacing: 2
-                        ),
-                        itemBuilder: (context, index) {
-                          final HomeController products = homeController;
-                          return homeController.obx((state) => const Text(''),
-                              onError: (error) => Center(
-                                child: Text(error!),
-
-                              )
-                          );
-                        },
-
-                    ),
-                  )
-                ]
+            Expanded(
+              child: ContainerPlus(
+                  child: Observer(
+                      name: 'Products',
+                      builder: (BuildContext context) {
+                        ProductsModel productsModel = homeApiStore.productsapi;
+                        return (productsModel != null)
+                            ? ListView.builder(itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text(productsModel.title),
+                                );
+                              })
+                            : Center(
+                                child: CircularProgressIndicator(),
+                              );
+                      })),
             )
           ],
         ),

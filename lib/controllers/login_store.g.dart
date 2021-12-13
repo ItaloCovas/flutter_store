@@ -149,6 +149,13 @@ mixin _$LoginStore on _LoginStore, Store {
     return _$loginAsyncAction.run(() => super.login());
   }
 
+  final _$registerAsyncAction = AsyncAction('_LoginStore.register');
+
+  @override
+  Future<void> register() {
+    return _$registerAsyncAction.run(() => super.register());
+  }
+
   final _$_LoginStoreActionController = ActionController(name: '_LoginStore');
 
   @override
