@@ -11,16 +11,12 @@ abstract class _HomeApiStoreBase with Store {
   ProductsApi api = ProductsApi();
 
   @observable
-  ProductsModel? _productsModel;
-
-  @computed
-  ProductsModel? get productsapi => _productsModel;
+  ObservableList<ProductsModel>? productsModel;
 
   @action
   getProductsList() {
     api.getProducts().then((productsList) {
-      _productsModel = productsList as ProductsModel;
+      productsModel = productsList as ObservableList<ProductsModel>?;
     });
   }
-
 }

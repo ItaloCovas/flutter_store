@@ -11,6 +11,7 @@ import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
+import 'package:mobx/src/api/observable_collections.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({Key? key}) : super(key: key);
@@ -25,6 +26,7 @@ class _HomeListState extends State<HomeList> {
   void initState() {
     // TODO: implement initState
     super.initState();
+
     homeApiStore.getProductsList();
   }
 
@@ -73,23 +75,30 @@ class _HomeListState extends State<HomeList> {
             ),
             Categorias(),
             Observer(
-              builder: (BuildContext context) {
-                return ContainerPlus(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  child: GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 5.0,
-                  mainAxisSpacing: 5.0,
-                  ), 
-                  itemBuilder: (context, index) {
-                    return Container(
-                      color: Colors.white,
-                      child: Text('TEXTO AQUI, IMAGEM DEPOIS'),
-                    );
-                  },
-                  ),
-                );
+              builder: (_) {
+                ObservableList<ProductsModel>? productsModel =
+                    homeApiStore.productsModel;
+                if (homeApiStore.productsModel != null) {
+                  return ContainerPlus(
+                    height: MediaQuery.of(context).size.height,
+                    width: MediaQuery.of(context).size.width,
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 5.0,
+                        mainAxisSpacing: 5.0,
+                      ),
+                      itemCount: homeApiStore.productsModel!.length,
+                      itemBuilder: (_, index) {
+                        return ListTile();
+                      },
+                    ),
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
               },
             ),
           ],
