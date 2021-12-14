@@ -76,8 +76,6 @@ class _HomeListState extends State<HomeList> {
             Categorias(),
             Observer(
               builder: (_) {
-                ObservableList<ProductsModel>? productsModel =
-                    homeApiStore.productsModel;
                 if (homeApiStore.productsModel != null) {
                   return ContainerPlus(
                     height: MediaQuery.of(context).size.height,
@@ -90,7 +88,10 @@ class _HomeListState extends State<HomeList> {
                       ),
                       itemCount: homeApiStore.productsModel!.length,
                       itemBuilder: (_, index) {
-                        return ListTile();
+                        var products = homeApiStore.productsModel![index];
+                        return ListTile(
+                          title: Text(products.title),
+                        );
                       },
                     ),
                   );
