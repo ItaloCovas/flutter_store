@@ -39,7 +39,7 @@ class _HomeListState extends State<HomeList> {
         color: primaryBlack,
         child: Column(
           children: [
-            TextPlus('Olá! Seja Bem-Vindo à Loja Padawans. 👋',
+            TextPlus('Olá! Seja bem-vindo à Loja Padawans. 👋',
                 color: Colors.white,
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
@@ -73,46 +73,74 @@ class _HomeListState extends State<HomeList> {
               height: 30,
             ),
             Categorias(),
+            SizedBox(
+              height: 5,
+            ),
             Observer(
               builder: (_) {
-                print(homeApiStore.productsModel);
                 if (homeApiStore.productsModel != null) {
                   return ContainerPlus(
-                    color: Colors.grey.shade800,
+                    color: primaryBlack,
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: GridView.builder(
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
-                        crossAxisSpacing: 5.0,
-                        mainAxisSpacing: 5.0,
+                        crossAxisSpacing: 10.0,
+                        mainAxisSpacing: 10.0,
                       ),
                       itemCount: homeApiStore.productsModel!.length,
                       itemBuilder: (ctx, index) {
                         var products = homeApiStore.productsModel![index];
-                        return ListTile(
-                          title: SizedBox(
+                        return ContainerPlus(
                             width: 180,
-                            height: 220,
-                            child: Column(
-                              children: <Widget>[
-                                Text(products.title),
-                                Image(
-                                  image: NetworkImage(products.image),
-                                  width: 50,
-                                  height: 50,
-                                ),
-                              ],
+                            height: 250,
+                            radius: RadiusPlus.all(20),
+                            color: secondaryBlack,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                
+                                children: <Widget>[
+                                  ClipOval(
+                                    child: Image(
+                                    image: NetworkImage(products.image),
+                                    width: 100,
+                                    height: 100,
+                                    fit: BoxFit.contain,
+                                  ),
+                                  ),
+                                  SizedBox(height: 15),
+                                  TextPlus(products.title, fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold, textAlign:TextAlign.center),
+                                  SizedBox(height: 15),
+                                  TextPlus("R\$ " + products.price.toString(), fontSize: 12, color: Colors.white, fontWeight: FontWeight.bold, textAlign:TextAlign.center),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
+                          );
                       },
                     ),
                   );
                 } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  return 
+                      Padding(
+                        padding: EdgeInsets.all(15),
+                        child: Column(
+                          children: const <Widget>[
+                                  Center(
+                          child: CircularProgressIndicator(
+                                                            valueColor:
+                                                                AlwaysStoppedAnimation(
+                                                                    Colors.white),
+                                                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text('Aguarde... Carregando produtos', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white)),
+                          ],
+                        ),
+                      );
                 }
               },
             ),
