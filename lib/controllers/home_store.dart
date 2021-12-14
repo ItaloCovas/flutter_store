@@ -17,6 +17,8 @@ abstract class _HomeApiStoreBase with Store {
   getProductsList() {
     api.getProducts().then((productsList) {
       productsModel = productsList as ObservableList<ProductsModel>?;
+      print('products list changed');
+      print(productsModel);
     });
   }
 }

@@ -8,12 +8,15 @@ class ProductsApi {
   var dio = Dio();
   static const productsApiUrl = 'https://fakestoreapi.com/products';
 
-  Future<List<ProductsModel>?> getProducts() async {
+  Future<ObservableList<ProductsModel>?> getProducts() async {
     try {
       Response response = await dio.get(productsApiUrl);
-      return (response.data['products'] as ObservableList)
+
+      List<ProductsModel> list = (response.data as List)
           .map((e) => ProductsModel.fromJson(e))
           .toList();
+
+      return ObservableList<ProductsModel>.of(list);
     } catch (e) {
       print(e);
       return null;

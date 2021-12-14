@@ -32,9 +32,8 @@ class _HomeListState extends State<HomeList> {
 
   @override
   Widget build(BuildContext context) {
-    HomeApiStore homeApiStore = HomeApiStore();
-    homeApiStore.getProductsList();
     var size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
       child: ContainerPlus(
         color: primaryBlack,
@@ -76,6 +75,7 @@ class _HomeListState extends State<HomeList> {
             Categorias(),
             Observer(
               builder: (_) {
+                print(homeApiStore.productsModel);
                 if (homeApiStore.productsModel != null) {
                   return ContainerPlus(
                     height: MediaQuery.of(context).size.height,
@@ -87,7 +87,7 @@ class _HomeListState extends State<HomeList> {
                         mainAxisSpacing: 5.0,
                       ),
                       itemCount: homeApiStore.productsModel!.length,
-                      itemBuilder: (_, index) {
+                      itemBuilder: (ctx, index) {
                         var products = homeApiStore.productsModel![index];
                         return ListTile(
                           title: Text(products.title),
