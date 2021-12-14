@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/products_api.dart';

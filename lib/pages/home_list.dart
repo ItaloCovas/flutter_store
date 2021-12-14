@@ -78,6 +78,7 @@ class _HomeListState extends State<HomeList> {
                 print(homeApiStore.productsModel);
                 if (homeApiStore.productsModel != null) {
                   return ContainerPlus(
+                    color: Colors.grey.shade800,
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: GridView.builder(
@@ -90,7 +91,20 @@ class _HomeListState extends State<HomeList> {
                       itemBuilder: (ctx, index) {
                         var products = homeApiStore.productsModel![index];
                         return ListTile(
-                          title: Text(products.title),
+                          title: SizedBox(
+                            width: 180,
+                            height: 220,
+                            child: Column(
+                              children: <Widget>[
+                                Text(products.title),
+                                Image(
+                                  image: NetworkImage(products.image),
+                                  width: 50,
+                                  height: 50,
+                                ),
+                              ],
+                            ),
+                          ),
                         );
                       },
                     ),

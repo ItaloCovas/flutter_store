@@ -9,7 +9,6 @@ part 'login_store.g.dart';
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
-  
   UsersApi api = UsersApi();
 
   // ******* PARTE DO LOGIN ************
@@ -32,12 +31,13 @@ abstract class _LoginStore with Store {
   bool get isPasswordValid => password.isNotEmpty;
 
   @computed
-  bool get isFormValid => isUsernameValid && isPasswordValid; // Essa computed junta as outras duas
+  bool get isFormValid =>
+      isUsernameValid && isPasswordValid; // Essa computed junta as outras duas
 
   @observable
   bool passwordVisible = false;
 
-  @action 
+  @action
   void togglePasswordVisibility() => passwordVisible = !passwordVisible;
 
   @observable
@@ -48,30 +48,29 @@ abstract class _LoginStore with Store {
     loading = true;
 
     // PROCESSO
-    var r = await api.authenticate({ 
-        'username': username,
-        'password': password,
+    var r = await api.authenticate({
+      'username': username,
+      'password': password,
     });
 
     //Verificação de erro da requisição
-    if(r.data['status'] == "Error") {
+    if (r.data['status'] == "Error") {
       loading = false;
       dialogPlus.showDefault(
-        title: 'ERRO',
-        message: "Erro no Login! Confira seus dados e tente novamente.",
-        elementsSpacing: 16,
-        buttonOneText: 'Tentar novamente',
-        buttonOneColor: Colors.red,
-        buttonOneCallback: () {
-        navigatorPlus.back();
-      });
+          title: 'ERRO',
+          message: "Erro no Login! Confira seus dados e tente novamente.",
+          elementsSpacing: 16,
+          buttonOneText: 'Tentar novamente',
+          buttonOneColor: Colors.red,
+          buttonOneCallback: () {
+            navigatorPlus.back();
+          });
       return;
     } else {
       navigatorPlus.show(HomePage());
     }
     loading = false;
   }
-
 
   // ******* PARTE DO REGISTRO ************
 
@@ -85,8 +84,7 @@ abstract class _LoginStore with Store {
   String registerPassword = "";
 
   @action
-  void setRegisterPassword(String value) => registerPassword = value; 
-
+  void setRegisterPassword(String value) => registerPassword = value;
 
   @computed
   bool get isUserNameValid => userName.isNotEmpty;
@@ -95,60 +93,54 @@ abstract class _LoginStore with Store {
   bool get isRegisterPasswordValid => registerPassword.isNotEmpty;
 
   @computed
-  bool get isRegisterFormValid => isRegisterPasswordValid & isUserNameValid; // Essa computed junta as outras duas
+  bool get isRegisterFormValid =>
+      isRegisterPasswordValid &
+      isUserNameValid; // Essa computed junta as outras duas
 
   @action
   Future<void> register() async {
     loading = true;
 
     // PROCESSO
-    var r = await api.registerNewUser(
-      {
-                    'email':'John@gmail.com',
-                    'username':userName,
-                    'password': password,
-                    'name':{
-                        'firstname':'John',
-                        'lastname':'Doe'
-                    },
-                    'address':{
-                        'city':'kilcoole',
-                        'street':'7835 new road',
-                        'number':3,
-                        'zipcode':'12926-3874',
-                        'geolocation':{
-                            'lat':'-37.3159',
-                            'long':'81.1496'
-                        }
-                    },
-                    'phone':'1-570-236-7033'
-                }
-    );
+    var r = await api.registerNewUser({
+      'email': 'John@gmail.com',
+      'username': userName,
+      'password': password,
+      'name': {'firstname': 'John', 'lastname': 'Doe'},
+      'address': {
+        'city': 'kilcoole',
+        'street': '7835 new road',
+        'number': 3,
+        'zipcode': '12926-3874',
+        'geolocation': {'lat': '-37.3159', 'long': '81.1496'}
+      },
+      'phone': '1-570-236-7033'
+    });
 
     //Verificação de erro da requisição
-    if(r.data['status'] == "Error") {
+    if (r.data['status'] == "Error") {
       loading = false;
       dialogPlus.showDefault(
-        title: 'ERRO',
-        message: "Erro no Registro! Confira seus dados e tente novamente.",
-        elementsSpacing: 16,
-        buttonOneText: 'Tentar novamente',
-        buttonOneColor: Colors.red,
-        buttonOneCallback: () {
-        navigatorPlus.back();
-      });
+          title: 'ERRO',
+          message: "Erro no Registro! Confira seus dados e tente novamente.",
+          elementsSpacing: 16,
+          buttonOneText: 'Tentar novamente',
+          buttonOneColor: Colors.red,
+          buttonOneCallback: () {
+            navigatorPlus.back();
+          });
       return;
     } else {
       loading = false;
       dialogPlus.showDefault(
-        title: 'SUCESSO',
-        message: "Usuário registrado com sucesso!",
-        elementsSpacing: 16,
-        buttonOneText: 'OK',
-        buttonOneColor: Colors.green,
-        buttonOneCallback: () {
-        navigatorPlus.back();
-      });
+          title: 'SUCESSO',
+          message: "Usuário registrado com sucesso!",
+          elementsSpacing: 16,
+          buttonOneText: 'OK',
+          buttonOneColor: Colors.green,
+          buttonOneCallback: () {
+            navigatorPlus.back();
+          });
     }
 
     loading = false;
