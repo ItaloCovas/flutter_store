@@ -89,7 +89,7 @@ class _HomeListState extends State<HomeList> {
                               SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             crossAxisSpacing: 10.0,
-                            mainAxisSpacing: 5.0,
+                            mainAxisSpacing: 10.0,
                           ),
                           physics: BouncingScrollPhysics(),
                           addAutomaticKeepAlives: false,

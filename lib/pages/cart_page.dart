@@ -1,43 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/pages/cart_page.dart';
-import 'package:flutter_store/pages/home_list.dart';
 import 'package:flutter_store/theme/colors.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class CartPage extends StatefulWidget {
+  const CartPage({Key? key}) : super(key: key);
 
+  @override
+  _CartPageState createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: HomeList(),
       backgroundColor: primaryBlack,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         centerTitle: true,
         elevation: 0,
         backgroundColor: primaryBlack,
-        leading: InkWell(
-          splashColor: Colors.white,
-          onTap: () => Scaffold.of(context).openDrawer(),
-          child: ContainerPlus(
-            margin: EdgeInsets.only(left: 15),
-            width: 25,
-            height: 15,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 20.0),
-              child: Stack(
-                children: [
-                  Icon(
-                    Icons.menu,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
       ),
       bottomNavigationBar: BottomNavigationBar(),
     );
