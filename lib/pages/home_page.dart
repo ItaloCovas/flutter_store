@@ -17,27 +17,6 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: primaryBlack,
-        leading: InkWell(
-          splashColor: Colors.white,
-          onTap: () => Scaffold.of(context).openDrawer(),
-          child: ContainerPlus(
-            margin: EdgeInsets.only(left: 15),
-            width: 25,
-            height: 15,
-            child: Padding(
-              padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 20.0),
-              child: Stack(
-                children: [
-                  Icon(
-                    Icons.menu,
-                    color: Colors.grey,
-                    size: 30,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
       ),
       bottomNavigationBar: BottomNavigationBar(),
     );
@@ -52,7 +31,7 @@ class BottomNavigationBar extends StatefulWidget {
 }
 
 class _BottomNavigationBarState extends State<BottomNavigationBar> {
-  int _selectedIndex = 0;
+  final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {

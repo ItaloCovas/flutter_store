@@ -45,7 +45,7 @@ class _HomeListState extends State<HomeList> {
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'RobotoMono',
-                padding: EdgeInsets.fromLTRB(27, 35, 27, 5)),
+                padding: EdgeInsets.fromLTRB(27, 0, 27, 5)),
             SizedBox(
               height: 35,
             ),
