@@ -15,12 +15,19 @@ abstract class _HomeApiStoreBase with Store {
   @observable
   ObservableList<ProductsModel>? productsModel;
 
+  @observable
+  bool loading = false;
+
   @action
   getProductsList() {
+    loading = true;
+
     api.getProducts().then((productsList) {
       productsModel = productsList;
       print('products list changed');
       print(productsModel);
     });
+
+    loading = false;
   }
 }
