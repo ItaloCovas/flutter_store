@@ -45,7 +45,7 @@ class _HomeListState extends State<HomeList> {
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'RobotoMono',
-                padding: EdgeInsets.fromLTRB(27, 0, 27, 5)),
+                padding: EdgeInsets.fromLTRB(27, 80, 27, 5)),
             SizedBox(
               height: 35,
             ),
@@ -79,7 +79,7 @@ class _HomeListState extends State<HomeList> {
                     if (homeApiStore.productsModel != null) {
                       return ContainerPlus(
                         color: primaryBlack,
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
                         height: MediaQuery.of(context).size.height,
                         width: MediaQuery.of(context).size.width,
                         child: GridView.builder(
@@ -96,7 +96,61 @@ class _HomeListState extends State<HomeList> {
                             var products = homeApiStore.productsModel![index];
                             return GestureDetector(
                               onTap:() => {
-                                
+                                bottomSheetPlus.show(
+                                  child: ContainerPlus(
+                                    color: Colors.white,
+                                    child: Column(
+                                      children: <Widget>[
+                                        Padding(
+                                          padding: EdgeInsets.fromLTRB(10,20,10,20),
+                                          child: Column(
+                                            children: <Widget>[
+                                              Image(
+                                                  image: NetworkImage(products.image),
+                                                  width: 300,
+                                                  height: 100,
+                                              ),
+                                              SizedBox(height: 20), 
+                                              TextPlus(products.title, color: Colors.black, fontWeight:FontWeight.bold),
+                                              SizedBox(height: 5),
+                                              TextPlus(products.description, color: Colors.black, textAlign: TextAlign.center),
+                                              SizedBox(height: 30),
+                                              Observer(
+                                                builder: (_) {
+                                                  return Row(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                children: <Widget>[
+                                                  ButtonPlus(child: TextPlus('-', fontWeight: FontWeight.bold, fontSize: 16), width: MediaQuery.of(context).size.width * 0.20, color: Colors.green, radius: RadiusPlus.all(8),  onPressed:homeApiStore.decrement),
+                                                  SizedBox(width: 5),
+                                                  ButtonPlus(child: TextPlus('${homeApiStore.value}'), width: MediaQuery.of(context).size.width * 0.40, color: Colors.green, radius: RadiusPlus.all(8)),
+                                                  SizedBox(width: 5),
+                                                  ButtonPlus(child: TextPlus('+', fontWeight: FontWeight.bold, fontSize: 14), width: MediaQuery.of(context).size.width * 0.20, color: Colors.green, radius: RadiusPlus.all(8), onPressed:homeApiStore.increment),
+                                                ],
+                                              );
+                                                }
+                                              ),
+                                              SizedBox(height: 30),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                children: <Widget>[
+                                                  ButtonPlus(child: TextPlus('Voltar', color: Colors.black, fontWeight: FontWeight.bold), color: Colors.red, radius: RadiusPlus.all(8),onPressed: (){
+                                                homeApiStore.value = 0;
+                                                navigatorPlus.back();
+                                              },),
+                                              ButtonPlus(child: TextPlus('Adicionar ao carrinho', color: Colors.black, fontWeight: FontWeight.bold), color: Colors.green, radius: RadiusPlus.all(8), width: 200, onPressed: (){
+                                                
+                                              },),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  radius: RadiusPlus.top(20),
+                                  heightPercentScreen: 0.8,
+                                ),
                               },
                               child: ContainerPlus(
                                 padding:
@@ -123,7 +177,6 @@ class _HomeListState extends State<HomeList> {
                                     TextPlus(products.title,
                                         fontSize: 10,
                                         color: Colors.white,
-                                        fontWeight: FontWeight.bold,
                                         textAlign: TextAlign.center),
                                     SizedBox(height: 5),
                                     TextPlus("R\$ " + products.price.toString(),

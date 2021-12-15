@@ -24,6 +24,21 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
     });
   }
 
+  final _$valueAtom = Atom(name: '_HomeApiStoreBase.value');
+
+  @override
+  int get value {
+    _$valueAtom.reportRead();
+    return super.value;
+  }
+
+  @override
+  set value(int value) {
+    _$valueAtom.reportWrite(value, super.value, () {
+      super.value = value;
+    });
+  }
+
   final _$_HomeApiStoreBaseActionController =
       ActionController(name: '_HomeApiStoreBase');
 
@@ -39,9 +54,32 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
   }
 
   @override
+  void increment() {
+    final _$actionInfo = _$_HomeApiStoreBaseActionController.startAction(
+        name: '_HomeApiStoreBase.increment');
+    try {
+      return super.increment();
+    } finally {
+      _$_HomeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void decrement() {
+    final _$actionInfo = _$_HomeApiStoreBaseActionController.startAction(
+        name: '_HomeApiStoreBase.decrement');
+    try {
+      return super.decrement();
+    } finally {
+      _$_HomeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
-productsModel: ${productsModel}
+productsModel: ${productsModel},
+value: ${value}
     ''';
   }
 }

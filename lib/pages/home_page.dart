@@ -12,12 +12,6 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: HomeList(),
       backgroundColor: primaryBlack,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: primaryBlack,
-      ),
       bottomNavigationBar: BottomNavigationBar(),
     );
   }
