@@ -35,6 +35,7 @@ class _HomeListState extends State<HomeList> {
     var size = MediaQuery.of(context).size;
 
     return SingleChildScrollView(
+      scrollDirection: Axis.vertical,
       child: ContainerPlus(
         color: primaryBlack,
         child: Column(
@@ -73,10 +74,7 @@ class _HomeListState extends State<HomeList> {
               height: 20,
             ),
             Categorias(),
-            SingleChildScrollView(
-              scrollDirection: Axis.vertical,
-              child: Expanded(
-                child: Observer(
+            Observer(
                   builder: (_) {
                     if (homeApiStore.productsModel != null) {
                       return ContainerPlus(
@@ -96,40 +94,45 @@ class _HomeListState extends State<HomeList> {
                           itemCount: homeApiStore.productsModel!.length,
                           itemBuilder: (ctx, index) {
                             var products = homeApiStore.productsModel![index];
-                            return ContainerPlus(
-                              padding:
-                                  EdgeInsets.only(left: 5, right: 5, bottom: 5),
-                              width: 190,
-                              height: 280,
-                              radius: RadiusPlus.all(15),
-                              color: secondaryBlack,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  ClipOval(
-                                    child: Image(
-                                      image: NetworkImage(products.image),
-                                      width: 80,
-                                      height: 80,
-                                      fit: BoxFit.contain,
+                            return GestureDetector(
+                              onTap:() => {
+                                
+                              },
+                              child: ContainerPlus(
+                                padding:
+                                    EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                                width: 190,
+                                height: 280,
+                                radius: RadiusPlus.all(15),
+                                color: secondaryBlack,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    ClipOval(
+                                      child: Image(
+                                        image: NetworkImage(products.image),
+                                        width: 80,
+                                        height: 80,
+                                        fit: BoxFit.contain,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    height: 8,
-                                  ),
-                                  TextPlus(products.title,
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      textAlign: TextAlign.center),
-                                  SizedBox(height: 5),
-                                  TextPlus("R\$ " + products.price.toString(),
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      textAlign: TextAlign.center),
-                                ],
+                                    SizedBox(
+                                      height: 8,
+                                    ),
+                                    TextPlus(products.title,
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        textAlign: TextAlign.center),
+                                    SizedBox(height: 5),
+                                    TextPlus("R\$ " + products.price.toString(),
+                                        fontSize: 10,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                        textAlign: TextAlign.center),
+                                  ],
+                                ),
                               ),
                             );
                           },
@@ -157,8 +160,6 @@ class _HomeListState extends State<HomeList> {
                     }
                   },
                 ),
-              ),
-            ),
           ],
         ),
       ),
