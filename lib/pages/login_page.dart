@@ -79,7 +79,7 @@ class LoginPage extends StatelessWidget {
                                               fontSize: 14,
                                             ),
                                             prefixWidget: Icon(
-                                                Icons.alternate_email,
+                                                Icons.account_circle,
                                                 size: 18,
                                                 color: Colors.black),
                                           );
@@ -92,7 +92,7 @@ class LoginPage extends StatelessWidget {
                                       ),
                                       Observer(
                                         builder: (_) {
-                                          return Container(
+                                          return SizedBox(
                                             height: 30,
                                             child: TextFormField(
                                               obscureText:
@@ -253,7 +253,7 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(
                                           height: 5,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 28,
                                           child: TextFormField(
                                             obscureText: true,
@@ -299,7 +299,7 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(
                                           height: 5,
                                         ),
-                                        Container(
+                                        SizedBox(
                                           height: 28,
                                           child: TextFormField(
                                             obscureText: true,
