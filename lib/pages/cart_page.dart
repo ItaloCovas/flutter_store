@@ -13,83 +13,40 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: primaryBlack,
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: primaryBlack,
-      ),
-      bottomNavigationBar: BottomNavigationBar(),
-    );
-  }
-}
-
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
-}
-
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
-  int _selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return ContainerPlus(
-      color: primaryBlack,
-      child: BottomAppBar(
-        elevation: 0,
+      body: ContainerPlus(
         color: primaryBlack,
-        child: SizedBox(
-          height: 65.0,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: EdgeInsets.only(left: 25.0, right: 25.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.home,
-                    color: Colors.grey.shade800,
-                    size: 30,
+        child: Column(
+          children: [
+            ContainerPlus(
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.only(top: 40, right: 5, left: 15),
+              height: 300,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_back_ios,
+                        size: 20,
+                        color: Colors.white,
+                      )
+                    ],
                   ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CartPage()),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.local_grocery_store,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.person,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-              ],
-            ),
-          ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 20,
+                    ),
+                    child: TextPlus('Carrinho Padawans',
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.w400,
+                        fontFamily: 'RobotoMono',
+                        padding: EdgeInsets.fromLTRB(5, 35, 17, 5)),
+                  )
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
