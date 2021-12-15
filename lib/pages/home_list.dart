@@ -40,7 +40,7 @@ class _HomeListState extends State<HomeList> {
         color: primaryBlack,
         child: Column(
           children: [
-            TextPlus('Olá! Seja bem-vindo à Loja Padawans. 👋',
+            TextPlus('Olá! Seja bem-vindo à Loja Padawans.👋',
                 color: Colors.white,
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
