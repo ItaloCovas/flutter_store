@@ -138,7 +138,7 @@ class _HomeListState extends State<HomeList> {
                           ),
                           physics: BouncingScrollPhysics(),
                           addAutomaticKeepAlives: false,
-                          itemCount: homeApiStore.productsModel!.length,
+                          itemCount: homeApiStore.productsModel?.length,
                           itemBuilder: (ctx, index) {
                             var products = homeApiStore.productsModel![index];
                             return GestureDetector(
