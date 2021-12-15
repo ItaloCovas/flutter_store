@@ -24,21 +24,6 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
     });
   }
 
-  final _$loadingAtom = Atom(name: '_HomeApiStoreBase.loading');
-
-  @override
-  bool get loading {
-    _$loadingAtom.reportRead();
-    return super.loading;
-  }
-
-  @override
-  set loading(bool value) {
-    _$loadingAtom.reportWrite(value, super.loading, () {
-      super.loading = value;
-    });
-  }
-
   final _$_HomeApiStoreBaseActionController =
       ActionController(name: '_HomeApiStoreBase');
 
@@ -56,8 +41,7 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
   @override
   String toString() {
     return '''
-productsModel: ${productsModel},
-loading: ${loading}
+productsModel: ${productsModel}
     ''';
   }
 }
