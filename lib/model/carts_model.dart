@@ -17,16 +17,14 @@ class CartsModel {
       required this.date,
       required this.products,
       required this.iV});
+
   factory CartsModel.fromJson(Map<String, dynamic> json) {
     return CartsModel(
-      id: json['id'],
-      userId: json['userId'],
-      date: json['date'],
-      products: (json['products'] != null
-          ? Products.fromJson(json['products'])
-          : null!),
-      iV: json['v'],
-    );
+        id: json['id'],
+        userId: json['userId'],
+        date: json['date'],
+        iV: json['__v'],
+        products: json['products']);
   }
 
   Map<String, dynamic> toJson() {
@@ -47,6 +45,7 @@ class Products {
   int quantity;
 
   Products({required this.productId, required this.quantity});
+
   factory Products.fromJson(Map<String, dynamic> json) {
     return Products(productId: json['productId'], quantity: json['quantity']);
   }
