@@ -106,6 +106,8 @@ class _HomeListState extends State<HomeList> {
                                         Padding(
                                           padding: EdgeInsets.fromLTRB(10,40,10,20),
                                           child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
                                             children: <Widget>[
                                               ClipOval(
                                                 child: Image(
