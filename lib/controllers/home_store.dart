@@ -34,6 +34,6 @@ abstract class _HomeApiStoreBase with Store {
 
   @action
   void decrement() {
-    value<=0 ? value = 0 : value--;
+    value <= 0 ? value = 0 : value--;
   }
 }

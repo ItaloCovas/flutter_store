@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class CartPage extends StatefulWidget {
@@ -10,6 +12,14 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  final cartPage = CartStore();
+
+  @override
+  void initState() {
+    super.initState();
+    cartPage.getCartsList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +48,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      top: 20,
+                      top: 30,
                     ),
                     child: TextPlus('Carrinho Padawans 🛒',
                         color: Colors.white,
@@ -52,6 +62,7 @@ class _CartPageState extends State<CartPage> {
             ),
             Expanded(
                 child: Container(
+              height: 400,
               decoration: BoxDecoration(
                   color: secondaryBlack,
                   borderRadius: BorderRadius.only(
@@ -77,8 +88,20 @@ class _CartPageState extends State<CartPage> {
                       )
                     ],
                   ),
+                  Observer(builder: (_) {
+                    if (cartPage.cartsModel != null) {
+                      return Container(
+                        height: 135,
+                        color: Colors.red,
+                        width: 200,
+                        child: Column(
+                          children: [],
+                        ),
+                      );
+                    } else {}
+                  }),
                   SizedBox(
-                    height: 360,
+                    height: 200,
                   ),
                   Row(
                     children: [

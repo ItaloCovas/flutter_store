@@ -9,6 +9,36 @@ part of 'cart_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CartStore on _CartStoreBase, Store {
+  final _$userIdAtom = Atom(name: '_CartStoreBase.userId');
+
+  @override
+  int get userId {
+    _$userIdAtom.reportRead();
+    return super.userId;
+  }
+
+  @override
+  set userId(int value) {
+    _$userIdAtom.reportWrite(value, super.userId, () {
+      super.userId = value;
+    });
+  }
+
+  final _$idAtom = Atom(name: '_CartStoreBase.id');
+
+  @override
+  int get id {
+    _$idAtom.reportRead();
+    return super.id;
+  }
+
+  @override
+  set id(int value) {
+    _$idAtom.reportWrite(value, super.id, () {
+      super.id = value;
+    });
+  }
+
   final _$cartsModelAtom = Atom(name: '_CartStoreBase.cartsModel');
 
   @override
@@ -28,6 +58,39 @@ mixin _$CartStore on _CartStoreBase, Store {
       ActionController(name: '_CartStoreBase');
 
   @override
+  void setuser(int value) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.setuser');
+    try {
+      return super.setuser(value);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void setid(int value) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.setid');
+    try {
+      return super.setid(value);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void addProducts(dynamic productsModel) {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.addProducts');
+    try {
+      return super.addProducts(productsModel);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   dynamic getCartsList() {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction(
         name: '_CartStoreBase.getCartsList');
@@ -41,6 +104,8 @@ mixin _$CartStore on _CartStoreBase, Store {
   @override
   String toString() {
     return '''
+userId: ${userId},
+id: ${id},
 cartsModel: ${cartsModel}
     ''';
   }
