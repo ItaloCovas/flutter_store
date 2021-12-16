@@ -96,47 +96,52 @@ class _HomeListState extends State<HomeList> {
                             return GestureDetector(
                               onTap:() => {
                                 bottomSheetPlus.show(
+                                  onClosed: (_) {
+                                    homeApiStore.value = 0;
+                                  },
                                   child: ContainerPlus(
-                                    color: Colors.white,
+                                    color: primaryBlack,
                                     child: Column(
                                       children: <Widget>[
                                         Padding(
-                                          padding: EdgeInsets.fromLTRB(10,20,10,20),
+                                          padding: EdgeInsets.fromLTRB(10,40,10,20),
                                           child: Column(
                                             children: <Widget>[
-                                              Image(
-                                                  image: NetworkImage(products.image),
-                                                  width: 300,
-                                                  height: 100,
+                                              ClipOval(
+                                                child: Image(
+                                                    image: NetworkImage(products.image),
+                                                    width: 140,
+                                                    height: 140,
+                                                    fit: BoxFit.contain,
+                                                ),
                                               ),
                                               SizedBox(height: 20), 
-                                              TextPlus(products.title, color: Colors.black, fontWeight:FontWeight.bold),
+                                              TextPlus(products.title, color: Colors.white, fontWeight:FontWeight.bold, textAlign: TextAlign.center),
                                               SizedBox(height: 5),
-                                              TextPlus(products.description, color: Colors.black, textAlign: TextAlign.center),
-                                              SizedBox(height: 30),
+                                              TextPlus(products.description, color: Colors.white, textAlign: TextAlign.center),
+                                              SizedBox(height: products.description.length > 300 ? 55 : 70),
                                               Observer(
                                                 builder: (_) {
                                                   return Row(
                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                 children: <Widget>[
-                                                  ButtonPlus(child: TextPlus('-', fontWeight: FontWeight.bold, fontSize: 16), width: MediaQuery.of(context).size.width * 0.20, color: Colors.green, radius: RadiusPlus.all(8),  onPressed:homeApiStore.decrement),
+                                                  ButtonPlus(child: TextPlus('-', fontWeight: FontWeight.bold, fontSize: 20, color: Colors.white), width: MediaQuery.of(context).size.width * 0.20, color: primaryBlack, border: BorderPlus(color: buttonColor, width: 1), radius: RadiusPlus.all(8),  onPressed:homeApiStore.decrement),
                                                   SizedBox(width: 5),
-                                                  ButtonPlus(child: TextPlus('${homeApiStore.value}'), width: MediaQuery.of(context).size.width * 0.40, color: Colors.green, radius: RadiusPlus.all(8)),
+                                                  ButtonPlus(child: TextPlus('${homeApiStore.value}', color: Colors.white), width: MediaQuery.of(context).size.width * 0.40, color: primaryBlack, border: BorderPlus(color: buttonColor, width: 1), radius: RadiusPlus.all(8)),
                                                   SizedBox(width: 5),
-                                                  ButtonPlus(child: TextPlus('+', fontWeight: FontWeight.bold, fontSize: 14), width: MediaQuery.of(context).size.width * 0.20, color: Colors.green, radius: RadiusPlus.all(8), onPressed:homeApiStore.increment),
+                                                  ButtonPlus(child: TextPlus('+', fontWeight: FontWeight.bold, fontSize: 16, color: Colors.white), width: MediaQuery.of(context).size.width * 0.20, color: primaryBlack, border: BorderPlus(color: buttonColor, width: 1), radius: RadiusPlus.all(8), onPressed:homeApiStore.increment),
                                                 ],
                                               );
                                                 }
                                               ),
-                                              SizedBox(height: 30),
+                                              SizedBox(height: products.description.length > 300 ? 40 : 100),
                                               Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                                 children: <Widget>[
-                                                  ButtonPlus(child: TextPlus('Voltar', color: Colors.black, fontWeight: FontWeight.bold), color: Colors.red, radius: RadiusPlus.all(8),onPressed: (){
-                                                homeApiStore.value = 0;
+                                                  ButtonPlus(child: TextPlus('Voltar', color: Colors.white), color: Colors.red, radius: RadiusPlus.all(8),onPressed: (){
                                                 navigatorPlus.back();
                                               },),
-                                              ButtonPlus(child: TextPlus('Adicionar ao carrinho', color: Colors.black, fontWeight: FontWeight.bold), color: Colors.green, radius: RadiusPlus.all(8), width: 200, onPressed: (){
+                                              ButtonPlus(child: TextPlus('Adicionar ao carrinho', color: Colors.white, fontWeight: FontWeight.bold), color: buttonColor, radius: RadiusPlus.all(8), width: 200, onPressed: (){
                                                 
                                               },),
                                                 ],
@@ -148,7 +153,7 @@ class _HomeListState extends State<HomeList> {
                                     ),
                                   ),
                                   radius: RadiusPlus.top(20),
-                                  heightPercentScreen: 0.8,
+                                  heightPercentScreen: 1,
                                 ),
                               },
                               child: ContainerPlus(
