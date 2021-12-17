@@ -88,18 +88,6 @@ class _CartPageState extends State<CartPage> {
                       )
                     ],
                   ),
-                  Observer(builder: (_) {
-                    if (cartPage.cartsModel != null) {
-                      return Container(
-                        height: 135,
-                        color: Colors.red,
-                        width: 200,
-                        child: Column(
-                          children: [],
-                        ),
-                      );
-                    } else {}
-                  }),
                   SizedBox(
                     height: 200,
                   ),

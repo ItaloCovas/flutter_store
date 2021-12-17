@@ -17,6 +17,22 @@ abstract class _CartStoreBase with Store {
   CartsApi api = CartsApi();
 
   @observable
+  int _quantity = 1;
+
+  @computed
+  int get quantity => _quantity;
+
+  @action
+  void increment() {
+    _quantity++;
+  }
+
+  @action
+  decrement() {
+    _quantity--;
+  }
+
+  @observable
   int userId = 0;
 
   @action
@@ -31,10 +47,16 @@ abstract class _CartStoreBase with Store {
   @observable
   ObservableList<CartsModel>? cartsModel;
 
-  @action
+  @observable
   void addProducts(productsModel) {
     var prod = cartsModel!
         .lastIndexWhere((CartStore) => CartStore.id == productsModel.id);
+
+    if (prod >= 0) {
+      cartsModel!.elementAt(prod).increment();
+    } else {
+      cartsModel!.add(productsModel);
+    }
   }
 
   @action
