@@ -39,4 +39,9 @@ abstract class _HomeApiStoreBase with Store {
 
   @observable 
   int selectedIndex = 0;
+
+  @action
+  selectTab(index) {
+    selectedIndex = index;
+  }
 }

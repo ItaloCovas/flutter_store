@@ -91,6 +91,17 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
   }
 
   @override
+  dynamic selectTab(dynamic index) {
+    final _$actionInfo = _$_HomeApiStoreBaseActionController.startAction(
+        name: '_HomeApiStoreBase.selectTab');
+    try {
+      return super.selectTab(index);
+    } finally {
+      _$_HomeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 productsModel: ${productsModel},
