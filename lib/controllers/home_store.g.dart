@@ -39,6 +39,21 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
     });
   }
 
+  final _$selectedIndexAtom = Atom(name: '_HomeApiStoreBase.selectedIndex');
+
+  @override
+  int get selectedIndex {
+    _$selectedIndexAtom.reportRead();
+    return super.selectedIndex;
+  }
+
+  @override
+  set selectedIndex(int value) {
+    _$selectedIndexAtom.reportWrite(value, super.selectedIndex, () {
+      super.selectedIndex = value;
+    });
+  }
+
   final _$_HomeApiStoreBaseActionController =
       ActionController(name: '_HomeApiStoreBase');
 
@@ -79,7 +94,8 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
   String toString() {
     return '''
 productsModel: ${productsModel},
-value: ${value}
+value: ${value},
+selectedIndex: ${selectedIndex}
     ''';
   }
 }

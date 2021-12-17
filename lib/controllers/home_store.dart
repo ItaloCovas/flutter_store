@@ -36,4 +36,7 @@ abstract class _HomeApiStoreBase with Store {
   void decrement() {
     value <= 0 ? value = 0 : value--;
   }
+
+  @observable 
+  int selectedIndex = 0;
 }

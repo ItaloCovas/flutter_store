@@ -47,18 +47,6 @@ abstract class _CartStoreBase with Store {
   @observable
   ObservableList<CartsModel>? cartsModel;
 
-  @observable
-  void addProducts(productsModel) {
-    var prod = cartsModel!
-        .lastIndexWhere((CartStore) => CartStore.id == productsModel.id);
-
-    if (prod >= 0) {
-      cartsModel!.elementAt(prod).increment();
-    } else {
-      cartsModel!.add(productsModel);
-    }
-  }
-
   @action
   getCartsList() {
     api.getCarts().then((cartsList) {
