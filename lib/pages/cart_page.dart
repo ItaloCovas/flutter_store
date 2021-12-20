@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
+import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/theme/colors.dart';
+
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   final cartPage = CartStore();
+  final homeApiStore = HomeApiStore();
 
   @override
   void initState() {
@@ -37,7 +40,7 @@ class _CartPageState extends State<CartPage> {
                   Padding(
                     padding: EdgeInsets.only(left: 10),
                     child: Row(
-                      children: [
+                      children: const [
                         Icon(
                           Icons.arrow_back_ios,
                           size: 20,
@@ -117,78 +120,6 @@ class _CartPageState extends State<CartPage> {
               ),
             ))
           ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(),
-    );
-  }
-}
-
-class BottomNavigationBar extends StatefulWidget {
-  const BottomNavigationBar({Key? key}) : super(key: key);
-
-  @override
-  State<BottomNavigationBar> createState() => _BottomNavigationBarState();
-}
-
-class _BottomNavigationBarState extends State<BottomNavigationBar> {
-  int _selectedIndex = 0;
-
-  @override
-  Widget build(BuildContext context) {
-    return ContainerPlus(
-      color: primaryBlack,
-      child: BottomAppBar(
-        elevation: 0,
-        color: primaryBlack,
-        child: SizedBox(
-          height: 65.0,
-          width: MediaQuery.of(context).size.width,
-          child: Padding(
-            padding: EdgeInsets.only(left: 25.0, right: 25.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.home,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CartPage()),
-                    );
-                  },
-                  icon: Icon(
-                    Icons.local_grocery_store,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-                IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.person,
-                    color: Colors.grey.shade800,
-                    size: 30,
-                  ),
-                ),
-              ],
-            ),
-          ),
         ),
       ),
     );
