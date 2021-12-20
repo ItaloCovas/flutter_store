@@ -43,7 +43,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       bottomNavigationBar: ContainerPlus(
-        height: 260,
+        height: 280,
         border: BorderPlus(
           color: Colors.white,
           width: 1,
@@ -136,6 +136,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 SizedBox(
                   height: 20,
+                ),
+                Expanded(
+                  child: TextPlus('* Todas as compras efetuadas serão enviadas por e-mail com seus respectivos detalhes!'
+                  , fontSize: 14, fontWeight: FontWeight.bold, color: Colors.redAccent),
                 ),
               ],
             ),
