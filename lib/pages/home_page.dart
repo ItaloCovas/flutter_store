@@ -22,7 +22,10 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: Observer(
         builder: (_) {
-          return screens[homeApiStore.selectedIndex];
+          return IndexedStack(
+            index: homeApiStore.selectedIndex,
+            children: screens,
+          );
         }
       ),
       backgroundColor: primaryBlack,
