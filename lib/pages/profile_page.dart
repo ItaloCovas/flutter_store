@@ -4,14 +4,13 @@ import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/theme/colors.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({ Key? key }) : super(key: key);
+  const ProfilePage({Key? key}) : super(key: key);
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,18 +21,18 @@ class _ProfilePageState extends State<ProfilePage> {
           children: [
             Center(
               child: Container(
-                        width: 90,
-                        height: 90,
-                        decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: buttonColor,
-                              width: 2,
-                            ),
-                            image: DecorationImage(
-                              image: AssetImage('assets/images/profile.png'),
-                              fit: BoxFit.cover,
-                            ))),
+                  width: 90,
+                  height: 90,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: buttonColor,
+                        width: 2,
+                      ),
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/profile.png'),
+                        fit: BoxFit.cover,
+                      ))),
             ),
             SizedBox(height: 10),
             TextPlus('John Doe', color: Colors.white, fontSize: 16),
@@ -43,7 +42,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
       bottomNavigationBar: ContainerPlus(
-        height: 280,
+        height: 300,
         border: BorderPlus(
           color: Colors.white,
           width: 0.5,
@@ -65,10 +64,10 @@ class _ProfilePageState extends State<ProfilePage> {
               children: [
                 Center(
                   child: TextPlus('Informações do Usuário',
-                          fontSize: 20,
-                          fontFamily: 'RobotoMonoS',
-                          color: Colors.white.withOpacity(0.8),
-                          fontWeight: FontWeight.bold),
+                      fontSize: 20,
+                      fontFamily: 'RobotoMonoS',
+                      color: Colors.white.withOpacity(0.8),
+                      fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 30,
@@ -82,12 +81,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.bold,
                     ),
                     SizedBox(width: 10),
-                    Expanded(child: TextPlus(
-                      'New Road, 7682 - Kilcoole. 12926-3874',
-                      fontSize: 15,
-                      color: Colors.white54,
-                      fontWeight: FontWeight.w500,
-                    ),),
+                    Expanded(
+                      child: TextPlus(
+                        'New Road, 7682 - Kilcoole. 12926-3874',
+                        fontSize: 15,
+                        color: Colors.white54,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -138,8 +139,11 @@ class _ProfilePageState extends State<ProfilePage> {
                   height: 20,
                 ),
                 Expanded(
-                  child: TextPlus('* Todas as compras efetuadas serão enviadas por e-mail com seus respectivos detalhes!'
-                  , fontSize: 14, fontWeight: FontWeight.bold, color: Colors.redAccent),
+                  child: TextPlus(
+                      '* Todas as compras efetuadas serão enviadas por e-mail com seus respectivos detalhes!',
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.redAccent),
                 ),
               ],
             ),

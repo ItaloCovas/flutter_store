@@ -28,32 +28,44 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       backgroundColor: primaryBlack,
       appBar: AppBar(
+          toolbarHeight: 70,
           elevation: 0,
           centerTitle: true,
+          automaticallyImplyLeading: false,
           backgroundColor: primaryBlack,
-          title: Column(
-            children: [
-              TextPlus(
-                'Meu Carrinho',
-                color: Colors.white,
-                fontSize: 20,
-              ),
-              TextPlus(
-                '1 item',
-                color: Colors.grey[500],
-                fontSize: 15,
-              ),
-            ],
+          title: Padding(
+            padding: EdgeInsets.only(top: 15),
+            child: Column(
+              children: [
+                TextPlus(
+                  'Detalhes da Compra',
+                  color: Colors.white,
+                  fontSize: 21,
+                  fontWeight: FontWeight.w600,
+                ),
+                TextPlus(
+                  '1 item',
+                  color: Colors.grey[500],
+                  fontSize: 14,
+                ),
+              ],
+            ),
           )),
       body: CartScreen(),
       bottomNavigationBar: ContainerPlus(
         height: 260,
         color: primaryBlack,
+        radius: RadiusPlus.only(topLeft: 30, topRight: 30),
         shadows: [
           ShadowPlus(
-            color: Colors.black12.withOpacity(0.15),
+            color: Colors.black12.withOpacity(0.30),
+            blur: 12,
+            moveRight: 10,
+          ),
+          ShadowPlus(
+            color: Colors.black12.withOpacity(0.30),
+            blur: 12,
             moveRight: -10,
-            blur: 10,
           ),
         ],
         child: SafeArea(
@@ -139,11 +151,11 @@ class _CartPageState extends State<CartPage> {
                   color: buttonColor,
                   enabled: true,
                   child: TextPlus(
-                    'CHECKOUT (\$950.00)',
+                    'FINALIZAR (\$950.00)',
                     color: Colors.white,
                   ),
                   onPressed: () {
-                    print('CHECKOUT');
+                    print('FINALIZAR');
                   },
                 )
               ],

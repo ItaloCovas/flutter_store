@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:flutter_store/api/products_api.dart';
 import 'package:dio/dio.dart';
 import 'dart:convert';
 import 'package:meta/meta.dart';

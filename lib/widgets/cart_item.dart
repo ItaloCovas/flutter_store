@@ -12,60 +12,143 @@ class CartItem extends StatefulWidget {
 class _CartItemState extends State<CartItem> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 20),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.only(left: 35),
-                child: SizedBox(
-                  width: 100,
-                  height: 100,
-                  child: ContainerPlus(
-                    color: secondaryBlack,
-                    radius: RadiusPlus.all(15),
-                    child: Image(
-                      image: NetworkImage(
-                          'https://o.remove.bg/downloads/daac09b1-030f-40ab-81c7-2f8c6dd151ac/headset-gamer-razer-man-owar-wireless-preto-11482289-removebg-preview.png'),
-                      width: 20,
-                      height: 20,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.only(top: 45),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 187.0),
+              child: TextPlus(
+                'Meu Carrinho',
+                color: Colors.white.withOpacity(0.8),
+                fontFamily: 'RobotoMono',
+                fontWeight: FontWeight.w500,
+                fontSize: 18,
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(left: 35),
+                  child: SizedBox(
+                    width: 86,
+                    height: 86,
+                    child: ContainerPlus(
+                      color: secondaryBlack,
+                      radius: RadiusPlus.all(15),
+                      child: Image(
+                        image: NetworkImage(
+                            'https://o.remove.bg/downloads/016033d6-a3c5-4aee-b967-78058742683e/runmus-k3-rgb-gaming-headset-runmus-gaming-headset-removebg-preview.png'),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              SizedBox(
-                width: 20,
-              ),
-              Column(
+                SizedBox(
+                  width: 25,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextPlus(
+                      'HeadSet',
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text.rich(TextSpan(
+                        text: '\$500',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: Colors.grey[700],
+                        ),
+                        children: [
+                          TextSpan(
+                            text: ' x2 u',
+                            style: TextStyle(color: Colors.grey[700]),
+                          )
+                        ])),
+                  ],
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 120, top: 25),
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   TextPlus(
-                    'HeadSet',
-                    fontSize: 16,
-                    color: Colors.white,
+                    'Forma de Pagamento',
+                    color: Colors.white.withOpacity(0.8),
+                    fontFamily: 'RobotoMono',
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18,
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Column(
+              children: [
+                Row(children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 32),
+                    child: ContainerPlus(
+                      color: secondaryBlack,
+                      width: 60,
+                      height: 45,
+                      radius: RadiusPlus.all(8),
+                      child: Image(
+                        image: NetworkImage(
+                            'https://o.remove.bg/downloads/44a207e4-38cf-4d98-9dba-1fc008cb472c/visa-logo-removebg-preview.png'),
+                      ),
+                    ),
                   ),
                   SizedBox(
-                    height: 10,
+                    width: 20,
                   ),
-                  Text.rich(TextSpan(
-                      text: '\$500',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w500,
-                        color: Colors.grey[700],
-                      ),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextSpan(
-                          text: ' x2 u',
-                          style: TextStyle(color: Colors.grey[700]),
-                        )
-                      ])),
-                ],
-              )
-            ],
-          ),
-        ],
+                        TextPlus(
+                          'VISA Classic',
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                        SizedBox(
+                          height: 7,
+                        ),
+                        Text.rich(TextSpan(
+                            text: '****-0921',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Colors.grey[700],
+                            ))),
+                      ]),
+                  Padding(
+                      padding: EdgeInsets.only(left: 135),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.white,
+                            size: 18,
+                          )))
+                ])
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
