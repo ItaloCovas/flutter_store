@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/theme/colors.dart';
+import 'package:flutter_store/widgets/cart_item.dart';
 
-class CartPage extends StatefulWidget {
-  const CartPage({Key? key}) : super(key: key);
+class CartScreen extends StatefulWidget {
+  const CartScreen({Key? key}) : super(key: key);
 
   @override
-  _CartPageState createState() => _CartPageState();
+  _CartScreenState createState() => _CartScreenState();
 }
 
-class _CartPageState extends State<CartPage> {
+class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CartPage(),
+    return Padding(
+      padding: const EdgeInsets.only(),
+      child: Column(
+        children: [
+          CartItem(),
+        ],
+      ),
     );
   }
 }
