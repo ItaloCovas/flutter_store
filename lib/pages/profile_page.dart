@@ -46,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
         height: 280,
         border: BorderPlus(
           color: Colors.white,
-          width: 1,
+          width: 0.5,
           style: BorderStyle.solid,
         ),
         radius: RadiusPlus.all(15),
