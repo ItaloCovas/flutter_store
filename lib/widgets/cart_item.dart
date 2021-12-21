@@ -41,8 +41,7 @@ class _CartItemState extends State<CartItem> {
                       color: secondaryBlack,
                       radius: RadiusPlus.all(15),
                       child: Image(
-                        image: NetworkImage(
-                            'https://o.remove.bg/downloads/016033d6-a3c5-4aee-b967-78058742683e/runmus-k3-rgb-gaming-headset-runmus-gaming-headset-removebg-preview.png'),
+                        image: AssetImage('assets/images/profile.png'),
                       ),
                     ),
                   ),
@@ -109,8 +108,7 @@ class _CartItemState extends State<CartItem> {
                       height: 45,
                       radius: RadiusPlus.all(8),
                       child: Image(
-                        image: NetworkImage(
-                            'https://o.remove.bg/downloads/44a207e4-38cf-4d98-9dba-1fc008cb472c/visa-logo-removebg-preview.png'),
+                        image: AssetImage('assets/images/profile.png'),
                       ),
                     ),
                   ),

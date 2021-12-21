@@ -1,27 +1,25 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter_store/model/users_model.dart';
+import 'package:mobx/mobx.dart';
 
-
-var dio = Dio();
-const url = "https://fakestoreapi.com/auth/login";
-const url2 = "https://fakestoreapi.com/users";
 
 class UsersApi {
-  Future<dynamic> authenticate(user) async {
-  try {
-    Response response = await dio.post(url, data: jsonEncode(user));
-    return response;
-  } catch (e) {
-    print(e);
-  }
-}
+  var dio = Dio();
+  static const url = "https://fakestoreapi.com/users";
 
-Future<dynamic> registerNewUser(user) async {
-  try {
-    Response response = await dio.post(url2, data: jsonEncode(user));
-    return response;
-  } catch (e) {
-    print(e);
+  Future<ObservableList<UsersModel>?> getUsers() async {
+    try {
+      Response response = await dio.get(url);
+
+      List<UsersModel> list = (response.data as List)
+          .map((e) => UsersModel.fromJson(e))
+          .toList();
+
+      return ObservableList<UsersModel>.of(list);
+    } catch (e) {
+      print(e);
+      return null;
+    }
   }
-}
 }

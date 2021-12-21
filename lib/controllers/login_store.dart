@@ -3,13 +3,13 @@ import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/pages/home_page.dart';
 import 'package:flutter_store/pages/login_page.dart';
 import 'package:mobx/mobx.dart';
-import 'package:flutter_store/api/users_api.dart';
+import 'package:flutter_store/api/login_api.dart';
 part 'login_store.g.dart';
 
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
-  UsersApi api = UsersApi();
+  LoginApi api = LoginApi();
 
   // ******* PARTE DO LOGIN ************
   @observable
