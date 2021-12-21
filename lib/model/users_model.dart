@@ -5,159 +5,121 @@ import 'package:flutter/foundation.dart';
 import 'package:meta/meta.dart';
 
 class UsersModel {
-  Address address;
-  int id;
-  String email;
-  String username;
-  String password;
-  Name name;
-  String phone;
-  int iV;
-
-  UsersModel(
-      {required this.address,
-      required this.id,
-      required this.email,
-      required this.username,
-      required this.password,
-      required this.name,
-      required this.phone,
-      required this.iV});
-
-  factory UsersModel.fromJson(Map<String, dynamic> json) {
-    return UsersModel(
-      address: (json['address'] != null
-          ? new Address.fromJson(json['address'])
-          : null!),
-      id: json['id'],
-      email: json['email'],
-      username: json['username'],
-      password: json['password'],
-      name: (json['name'] != null ? Name.fromJson(json['name']) : null!),
-      phone: json['phone'],
-      iV: json['__v'],
-    );
+  UsersModel({
+    required this.address,
+    required this.id,
+    required this.email,
+    required this.username,
+    required this.password,
+    required this.name,
+    required this.phone,
+    required this.iV,
+  });
+  late final Address address;
+  late final int id;
+  late final String email;
+  late final String username;
+  late final String password;
+  late final Name name;
+  late final String phone;
+  late final int iV;
+  
+  UsersModel.fromJson(Map<String, dynamic> json){
+    address = Address.fromJson(json['address']);
+    id = json['id'];
+    email = json['email'];
+    username = json['username'];
+    password = json['password'];
+    name = Name.fromJson(json['name']);
+    phone = json['phone'];
+    iV = json['__v'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (address != null) {
-      data['address'] = address.toJson();
-    }
-    data['id'] = id;
-    data['email'] = email;
-    data['username'] = username;
-    data['password'] = password;
-    if (this.name != null) {
-      data['name'] = name.toJson();
-    }
-    data['phone'] = this.phone;
-    data['__v'] = this.iV;
-    return data;
+    final _data = <String, dynamic>{};
+    _data['address'] = address.toJson();
+    _data['id'] = id;
+    _data['email'] = email;
+    _data['username'] = username;
+    _data['password'] = password;
+    _data['name'] = name.toJson();
+    _data['phone'] = phone;
+    _data['__v'] = iV;
+    return _data;
   }
 }
 
 class Address {
-  Geolocation geolocation;
-  String city;
-  String street;
-  int number;
-  String zipcode;
-
-  Address(
-      {required this.geolocation,
-      required this.city,
-      required this.street,
-      required this.number,
-      required this.zipcode});
-
-  factory Address.fromJson(Map<String, dynamic> json) {
-    return Address(
-      geolocation: (json['geolocation'] != null
-          ? Geolocation.fromJson(json['geolocation'])
-          : null!),
-      city: json['city'],
-      street: json['street'],
-      number: json['number'],
-      zipcode: json['zipcode'],
-    );
+  Address({
+    required this.geolocation,
+    required this.city,
+    required this.street,
+    required this.number,
+    required this.zipcode,
+  });
+  late final Geolocation geolocation;
+  late final String city;
+  late final String street;
+  late final int number;
+  late final String zipcode;
+  
+  Address.fromJson(Map<String, dynamic> json){
+    geolocation = Geolocation.fromJson(json['geolocation']);
+    city = json['city'];
+    street = json['street'];
+    number = json['number'];
+    zipcode = json['zipcode'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (geolocation != null) {
-      data['geolocation'] = geolocation.toJson();
-    }
-    data['city'] = city;
-    data['street'] = street;
-    data['number'] = number;
-    data['zipcode'] = zipcode;
-    return data;
+    final _data = <String, dynamic>{};
+    _data['geolocation'] = geolocation.toJson();
+    _data['city'] = city;
+    _data['street'] = street;
+    _data['number'] = number;
+    _data['zipcode'] = zipcode;
+    return _data;
   }
 }
 
 class Geolocation {
-  String lat;
-  String long;
-
   Geolocation({
     required this.lat,
     required this.long,
   });
-
-  factory Geolocation.fromJson(Map<String, dynamic> json) {
-    return Geolocation(
-      lat: json['lat'],
-      long: json['long'],
-    );
+  late final String lat;
+  late final String long;
+  
+  Geolocation.fromJson(Map<String, dynamic> json){
+    lat = json['lat'];
+    long = json['long'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['lat'] = lat;
-    data['long'] = long;
-    return data;
-  }
-
-  Geolocation copyWith({
-    String? lat,
-    String? long,
-  }) {
-    return Geolocation(
-      lat: lat ?? this.lat,
-      long: long ?? this.long,
-    );
-  }
-
-  Map<String, dynamic> toMap() {
-    return {
-      'lat': lat,
-      'long': long,
-    };
-  }
-
-  factory Geolocation.fromMap(Map<String, dynamic> map) {
-    return Geolocation(
-      lat: map['lat'] ?? '',
-      long: map['long'] ?? '',
-    );
+    final _data = <String, dynamic>{};
+    _data['lat'] = lat;
+    _data['long'] = long;
+    return _data;
   }
 }
 
 class Name {
-  String firstname;
-  String lastname;
-
-  Name({required this.firstname, required this.lastname});
-
-  factory Name.fromJson(Map<String, dynamic> json) {
-    return Name(firstname: json['firstname'], lastname: json['lastname']);
+  Name({
+    required this.firstname,
+    required this.lastname,
+  });
+  late final String firstname;
+  late final String lastname;
+  
+  Name.fromJson(Map<String, dynamic> json){
+    firstname = json['firstname'];
+    lastname = json['lastname'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['firstname'] = firstname;
-    data['lastname'] = lastname;
-    return data;
+    final _data = <String, dynamic>{};
+    _data['firstname'] = firstname;
+    _data['lastname'] = lastname;
+    return _data;
   }
 }

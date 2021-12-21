@@ -112,6 +112,21 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$userIdAtom = Atom(name: '_LoginStore.userId');
+
+  @override
+  int get userId {
+    _$userIdAtom.reportRead();
+    return super.userId;
+  }
+
+  @override
+  set userId(int value) {
+    _$userIdAtom.reportWrite(value, super.userId, () {
+      super.userId = value;
+    });
+  }
+
   final _$userNameAtom = Atom(name: '_LoginStore.userName');
 
   @override
@@ -220,6 +235,7 @@ username: ${username},
 password: ${password},
 passwordVisible: ${passwordVisible},
 loading: ${loading},
+userId: ${userId},
 userName: ${userName},
 registerPassword: ${registerPassword},
 isUsernameValid: ${isUsernameValid},

@@ -6,7 +6,7 @@ import 'package:mobx/mobx.dart';
 
 class UsersApi {
   var dio = Dio();
-  static const url = "https://fakestoreapi.com/users";
+  var url = "https://fakestoreapi.com/users/1";
 
   Future<ObservableList<UsersModel>?> getUsers() async {
     try {

@@ -50,7 +50,7 @@ class _ProfilePageState extends State<ProfilePage> {
               TextPlus('John Doe', color: Colors.white, fontSize: 16),
               SizedBox(height: 5),
               TextPlus('john@gmail.com', color: Colors.white),
-              SizedBox(height: 50),
+              SizedBox(height: 30),
               ContainerPlus(
           height: 280,
           border: BorderPlus(
@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 25, 20, 10),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 15),
               child: Column(
                 children: [
                   Center(
