@@ -48,11 +48,11 @@ class UsersModel {
     data['email'] = email;
     data['username'] = username;
     data['password'] = password;
-    if (this.name != null) {
+    if (name != null) {
       data['name'] = name.toJson();
     }
-    data['phone'] = this.phone;
-    data['__v'] = this.iV;
+    data['phone'] = phone;
+    data['__v'] = iV;
     return data;
   }
 }
