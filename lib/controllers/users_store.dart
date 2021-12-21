@@ -12,12 +12,12 @@ abstract class _UsersApiStoreBase with Store {
   UsersApi api = UsersApi();
 
   @observable
-  ObservableList<UsersModel>? usersModel;
+  UsersModel? usersModel;
 
   @action
   getUsersList() {
-    api.getUsers().then((usersList) {
-      usersModel = usersList;
+    api.getUsers()!.then((user) {
+      usersModel = user;
       print('users list changed');
       print(usersModel);
     });

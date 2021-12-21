@@ -46,6 +46,45 @@ abstract class _LoginStore with Store {
   @observable
   int userId = 0;
 
+  //Verificação de username para poder atribuir um ID e futuramente capturar os dados desse user.
+    //  void assignId() {
+    //    switch(username) {
+    //   case 'johnd':
+    //     userId = 1;
+    //     break;
+    //   case 'mor_2314"':
+    //     userId = 2;
+    //     break;
+    //   case 'kevinryan':
+    //     userId = 3;
+    //     break;
+    //   case 'donero':
+    //     userId = 4;
+    //     break;
+    //   case 'derek':
+    //     userId = 5;
+    //     break;
+    //   case 'david_r':
+    //     userId = 6;
+    //     break;
+    //   case 'snyder':
+    //     userId = 7;
+    //     break;
+    //   case 'hopkins':
+    //     userId = 8;
+    //     break;
+    //   case 'kate_h':
+    //     userId = 9;
+    //     break;
+    //   case 'jimmie_k':
+    //     userId = 10;
+    //     break;
+    //   default:
+    //     userId = 0;
+    //     break;
+    // }
+    //  }
+
   @action
   Future<void> login() async {
     loading = true;
@@ -73,44 +112,9 @@ abstract class _LoginStore with Store {
       navigatorPlus.show(HomePage());
     }
     loading = false;
-
-    //Verificação de username para poder atribuir um ID e futuramente capturar os dados desse user.
-    switch(username) {
-      case 'johnd':
-        userId = 1;
-        break;
-      case 'mor_2314"':
-        userId = 2;
-        break;
-      case 'kevinryan':
-        userId = 3;
-        break;
-      case 'donero':
-        userId = 4;
-        break;
-      case 'derek':
-        userId = 5;
-        break;
-      case 'david_r':
-        userId = 6;
-        break;
-      case 'snyder':
-        userId = 7;
-        break;
-      case 'hopkins':
-        userId = 8;
-        break;
-      case 'kate_h':
-        userId = 9;
-        break;
-      case 'jimmie_k':
-        userId = 10;
-        break;
-      default:
-        userId = 0;
-        break;
-    }
   }
+
+  
 
   // ******* PARTE DO REGISTRO ************
 

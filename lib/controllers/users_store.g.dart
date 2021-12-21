@@ -12,13 +12,13 @@ mixin _$UsersApiStore on _UsersApiStoreBase, Store {
   final _$usersModelAtom = Atom(name: '_UsersApiStoreBase.usersModel');
 
   @override
-  ObservableList<UsersModel>? get usersModel {
+  UsersModel? get usersModel {
     _$usersModelAtom.reportRead();
     return super.usersModel;
   }
 
   @override
-  set usersModel(ObservableList<UsersModel>? value) {
+  set usersModel(UsersModel? value) {
     _$usersModelAtom.reportWrite(value, super.usersModel, () {
       super.usersModel = value;
     });
