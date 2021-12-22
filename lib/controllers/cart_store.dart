@@ -1,5 +1,4 @@
 import 'dart:ffi';
-
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_store/api/products_api.dart';
