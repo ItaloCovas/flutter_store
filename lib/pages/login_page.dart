@@ -4,11 +4,12 @@ import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/pages/home_page.dart';
 import 'package:flutter_store/theme/colors.dart';
+import 'package:get_it/get_it.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
-  LoginStore loginStore = LoginStore();
+  LoginStore loginStore = GetIt.I.get<LoginStore>();
 
   @override
   Widget build(BuildContext context) {

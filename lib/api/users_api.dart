@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/model/users_model.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
-LoginStore loginStore = LoginStore();
+LoginStore loginStore = GetIt.I.get<LoginStore>();
 
 class UsersApi {
   var dio = Dio();
