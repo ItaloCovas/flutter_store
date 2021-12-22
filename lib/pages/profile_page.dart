@@ -13,12 +13,15 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final usersApiStore = UsersApiStore();
+  final loginStore = LoginStore()
+  ;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
 
     usersApiStore.getUsersList();
+    print(loginStore.userId);
   }
 
   @override

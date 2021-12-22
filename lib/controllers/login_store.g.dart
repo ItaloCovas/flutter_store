@@ -207,6 +207,17 @@ mixin _$LoginStore on _LoginStore, Store {
   }
 
   @override
+  dynamic assignId() {
+    final _$actionInfo =
+        _$_LoginStoreActionController.startAction(name: '_LoginStore.assignId');
+    try {
+      return super.assignId();
+    } finally {
+      _$_LoginStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void setUserName(String value) {
     final _$actionInfo = _$_LoginStoreActionController.startAction(
         name: '_LoginStore.setUserName');
