@@ -19,6 +19,11 @@ abstract class _CartStoreBase with Store {
   int _quantity = 1;
 
   @computed
+  void total(ProductsModel productsModel) {
+    _quantity * productsModel.price;
+  }
+
+  @computed
   int get quantity => _quantity;
 
   @action
@@ -45,6 +50,17 @@ abstract class _CartStoreBase with Store {
 
   @observable
   ObservableList<CartsModel>? cartsModel;
+
+  @action
+  void addProd(ProductsModel productsModel, int quantity) {
+    int indexProd = cartsModel!
+        .indexWhere((CartsModel) => CartsModel.id == productsModel.id);
+
+    if (indexProd != -1) {
+      var prodsCart = cartsModel![indexProd];
+      cartsModel!.elementAt(indexProd).increment();
+    } else {}
+  }
 
   @action
   getCartsList() {
