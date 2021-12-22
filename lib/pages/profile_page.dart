@@ -5,8 +5,6 @@ import 'package:flutter_store/controllers/users_store.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
 
-
-
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -54,7 +52,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         ))),
               ),
               SizedBox(height: 10),
-              TextPlus("${user.name.firstname.capitalizeFirstWord} ${user.name.lastname.capitalizeFirstWord}", color: Colors.white, fontSize: 16),
+              TextPlus(
+                  "${user.name.firstname.capitalizeFirstWord} ${user.name.lastname.capitalizeFirstWord}",
+                  color: Colors.white,
+                  fontSize: 16),
               SizedBox(height: 5),
               TextPlus(user.email, color: Colors.white),
               SizedBox(height: 30),
