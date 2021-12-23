@@ -20,9 +20,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     // TODO: implement initState
     super.initState();
-
     usersApiStore.getUsersList();
-    loginStore.assignId();
   }
 
   @override

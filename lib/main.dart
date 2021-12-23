@@ -8,7 +8,6 @@ import 'package:get_it/get_it.dart';
 GetIt getIt = GetIt.instance;
 
 void main() {
-
   getIt.registerSingleton<LoginStore>(LoginStore());
   runApp(const MyApp());
 }

@@ -17,6 +17,7 @@ abstract class _UsersApiStoreBase with Store {
   @action
   getUsersList() {
     api.getUsers()!.then((user) {
+      print('antes');
       usersModel = user;
       print('users list changed');
       print(usersModel);

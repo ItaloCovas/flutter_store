@@ -15,6 +15,7 @@ class UsersApi {
     try {
       Response response = await dio.get(url);
       UsersModel user = UsersModel.fromJson(response.data);
+      print('CHEGUEI NA API');
       return user;
     } catch (e) {
       print(e);
