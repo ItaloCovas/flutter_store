@@ -130,8 +130,9 @@ class _CartPageState extends State<CartPage> {
                   children: [
                     TextPlus(
                       'Total',
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
+                      color: Colors.blue,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
                     ),
                     TextPlus(
                       '\$950.00',
@@ -141,7 +142,7 @@ class _CartPageState extends State<CartPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ButtonPlus(

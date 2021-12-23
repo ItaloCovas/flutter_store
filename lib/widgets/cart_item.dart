@@ -144,7 +144,8 @@ class _CartItemState extends State<CartItem> {
                           )))
                 ])
               ],
-            )
+            ),
+            Spacer(),
           ],
         ),
       ),

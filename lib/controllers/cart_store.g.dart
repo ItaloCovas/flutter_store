@@ -24,21 +24,6 @@ mixin _$CartStore on _CartStoreBase, Store {
     });
   }
 
-  final _$idAtom = Atom(name: '_CartStoreBase.id');
-
-  @override
-  int get id {
-    _$idAtom.reportRead();
-    return super.id;
-  }
-
-  @override
-  set id(int value) {
-    _$idAtom.reportWrite(value, super.id, () {
-      super.id = value;
-    });
-  }
-
   final _$cartsModelAtom = Atom(name: '_CartStoreBase.cartsModel');
 
   @override
@@ -51,6 +36,21 @@ mixin _$CartStore on _CartStoreBase, Store {
   set cartsModel(ObservableList<CartsModel>? value) {
     _$cartsModelAtom.reportWrite(value, super.cartsModel, () {
       super.cartsModel = value;
+    });
+  }
+
+  final _$idAtom = Atom(name: '_CartStoreBase.id');
+
+  @override
+  int get id {
+    _$idAtom.reportRead();
+    return super.id;
+  }
+
+  @override
+  set id(int value) {
+    _$idAtom.reportWrite(value, super.id, () {
+      super.id = value;
     });
   }
 
@@ -116,8 +116,8 @@ mixin _$CartStore on _CartStoreBase, Store {
   String toString() {
     return '''
 userId: ${userId},
-id: ${id},
-cartsModel: ${cartsModel}
+cartsModel: ${cartsModel},
+id: ${id}
     ''';
   }
 }

@@ -1,4 +1,3 @@
-import 'dart:ffi';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_store/api/products_api.dart';
@@ -19,17 +18,17 @@ abstract class _CartStoreBase with Store {
   @observable
   int userId = 0;
 
-  @action
-  void setuser(int value) => userId = value;
+  @observable
+  ObservableList<CartsModel>? cartsModel;
 
   @observable
   int id = 0;
 
   @action
-  void setid(int value) => id = value;
+  void setuser(int value) => userId = value;
 
-  @observable
-  ObservableList<CartsModel>? cartsModel;
+  @action
+  void setid(int value) => id = value;
 
   @action
   void addProd(ProductsModel productsModel, int quantity) {
@@ -40,7 +39,9 @@ abstract class _CartStoreBase with Store {
       updadte.id++;
       cartsModel![indexProd] = updadte;
     } else {
-      cartsModel!.add(getCartsList());
+      addProd(productsModel, quantity) {
+        cartsModel!.add(productsModel);
+      }
     }
     print('Produto foi adicionado');
   }
