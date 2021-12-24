@@ -9,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:flutter_store/theme/colors.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_notifier.dart';
 import 'package:mobx/src/api/observable_collections.dart';
 
 class HomeList extends StatefulWidget {
@@ -23,9 +22,7 @@ class _HomeListState extends State<HomeList> {
   final homeApiStore = HomeApiStore();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-
     homeApiStore.getProductsList();
   }
 
@@ -44,12 +41,12 @@ class _HomeListState extends State<HomeList> {
                 fontSize: 30,
                 fontWeight: FontWeight.w400,
                 fontFamily: 'RobotoMono',
-                padding: EdgeInsets.fromLTRB(27, 80, 27, 5)),
-            SizedBox(
+                padding: const EdgeInsets.fromLTRB(27, 80, 27, 5)),
+            const SizedBox(
               height: 35,
             ),
             TextFieldPlus(
-              padding: EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.only(left: 10),
               height: 65,
               cursorColor: Colors.white.withOpacity(0.5),
               width: size.width - 35,
@@ -69,25 +66,26 @@ class _HomeListState extends State<HomeList> {
                 color: Colors.grey.shade700,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Categorias(),
+            const Categorias(),
             Observer(
               builder: (_) {
                 if (homeApiStore.productsModel != null) {
                   return ContainerPlus(
                     color: primaryBlack,
-                    padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
+                    padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                     height: MediaQuery.of(context).size.height,
                     width: MediaQuery.of(context).size.width,
                     child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         crossAxisSpacing: 10.0,
                         mainAxisSpacing: 10.0,
                       ),
-                      physics: BouncingScrollPhysics(),
+                      physics: const BouncingScrollPhysics(),
                       addAutomaticKeepAlives: false,
                       itemCount: homeApiStore.productsModel?.length,
                       itemBuilder: (ctx, index) {
@@ -103,8 +101,8 @@ class _HomeListState extends State<HomeList> {
                                 child: Column(
                                   children: <Widget>[
                                     Padding(
-                                      padding:
-                                          EdgeInsets.fromLTRB(10, 40, 10, 20),
+                                      padding: const EdgeInsets.fromLTRB(
+                                          10, 40, 10, 20),
                                       child: Column(
                                         children: <Widget>[
                                           ClipOval(
@@ -116,12 +114,12 @@ class _HomeListState extends State<HomeList> {
                                               fit: BoxFit.contain,
                                             ),
                                           ),
-                                          SizedBox(height: 20),
+                                          const SizedBox(height: 20),
                                           TextPlus(products.title,
                                               color: Colors.white,
                                               fontWeight: FontWeight.bold,
                                               textAlign: TextAlign.center),
-                                          SizedBox(height: 5),
+                                          const SizedBox(height: 5),
                                           TextPlus(products.description,
                                               color: Colors.white,
                                               textAlign: TextAlign.center),
@@ -154,7 +152,7 @@ class _HomeListState extends State<HomeList> {
                                                     radius: RadiusPlus.all(8),
                                                     onPressed:
                                                         homeApiStore.decrement),
-                                                SizedBox(width: 5),
+                                                const SizedBox(width: 5),
                                                 ButtonPlus(
                                                     child: TextPlus(
                                                         '${homeApiStore.value}',
@@ -169,7 +167,7 @@ class _HomeListState extends State<HomeList> {
                                                         color: buttonColor,
                                                         width: 1),
                                                     radius: RadiusPlus.all(8)),
-                                                SizedBox(width: 5),
+                                                const SizedBox(width: 5),
                                                 ButtonPlus(
                                                     child: TextPlus('+',
                                                         fontWeight:
@@ -234,8 +232,8 @@ class _HomeListState extends State<HomeList> {
                             ),
                           },
                           child: ContainerPlus(
-                            padding:
-                                EdgeInsets.only(left: 5, right: 5, bottom: 5),
+                            padding: const EdgeInsets.only(
+                                left: 5, right: 5, bottom: 5),
                             width: 190,
                             height: 280,
                             radius: RadiusPlus.all(15),
@@ -252,14 +250,14 @@ class _HomeListState extends State<HomeList> {
                                     fit: BoxFit.contain,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 8,
                                 ),
                                 TextPlus(products.title,
                                     fontSize: 10,
                                     color: Colors.white,
                                     textAlign: TextAlign.center),
-                                SizedBox(height: 5),
+                                const SizedBox(height: 5),
                                 TextPlus("R\$ " + products.price.toString(),
                                     fontSize: 10,
                                     color: Colors.white,
@@ -274,7 +272,7 @@ class _HomeListState extends State<HomeList> {
                   );
                 } else {
                   return Padding(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Column(
                       children: const <Widget>[
                         Center(

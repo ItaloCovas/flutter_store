@@ -34,7 +34,7 @@ class _CartPageState extends State<CartPage> {
           automaticallyImplyLeading: false,
           backgroundColor: primaryBlack,
           title: Padding(
-            padding: EdgeInsets.only(top: 15),
+            padding: const EdgeInsets.only(top: 15),
             child: Column(
               children: [
                 TextPlus(
@@ -51,7 +51,7 @@ class _CartPageState extends State<CartPage> {
               ],
             ),
           )),
-      body: CartScreen(),
+      body: const CartScreen(),
       bottomNavigationBar: ContainerPlus(
         height: 260,
         color: primaryBlack,
@@ -84,7 +84,7 @@ class _CartPageState extends State<CartPage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -104,7 +104,7 @@ class _CartPageState extends State<CartPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -122,7 +122,7 @@ class _CartPageState extends State<CartPage> {
                     )
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
