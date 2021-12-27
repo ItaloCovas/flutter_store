@@ -5,7 +5,7 @@ import 'package:flutter_store/model/users_model.dart';
 import 'package:get_it/get_it.dart';
 import 'package:mobx/mobx.dart';
 
-LoginStore loginStore = GetIt.I.get<LoginStore>();
+final loginStore = GetIt.I.get<LoginStore>();
 
 class UsersApi {
   var dio = Dio();

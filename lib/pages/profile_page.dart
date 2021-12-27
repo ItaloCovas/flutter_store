@@ -5,6 +5,9 @@ import 'package:flutter_store/controllers/users_store.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
 
+  final loginStore = GetIt.I.get<LoginStore>();
+  final usersApiStore = GetIt.I.get<UsersApiStore>();
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -13,8 +16,6 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final usersApiStore = UsersApiStore();
-  final loginStore = GetIt.I.get<LoginStore>();
 
   @override
   void initState() {
