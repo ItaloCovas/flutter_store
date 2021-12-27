@@ -47,7 +47,7 @@ abstract class _LoginStore with Store {
   int userId = 0;
 
 
-  //Verificação de username para poder atribuir um ID e futuramente capturar os dados desse user.
+  //Verificação de username para poder atribuir um ID e futuramente capturar os dados desse user
      @action
      assignId() {
        switch(username) {
