@@ -15,12 +15,19 @@ abstract class _UsersApiStoreBase with Store {
   UsersModel? usersModel;
 
   @action
-  getUsersList() {
-    api.getUsers()!.then((user) {
-      print('antes');
-      usersModel = user;
-      print('users list changed');
-      print(usersModel);
-    });
+  getUsersList() async {
+    print('GET USERS LIST FUNCTION WAS CALLED');
+    var test = await api.getUsers();
+    print('GET USERS API RETURN:');
+    print(test);
+    // !.then((user) {
+    //   print('antes');
+    //   usersModel = user;
+    //   print('users list changed');
+    //   print(usersModel);
+    // }).catchError((error) {
+    //   print('USERSAPISTOREBASE ERROR:');
+    //   print(error.message);
+    // });
   }
 }

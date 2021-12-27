@@ -14,7 +14,7 @@ class UsersApi {
   Future<UsersModel?>? getUsers() async {
     try {
       Response response = await dio.get(url);
-      UsersModel user = UsersModel.fromJson(response.data);
+      UsersModel? user = UsersModel.fromJson(response.data);
       print('CHEGUEI NA API');
       return user;
     } catch (e) {
