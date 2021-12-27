@@ -5,10 +5,11 @@ import 'package:flutter_store/controllers/users_store.dart';
 import 'package:flutter_store/pages/login_page.dart';
 import 'package:get_it/get_it.dart';
 
-//Iniciando o GetIt
-GetIt getIt = GetIt.instance;
+
 
 void main() {
+  //Iniciando o GetIt
+  GetIt getIt = GetIt.instance;
   getIt.registerSingleton<LoginStore>(LoginStore());
   getIt.registerSingleton<UsersApiStore>(UsersApiStore());
   runApp(const MyApp());

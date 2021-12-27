@@ -16,23 +16,21 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   var loginStore = GetIt.I.get<LoginStore>();
   var usersApiStore = GetIt.I.get<UsersApiStore>();
-  var user;
+
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('INITSTATE PROFILE');
-    fetchUser();
-  }
-
-  fetchUser() async {
-    await usersApiStore.getUsersList();
-    user = usersApiStore.usersModel;
+    print('INITSTATE USERID');
+    print(loginStore.userId);
+    usersApiStore.getUsersList();
   }
 
   @override
   Widget build(BuildContext context) {
+    var user = usersApiStore.usersModel;
+
     return Scaffold(
       backgroundColor: primaryBlack,
       body: SingleChildScrollView(

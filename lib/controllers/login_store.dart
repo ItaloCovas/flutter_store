@@ -6,10 +6,12 @@ import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/login_api.dart';
 part 'login_store.g.dart';
 
+final api = LoginApi();
+
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
-  LoginApi api = LoginApi();
+
 
   // ******* PARTE DO LOGIN ************
   @observable
@@ -85,7 +87,6 @@ abstract class _LoginStore with Store {
         userId = 0;
         break;
     }
-      return userId;
      }
 
   @action
