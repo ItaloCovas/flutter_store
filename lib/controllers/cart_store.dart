@@ -1,6 +1,7 @@
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_store/api/products_api.dart';
+import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
@@ -19,6 +20,9 @@ abstract class _CartStoreBase with Store {
   int userId = 0;
 
   @observable
+  bool loading = false;
+
+  @observable
   ObservableList<CartsModel>? cartsModel;
 
   @observable
@@ -32,6 +36,7 @@ abstract class _CartStoreBase with Store {
 
   @action
   void addProd(ProductsModel productsModel, int quantity) {
+    loading = true;
     int indexProd =
         cartsModel!.indexWhere((cart) => cart.id == productsModel.id);
     if (indexProd != -1) {
@@ -59,6 +64,7 @@ abstract class _CartStoreBase with Store {
 
   @action
   getCartsList() {
+    loading = true;
     api.getCarts().then((cartsList) {
       cartsModel = cartsList;
       print('carts list changed');
