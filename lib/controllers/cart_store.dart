@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/model/products_model.dart';
-import 'package:get/get.dart';
 import 'package:mobx/mobx.dart';
 import 'dart:collection';
 import 'package:flutter_store/api/carts_api.dart';

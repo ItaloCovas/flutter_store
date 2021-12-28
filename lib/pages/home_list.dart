@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/constant/categorias.dart';
+import 'package:flutter_store/widgets/categorias.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:get/get.dart';
 import 'package:flutter_store/api/products_api.dart';

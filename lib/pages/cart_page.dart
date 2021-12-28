@@ -15,12 +15,12 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final cartPage = HomeApiStore();
+  final cartPage = CartStore();
 
   @override
   void initState() {
     super.initState();
-    cartPage.getProductsList();
+    cartPage.getCartsList();
   }
 
   @override
