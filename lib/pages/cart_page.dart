@@ -3,7 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
-import 'package:flutter_store/pages/home_page.dart';
+import 'package:flutter_store/widgets/home_page.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:flutter_store/widgets/cart_screen.dart';
 
@@ -27,30 +27,6 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryBlack,
-      appBar: AppBar(
-          toolbarHeight: 70,
-          elevation: 0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          backgroundColor: primaryBlack,
-          title: Padding(
-            padding: const EdgeInsets.only(top: 15),
-            child: Column(
-              children: [
-                TextPlus(
-                  'Detalhes da Compra',
-                  color: Colors.white,
-                  fontSize: 21,
-                  fontWeight: FontWeight.w600,
-                ),
-                TextPlus(
-                  '1 item',
-                  color: Colors.grey[500],
-                  fontSize: 14,
-                ),
-              ],
-            ),
-          )),
       body: const CartScreen(),
       bottomNavigationBar: ContainerPlus(
         height: 260,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/pages/home_page.dart';
+import 'package:flutter_store/widgets/home_page.dart';
 import 'package:flutter_store/pages/login_page.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/login_api.dart';
@@ -11,8 +11,6 @@ final api = LoginApi();
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
-
-
   // ******* PARTE DO LOGIN ************
   @observable
   String username = "";
@@ -48,11 +46,10 @@ abstract class _LoginStore with Store {
   @observable
   int userId = 0;
 
-
   //Verificação de username para poder atribuir um ID e futuramente capturar os dados desse user
-     @action
-     assignId() {
-       switch(username) {
+  @action
+  assignId() {
+    switch (username) {
       case 'johnd':
         userId = 1;
         break;
@@ -87,7 +84,7 @@ abstract class _LoginStore with Store {
         userId = 0;
         break;
     }
-     }
+  }
 
   @action
   Future<void> login() async {
@@ -118,8 +115,6 @@ abstract class _LoginStore with Store {
     }
     loading = false;
   }
-
-  
 
   // ******* PARTE DO REGISTRO ************
 

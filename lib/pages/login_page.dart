@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/login_store.dart';
-import 'package:flutter_store/pages/home_page.dart';
+import 'package:flutter_store/widgets/home_page.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
 
@@ -343,9 +343,12 @@ class LoginPage extends StatelessWidget {
                                         SizedBox(height: 15),
                                         Center(
                                           child: ButtonPlus(
-                                            onPressed: loginStore.isRegisterFormValid ? () async {
-                                              await loginStore.register();
-                                            } : null,
+                                            onPressed: loginStore
+                                                    .isRegisterFormValid
+                                                ? () async {
+                                                    await loginStore.register();
+                                                  }
+                                                : null,
                                             height: 40,
                                             width: 300,
                                             radius: RadiusPlus.all(16),
