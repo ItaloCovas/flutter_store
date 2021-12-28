@@ -24,18 +24,12 @@ mixin _$UsersApiStore on _UsersApiStoreBase, Store {
     });
   }
 
-  final _$_UsersApiStoreBaseActionController =
-      ActionController(name: '_UsersApiStoreBase');
+  final _$getUsersListAsyncAction =
+      AsyncAction('_UsersApiStoreBase.getUsersList');
 
   @override
-  dynamic getUsersList() {
-    final _$actionInfo = _$_UsersApiStoreBaseActionController.startAction(
-        name: '_UsersApiStoreBase.getUsersList');
-    try {
-      return super.getUsersList();
-    } finally {
-      _$_UsersApiStoreBaseActionController.endAction(_$actionInfo);
-    }
+  Future<void> getUsersList() {
+    return _$getUsersListAsyncAction.run(() => super.getUsersList());
   }
 
   @override

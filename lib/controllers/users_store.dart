@@ -15,8 +15,8 @@ abstract class _UsersApiStoreBase with Store {
   UsersModel? usersModel;
 
   @action
-   getUsersList() {
-    api.getUsers()!.then((user) {
+   Future<void> getUsersList() async{
+    await api.getUsers()!.then((user) {
       usersModel = user;
       print('users list changed');
       print(usersModel);

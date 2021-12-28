@@ -14,30 +14,25 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  var loginStore = GetIt.I.get<LoginStore>();
-  var usersApiStore = GetIt.I.get<UsersApiStore>();
-
+  final loginStore = GetIt.I.get<LoginStore>();
+  final usersApiStore = GetIt.I.get<UsersApiStore>();
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    print('INITSTATE USERID');
-    print(loginStore.userId);
     usersApiStore.getUsersList();
   }
 
   @override
   Widget build(BuildContext context) {
-    var user = usersApiStore.usersModel;
-
     return Scaffold(
       backgroundColor: primaryBlack,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.fromLTRB(0, 80, 0, 0),
           child: Observer(builder: (_) {
-            if (user != null) {
+            if (usersApiStore.usersModel != null) {
               return Column(
                 children: [
                   Center(
@@ -57,12 +52,12 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
                   SizedBox(height: 10),
                   TextPlus(
-                    "${user.name.firstname.capitalizeFirstWord} ${user.name.lastname.capitalizeFirstWord}",
+                    "${usersApiStore.usersModel!.name.firstname.toString().capitalizeFirstWord} ${usersApiStore.usersModel!.name.lastname.toString().capitalizeFirstWord}",
                     color: Colors.white,
                     fontSize: 16,
                   ),
                   SizedBox(height: 5),
-                  TextPlus(user.email, color: Colors.white),
+                  TextPlus(usersApiStore.usersModel!.email, color: Colors.white),
                   SizedBox(height: 30),
                   ContainerPlus(
                     height: 330,
@@ -106,7 +101,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 SizedBox(width: 10),
                                 Expanded(
                                   child: TextPlus(
-                                    '${user.address.street}, ${user.address.number} - ${user.address.city}. ${user.address.zipcode}',
+                                    '${usersApiStore.usersModel!.address.street}, ${usersApiStore.usersModel!.address.number} - ${usersApiStore.usersModel!.address.city}. ${usersApiStore.usersModel!.address.zipcode}',
                                     fontSize: 15,
                                     color: Colors.white54,
                                     fontWeight: FontWeight.w500,
@@ -130,7 +125,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     color: Colors.white, size: 18),
                                 SizedBox(width: 5),
                                 TextPlus(
-                                  user.phone,
+                                  usersApiStore.usersModel!.phone,
                                   color: Colors.white54,
                                   fontSize: 15,
                                   fontWeight: FontWeight.w500,
@@ -153,7 +148,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     color: Colors.white, size: 18),
                                 SizedBox(width: 5),
                                 TextPlus(
-                                  user.email,
+                                  usersApiStore.usersModel!.email,
                                   color: Colors.white54,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 15,
