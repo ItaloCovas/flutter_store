@@ -28,17 +28,6 @@ class _CartScreenState extends State<CartScreen> {
       backgroundColor: primaryBlack,
       appBar: _AppBar(),
       body: Observer(builder: (_) {
-        if (carts.productsModel!.isEmpty) {
-          return Center(
-            child: TextPlus(
-              'Não há produtos no Carrinho!',
-              color: Colors.white,
-              fontFamily: 'RobotoMono',
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          );
-        }
         if (carts.productsModel != null) {
           return ListView.builder(
               shrinkWrap: true,

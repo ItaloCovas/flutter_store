@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/rendering.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_store/api/products_api.dart';
@@ -16,13 +18,20 @@ abstract class _CartStoreBase with Store {
   CartsApi api = CartsApi();
 
   @observable
+  ObservableList<CartsModel>? cartModel;
+
+  @observable
   int userId = 0;
+
+  
+  @observable
+  int prodCart = 0;
 
   @observable
   bool loading = false;
 
   @observable
-  ObservableList<CartsModel>? cartsModel;
+  double total = 0;
 
   @observable
   int id = 0;
@@ -34,40 +43,21 @@ abstract class _CartStoreBase with Store {
   void setid(int value) => id = value;
 
   @action
-  void addProd(ProductsModel productsModel, int quantity) {
-    loading = true;
-    int indexProd =
-        cartsModel!.indexWhere((cart) => cart.id == productsModel.id);
-    if (indexProd != -1) {
-      var updadte = cartsModel![indexProd];
-      updadte.id++;
-      cartsModel![indexProd] = updadte;
-    } else {
-      addProd(productsModel, quantity) {
-        cartsModel!.add(productsModel);
-      }
-    }
-    print('Produto foi adicionado');
-  }
 
-  @action
-  void RemoveProd(ProductsModel productsModel, int quantity) {
-    int indexProd =
-        cartsModel!.indexWhere((cart) => cart.id == productsModel.id);
-
-    if (indexProd != -1) {
-      cartsModel!.removeAt(indexProd);
-    }
-    print('Produto foi removido');
-  }
 
   @action
   getCartsList() {
     loading = true;
     api.getCarts().then((cartsList) {
-      cartsModel = cartsList;
-      print('carts list changed');
-      print(cartsModel);
+      for (var i = 0; i < cartsList!.length; i++) {
+        var product = api.getProductsCart(cartsList[i]);
+        total += product["price"] * cartsList[i];
+        cartModel!.add(product);
+      }
     });
+    loading = false;
+    print('carts list changed');
+    print(cartModel);
+    print(total);
   }
 }

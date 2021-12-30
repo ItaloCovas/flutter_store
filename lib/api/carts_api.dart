@@ -6,19 +6,18 @@ import 'package:mobx/mobx.dart';
 
 class CartsApi {
   var dio = Dio();
-  static const cartsApiUrl = 'https://fakestoreapi.com/carts?limit=5';
+  static const cartsApiUrl = 'https://fakestoreapi.com/carts/1';
+  static const cartsProdApiUrl = 'https://fakestoreapi.com/products/';
+
+  getProductsCart(productsId) async {
+    Response response = await dio.get(cartsApiUrl + productsId.toString());
+    return json.decode(response.data);
+  }
 
   Future<ObservableList<CartsModel>?> getCarts() async {
-    try {
-      Response response = await dio.get(cartsApiUrl);
-
-      List<CartsModel> list =
-          (response.data as List).map((e) => CartsModel.fromJson(e)).toList();
-
-      return ObservableList<CartsModel>.of(list);
-    } catch (e) {
-      print(e);
-      return null;
-    }
+    Response response = await dio.get(cartsApiUrl);
+    var productsJson = json.decode(response.data);
+    var products = productsJson["products"];
+    print(products);
   }
 }

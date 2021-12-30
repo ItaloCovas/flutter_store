@@ -9,6 +9,21 @@ part of 'cart_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CartStore on _CartStoreBase, Store {
+  final _$cartModelAtom = Atom(name: '_CartStoreBase.cartModel');
+
+  @override
+  ObservableList<CartsModel>? get cartModel {
+    _$cartModelAtom.reportRead();
+    return super.cartModel;
+  }
+
+  @override
+  set cartModel(ObservableList<CartsModel>? value) {
+    _$cartModelAtom.reportWrite(value, super.cartModel, () {
+      super.cartModel = value;
+    });
+  }
+
   final _$userIdAtom = Atom(name: '_CartStoreBase.userId');
 
   @override
@@ -24,18 +39,33 @@ mixin _$CartStore on _CartStoreBase, Store {
     });
   }
 
-  final _$cartsModelAtom = Atom(name: '_CartStoreBase.cartsModel');
+  final _$loadingAtom = Atom(name: '_CartStoreBase.loading');
 
   @override
-  ObservableList<CartsModel>? get cartsModel {
-    _$cartsModelAtom.reportRead();
-    return super.cartsModel;
+  bool get loading {
+    _$loadingAtom.reportRead();
+    return super.loading;
   }
 
   @override
-  set cartsModel(ObservableList<CartsModel>? value) {
-    _$cartsModelAtom.reportWrite(value, super.cartsModel, () {
-      super.cartsModel = value;
+  set loading(bool value) {
+    _$loadingAtom.reportWrite(value, super.loading, () {
+      super.loading = value;
+    });
+  }
+
+  final _$totalAtom = Atom(name: '_CartStoreBase.total');
+
+  @override
+  double get total {
+    _$totalAtom.reportRead();
+    return super.total;
+  }
+
+  @override
+  set total(double value) {
+    _$totalAtom.reportWrite(value, super.total, () {
+      super.total = value;
     });
   }
 
@@ -80,28 +110,6 @@ mixin _$CartStore on _CartStoreBase, Store {
   }
 
   @override
-  void addProd(ProductsModel productsModel, int quantity) {
-    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
-        name: '_CartStoreBase.addProd');
-    try {
-      return super.addProd(productsModel, quantity);
-    } finally {
-      _$_CartStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  void RemoveProd(ProductsModel productsModel, int quantity) {
-    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
-        name: '_CartStoreBase.RemoveProd');
-    try {
-      return super.RemoveProd(productsModel, quantity);
-    } finally {
-      _$_CartStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
   dynamic getCartsList() {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction(
         name: '_CartStoreBase.getCartsList');
@@ -115,8 +123,10 @@ mixin _$CartStore on _CartStoreBase, Store {
   @override
   String toString() {
     return '''
+cartModel: ${cartModel},
 userId: ${userId},
-cartsModel: ${cartsModel},
+loading: ${loading},
+total: ${total},
 id: ${id}
     ''';
   }
