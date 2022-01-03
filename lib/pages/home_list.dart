@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/widgets/categorias.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class HomeList extends StatefulWidget {
 
 class _HomeListState extends State<HomeList> {
   final homeApiStore = HomeApiStore();
+  final cartadd = CartStore();
   @override
   void initState() {
     super.initState();

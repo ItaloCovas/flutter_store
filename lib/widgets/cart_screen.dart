@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/api/cart_api.dart';
+import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
+import 'package:flutter_store/controllers/prodcart_store.dart';
 import 'package:flutter_store/theme/colors.dart';
-
-import 'package:flutter_store/widgets/home_page.dart';
 import 'package:get_it/get_it.dart';
 
 class CartScreen extends StatefulWidget {
@@ -15,25 +16,19 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  final carts = GetIt.I.get<HomeApiStore>();
-  @override
-  void initState() {
-    super.initState();
-    carts.getProductsList();
-  }
-
+  final cartList = CartStore();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryBlack,
       appBar: _AppBar(),
       body: Observer(builder: (_) {
-        if (carts.productsModel != null) {
+        if (cartList.ListP != null) {
           return ListView.builder(
               shrinkWrap: true,
-              itemCount: carts.productsModel?.length,
+              itemCount: cartList.ListP.length,
               itemBuilder: (ctx, index) {
-                var products = carts.productsModel![index];
+                var products = cartList.ListP[index];
                 return Expanded(
                   child: Column(
                     children: [
@@ -52,7 +47,8 @@ class _CartScreenState extends State<CartScreen> {
                                       const EdgeInsets.fromLTRB(10, 8, 10, 10),
                                   child: ClipOval(
                                     child: Image(
-                                      image: NetworkImage(products.image),
+                                      image:
+                                          NetworkImage(products.product.image),
                                       width: 65,
                                       height: 65,
                                       fit: BoxFit.contain,
@@ -70,7 +66,7 @@ class _CartScreenState extends State<CartScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 TextPlus(
-                                  products.title,
+                                  products.product.title,
                                   fontSize: 16,
                                   color: Colors.white,
                                 ),
@@ -78,14 +74,14 @@ class _CartScreenState extends State<CartScreen> {
                                   height: 10,
                                 ),
                                 Text.rich(TextSpan(
-                                    text: products.price.toString(),
+                                    text: '\$${products.product.price}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.w500,
                                       color: Colors.grey[700],
                                     ),
                                     children: [
                                       TextSpan(
-                                        text: ' x2 u',
+                                        text: products.quantity.toString(),
                                         style:
                                             TextStyle(color: Colors.grey[700]),
                                       )

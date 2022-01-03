@@ -12,7 +12,7 @@ void main() {
   GetIt getIt = GetIt.instance;
   getIt.registerSingleton<LoginStore>(LoginStore());
   getIt.registerSingleton<UsersApiStore>(UsersApiStore());
-  getIt.registerSingleton<HomeApiStore>(HomeApiStore());
+  getIt.registerSingleton<CartStore>(CartStore());
   runApp(const MyApp());
 }
 
