@@ -9,9 +9,9 @@ import 'package:flutter_store/theme/colors.dart';
 
 final homeApiStore = HomeApiStore();
 final screens = [
-  HomeList(),
-  CartPage(),
-  ProfilePage(),
+  const HomeList(),
+  const CartPage(),
+  const ProfilePage(),
 ];
 
 class HomePage extends StatelessWidget {

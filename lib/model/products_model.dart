@@ -46,6 +46,8 @@ class ProductsModel {
     }
     return data;
   }
+
+  toMap() {}
 }
 
 class Rating {

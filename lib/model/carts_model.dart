@@ -1,27 +1,57 @@
-import 'package:flutter_store/model/products_model.dart';
-import 'package:mobx/mobx.dart';
-part 'carts_model.g.dart';
+import 'package:flutter/foundation.dart';
+import 'package:dio/dio.dart';
+import 'dart:convert';
+import 'package:meta/meta.dart';
 
-class CartModel = _CartModelBase with _$CartModel;
+class CartModel {
+  int? id;
+  int? userId;
+  String? date;
+  List<Products>? products;
+  int? iV;
 
-abstract class _CartModelBase with Store {
-  final ProductsModel product;
+  CartModel({this.id, this.userId, this.date, this.products, this.iV});
 
-  @observable
-  int _quantity = 1;
-
-  @computed
-  int get quantity => _quantity;
-
-  _CartModelBase(this.product);
-
-  @action
-  void increment() {
-    _quantity++;
+  CartModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    userId = json['userId'];
+    date = json['date'];
+    if (json['products'] != null) {
+      products = <Products>[];
+      json['products'].forEach((v) {
+        products!.add(Products.fromJson(v));
+      });
+    }
+    iV = json['__v'];
   }
 
-  @action
-  void decrement() {
-    _quantity++;
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = id;
+    data['userId'] = userId;
+    data['date'] = date;
+    if (products != null) {
+      data['products'] = products!.map((v) => v.toJson()).toList();
+    }
+    data['__v'] = iV;
+    return data;
+  }
+}
+
+class Products {
+  int productId;
+  int quantity;
+
+  Products({required this.productId, required this.quantity});
+
+  factory Products.fromJson(Map<String, dynamic> json) {
+    return Products(productId: json['productId'], quantity: json['quantity']);
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['productId'] = productId;
+    data['quantity'] = quantity;
+    return data;
   }
 }

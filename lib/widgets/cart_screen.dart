@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/api/cart_api.dart';
-import 'package:flutter_store/controllers/cart_store.dart';
+import 'package:flutter_store/controllers/carts_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
-import 'package:flutter_store/controllers/prodcart_store.dart';
 import 'package:flutter_store/theme/colors.dart';
+import 'package:flutter_store/widgets/cart_item.dart';
 import 'package:get_it/get_it.dart';
 
 class CartScreen extends StatefulWidget {
@@ -16,91 +16,79 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  final cartList = CartStore();
+  final cartApi = CartApi();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: primaryBlack,
       appBar: _AppBar(),
-      body: Observer(builder: (_) {
-        if (cartList.ListP != null) {
-          return ListView.builder(
-              shrinkWrap: true,
-              itemCount: cartList.ListP.length,
-              itemBuilder: (ctx, index) {
-                var products = cartList.ListP[index];
-                return Expanded(
-                  child: Column(
+      body: ListView.builder(
+          shrinkWrap: true,
+          itemCount: 2,
+          itemBuilder: (ctx, index) {
+            return Expanded(
+              child: Column(
+                children: [
+                  Row(
                     children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 35, top: 30),
-                            child: ContainerPlus(
-                              width: 86,
-                              height: 86,
-                              color: secondaryBlack,
-                              radius: RadiusPlus.all(15),
-                              child: Column(children: <Widget>[
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(10, 8, 10, 10),
-                                  child: ClipOval(
-                                    child: Image(
-                                      image:
-                                          NetworkImage(products.product.image),
-                                      width: 65,
-                                      height: 65,
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 35, top: 30),
+                        child: ContainerPlus(
+                          width: 86,
+                          height: 86,
+                          color: secondaryBlack,
+                          radius: RadiusPlus.all(15),
+                          child: Column(children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                              child: ClipOval(
+                                child: Image(
+                                  image: AssetImage("assets/images/logo.png"),
+                                  width: 65,
+                                  height: 65,
+                                  fit: BoxFit.contain,
                                 ),
-                              ]),
+                              ),
                             ),
-                          ),
-                          const SizedBox(
-                            width: 15,
-                          ),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                TextPlus(
-                                  products.product.title,
-                                  fontSize: 16,
-                                  color: Colors.white,
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text.rich(TextSpan(
-                                    text: '\$${products.product.price}',
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Colors.grey[700],
-                                    ),
-                                    children: [
-                                      TextSpan(
-                                        text: products.quantity.toString(),
-                                        style:
-                                            TextStyle(color: Colors.grey[700]),
-                                      )
-                                    ])),
-                              ],
-                            ),
-                          )
-                        ],
+                          ]),
+                        ),
                       ),
+                      const SizedBox(
+                        width: 15,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextPlus(
+                              'sss',
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text.rich(TextSpan(
+                                text: 'R\$1000',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey[700],
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: ' hhhh',
+                                    style: TextStyle(color: Colors.grey[700]),
+                                  )
+                                ])),
+                          ],
+                        ),
+                      )
                     ],
                   ),
-                );
-              });
-        } else {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-      }),
+                ],
+              ),
+            );
+          }),
     );
   }
 

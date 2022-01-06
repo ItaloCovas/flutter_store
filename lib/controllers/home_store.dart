@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/products_api.dart';
@@ -37,6 +36,6 @@ abstract class _HomeApiStoreBase with Store {
     value <= 0 ? value = 0 : value--;
   }
 
-  @observable 
+  @observable
   int selectedIndex = 0;
 }
