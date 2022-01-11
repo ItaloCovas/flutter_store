@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/api/cart_api.dart';
 import 'package:flutter_store/controllers/carts_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/theme/colors.dart';
@@ -16,7 +15,6 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  final cartApi = CartApi();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,9 +36,9 @@ class _CartScreenState extends State<CartScreen> {
                           height: 86,
                           color: secondaryBlack,
                           radius: RadiusPlus.all(15),
-                          child: Column(children: <Widget>[
+                          child: Column(children: const <Widget>[
                             Padding(
-                              padding: const EdgeInsets.fromLTRB(10, 8, 10, 10),
+                              padding: EdgeInsets.fromLTRB(10, 8, 10, 10),
                               child: ClipOval(
                                 child: Image(
                                   image: AssetImage("assets/images/logo.png"),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/controllers/carts_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/controllers/users_store.dart';
@@ -11,6 +12,7 @@ void main() {
   GetIt getIt = GetIt.instance;
   getIt.registerSingleton<LoginStore>(LoginStore());
   getIt.registerSingleton<UsersApiStore>(UsersApiStore());
+  getIt.registerSingleton<CartsStore>(CartsStore());
   runApp(const MyApp());
 }
 

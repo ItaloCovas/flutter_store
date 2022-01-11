@@ -24,18 +24,5 @@ abstract class _HomeApiStoreBase with Store {
   }
 
   @observable
-  int value = 0;
-
-  @action
-  void increment() {
-    value++;
-  }
-
-  @action
-  void decrement() {
-    value <= 0 ? value = 0 : value--;
-  }
-
-  @observable
   int selectedIndex = 0;
 }

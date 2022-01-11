@@ -3,12 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/controllers/carts_store.dart';
 import 'package:flutter_store/widgets/categorias.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:get/get.dart';
 import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:flutter_store/theme/colors.dart';
+import 'package:get_it/get_it.dart';
 import 'package:mobx/src/api/observable_collections.dart';
 
 class HomeList extends StatefulWidget {
@@ -20,6 +22,8 @@ class HomeList extends StatefulWidget {
 
 class _HomeListState extends State<HomeList> {
   final homeApiStore = HomeApiStore();
+  final cartsStore = GetIt.I.get<CartsStore>();
+
   @override
   void initState() {
     super.initState();
@@ -94,7 +98,7 @@ class _HomeListState extends State<HomeList> {
                           onTap: () => {
                             bottomSheetPlus.show(
                               onClosed: (_) {
-                                homeApiStore.value = 0;
+                                cartsStore.amount = 0;
                               },
                               child: ContainerPlus(
                                 color: primaryBlack,
@@ -151,11 +155,11 @@ class _HomeListState extends State<HomeList> {
                                                         width: 1),
                                                     radius: RadiusPlus.all(8),
                                                     onPressed:
-                                                        homeApiStore.decrement),
+                                                        cartsStore.decrement),
                                                 const SizedBox(width: 5),
                                                 ButtonPlus(
                                                     child: TextPlus(
-                                                        '${homeApiStore.value}',
+                                                        '${cartsStore.amount}',
                                                         color: Colors.white),
                                                     width:
                                                         MediaQuery.of(context)
@@ -185,7 +189,7 @@ class _HomeListState extends State<HomeList> {
                                                         width: 1),
                                                     radius: RadiusPlus.all(8),
                                                     onPressed:
-                                                        homeApiStore.increment),
+                                                        cartsStore.increment),
                                               ],
                                             );
                                           }),
