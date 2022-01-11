@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/carts_store.dart';
+import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/widgets/categorias.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:get/get.dart';
@@ -221,7 +222,13 @@ class _HomeListState extends State<HomeList> {
                                                 color: buttonColor,
                                                 radius: RadiusPlus.all(8),
                                                 width: 200,
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  cartsStore
+                                                      .total += homeApiStore
+                                                          .productsModel![index]
+                                                          .price *
+                                                      cartsStore.amount;
+                                                },
                                               ),
                                             ],
                                           ),

@@ -33,16 +33,4 @@ abstract class _CartsStoreBase with Store {
     total += productsModel.price * p.quantity;
     print(total);
   }
-
-  @action
-  addProduct(ProductsModel productsModel) {
-    var index = products!.indexWhere((p) => p.productId == productsModel.id);
-    if (index >= 0) {
-      var update = products![index];
-      update.quantity++;
-    } else {
-      cartModel!.add(addProduct(productsModel));
-    }
-    print("Produto foi adicionado no carrinho");
-  }
 }

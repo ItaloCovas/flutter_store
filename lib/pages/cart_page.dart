@@ -6,6 +6,7 @@ import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/widgets/home_page.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:flutter_store/widgets/cart_screen.dart';
+import 'package:get_it/get_it.dart';
 
 class CartPage extends StatefulWidget {
   const CartPage({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final cartPage = CartsStore();
+  final cartsStore = GetIt.I.get<CartsStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +108,7 @@ class _CartPageState extends State<CartPage> {
                       fontSize: 18,
                     ),
                     TextPlus(
-                      'R\$1000',
+                      cartsStore.amount.toString(),
                       color: Colors.red[700],
                       fontWeight: FontWeight.w700,
                       fontSize: 18,
