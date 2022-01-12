@@ -28,28 +28,31 @@ abstract class _CartStoreBase with Store {
   @action
   void getTotal(ProductsModel productsModel, CartProducts p) {
     total += productsModel.price * p.quantity;
+    // ignore: avoid_print
     print(total);
   }
 
   @action
   addProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.productId == productsModel.id);
-    if (index >= 0) {
+    if (index > 0) {
       var update = products![index];
       update.quantity++;
       products![index] = update;
     } else {
       products!.add(addProducts(productsModel));
     }
+    // ignore: avoid_print
     print("Produto foi adicionado no carrinho");
   }
 
   @action
   removeProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.productId == productsModel.id);
-    if (index >= 0) {
+    if (index > 0) {
       products!.removeAt(index).quantity--;
     }
+    // ignore: avoid_print
     print("Produto foi removido do carrinho");
   }
 }

@@ -13,6 +13,8 @@ void main() {
   getIt.registerSingleton<LoginStore>(LoginStore());
   getIt.registerSingleton<UsersApiStore>(UsersApiStore());
   getIt.registerSingleton<CartStore>(CartStore());
+  getIt.registerSingleton<HomeApiStore>(HomeApiStore());
+
   runApp(const MyApp());
 }
 

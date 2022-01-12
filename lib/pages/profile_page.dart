@@ -57,7 +57,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     fontSize: 16,
                   ),
                   SizedBox(height: 5),
-                  TextPlus(usersApiStore.usersModel!.email, color: Colors.white),
+                  TextPlus(usersApiStore.usersModel!.email,
+                      color: Colors.white),
                   SizedBox(height: 30),
                   ContainerPlus(
                     height: 330,

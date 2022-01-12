@@ -53,7 +53,7 @@ class _CategoriasState extends State<Categorias> {
               fontWeight: FontWeight.w600,
             ),
             ContainerPlus(
-              margin: EdgeInsets.only(top: 4),
+              margin: const EdgeInsets.only(top: 4),
               height: 2,
               width: 22,
               color: selectedIndex == index ? Colors.white : Colors.transparent,

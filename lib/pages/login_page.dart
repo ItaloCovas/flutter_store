@@ -23,7 +23,7 @@ class LoginPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               SizedBox(height: MediaQuery.of(context).padding.top),
-              Image(
+              const Image(
                 image: AssetImage('assets/images/logo.png'),
                 width: 280,
                 height: 200,
@@ -39,16 +39,16 @@ class LoginPage extends StatelessWidget {
                       radius: RadiusPlus.all(12),
                       child: Column(
                         children: <Widget>[
-                          TabBar(
+                          const TabBar(
                               indicatorColor: Colors.white,
                               indicatorWeight: 2,
-                              tabs: const [
+                              tabs: [
                                 Tab(
                                   text: "Login",
                                 ),
                                 Tab(text: "Registrar-se"),
                               ]),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Expanded(
                             child: TabBarView(
                               children: [
@@ -60,7 +60,7 @@ class LoginPage extends StatelessWidget {
                                     children: <Widget>[
                                       TextPlus("Nome de usuário",
                                           color: Colors.white),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Observer(
@@ -79,16 +79,16 @@ class LoginPage extends StatelessWidget {
                                               color: Colors.grey,
                                               fontSize: 14,
                                             ),
-                                            prefixWidget: Icon(
+                                            prefixWidget: const Icon(
                                                 Icons.account_circle,
                                                 size: 18,
                                                 color: Colors.black),
                                           );
                                         },
                                       ),
-                                      SizedBox(height: 15),
+                                      const SizedBox(height: 15),
                                       TextPlus("Senha", color: Colors.white),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Observer(
@@ -99,26 +99,26 @@ class LoginPage extends StatelessWidget {
                                               obscureText:
                                                   !loginStore.passwordVisible,
                                               onChanged: loginStore.setPassword,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   color: Colors.black,
                                                   fontSize: 15),
                                               decoration: InputDecoration(
                                                 prefixIconConstraints:
-                                                    BoxConstraints(
+                                                    const BoxConstraints(
                                                   maxHeight: 20,
                                                 ),
                                                 contentPadding:
-                                                    EdgeInsets.only(top: 0),
+                                                    const EdgeInsets.only(
+                                                        top: 0),
                                                 filled: true,
                                                 enabled: !loginStore.loading,
                                                 hintText: "••••••••",
-                                                hintStyle: TextStyle(
+                                                hintStyle: const TextStyle(
                                                     color: Colors.grey,
                                                     fontSize: 14),
-                                                prefixIcon: Padding(
-                                                  padding:
-                                                      const EdgeInsets.only(
-                                                          left: 5, right: 5),
+                                                prefixIcon: const Padding(
+                                                  padding: EdgeInsets.only(
+                                                      left: 5, right: 5),
                                                   child: Icon(
                                                     Icons.lock,
                                                     size: 18,
