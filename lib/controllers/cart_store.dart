@@ -1,16 +1,13 @@
 import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:mobx/mobx.dart';
-part 'carts_store.g.dart';
+part 'cart_store.g.dart';
 
-class CartsStore = _CartsStoreBase with _$CartsStore;
+class CartStore = _CartStoreBase with _$CartStore;
 
-abstract class _CartsStoreBase with Store {
+abstract class _CartStoreBase with Store {
   @observable
-  ObservableList<CartModel>? cartModel;
-
-  @observable
-  ObservableList<Products>? products;
+  ObservableList<CartProducts>? products;
 
   @observable
   double total = 0;
@@ -29,7 +26,7 @@ abstract class _CartsStoreBase with Store {
   }
 
   @action
-  void getTotal(ProductsModel productsModel, Products p) {
+  void getTotal(ProductsModel productsModel, CartProducts p) {
     total += productsModel.price * p.quantity;
     print(total);
   }
@@ -37,7 +34,7 @@ abstract class _CartsStoreBase with Store {
   @action
   addProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.productId == productsModel.id);
-    if (index <= 0) {
+    if (index >= 0) {
       var update = products![index];
       update.quantity++;
       products![index] = update;
@@ -50,7 +47,7 @@ abstract class _CartsStoreBase with Store {
   @action
   removeProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.productId == productsModel.id);
-    if (index <= 0) {
+    if (index >= 0) {
       products!.removeAt(index).quantity--;
     }
     print("Produto foi removido do carrinho");

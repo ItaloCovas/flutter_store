@@ -3,6 +3,11 @@ import 'package:dio/dio.dart';
 import 'dart:convert';
 import 'package:meta/meta.dart';
 
+import 'package:flutter/foundation.dart';
+import 'package:dio/dio.dart';
+import 'dart:convert';
+import 'package:meta/meta.dart';
+
 class CartModel {
   int? id;
   int? userId;
