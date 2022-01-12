@@ -222,7 +222,12 @@ class _HomeListState extends State<HomeList> {
                                                 color: buttonColor,
                                                 radius: RadiusPlus.all(8),
                                                 width: 200,
-                                                onPressed: () {},
+                                                onPressed: () {
+                                                  cartStore.addProducts(
+                                                      homeApiStore
+                                                              .productsModel![
+                                                          index]);
+                                                },
                                               ),
                                             ],
                                           ),
