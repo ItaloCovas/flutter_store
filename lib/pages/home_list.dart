@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/controllers/carts_store.dart';
+import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/widgets/categorias.dart';
 import 'package:flutter_store/controllers/home_store.dart';
@@ -23,7 +23,7 @@ class HomeList extends StatefulWidget {
 
 class _HomeListState extends State<HomeList> {
   final homeApiStore = HomeApiStore();
-  final cartsStore = GetIt.I.get<CartsStore>();
+  final cartStore = GetIt.I.get<CartStore>();
 
   @override
   void initState() {
@@ -99,7 +99,7 @@ class _HomeListState extends State<HomeList> {
                           onTap: () => {
                             bottomSheetPlus.show(
                               onClosed: (_) {
-                                cartsStore.amount = 0;
+                                cartStore.amount = 0;
                               },
                               child: ContainerPlus(
                                 color: primaryBlack,
@@ -156,11 +156,11 @@ class _HomeListState extends State<HomeList> {
                                                         width: 1),
                                                     radius: RadiusPlus.all(8),
                                                     onPressed:
-                                                        cartsStore.decrement),
+                                                        cartStore.decrement),
                                                 const SizedBox(width: 5),
                                                 ButtonPlus(
                                                     child: TextPlus(
-                                                        '${cartsStore.amount}',
+                                                        '${cartStore.amount}',
                                                         color: Colors.white),
                                                     width:
                                                         MediaQuery.of(context)
@@ -190,7 +190,7 @@ class _HomeListState extends State<HomeList> {
                                                         width: 1),
                                                     radius: RadiusPlus.all(8),
                                                     onPressed:
-                                                        cartsStore.increment),
+                                                        cartStore.increment),
                                               ],
                                             );
                                           }),
@@ -222,13 +222,7 @@ class _HomeListState extends State<HomeList> {
                                                 color: buttonColor,
                                                 radius: RadiusPlus.all(8),
                                                 width: 200,
-                                                onPressed: () {
-                                                  cartsStore
-                                                      .total += homeApiStore
-                                                          .productsModel![index]
-                                                          .price *
-                                                      cartsStore.amount;
-                                                },
+                                                onPressed: () {},
                                               ),
                                             ],
                                           ),
