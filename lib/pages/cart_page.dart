@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
-import 'package:flutter_store/controllers/carts_store.dart';
+import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/widgets/home_page.dart';
 import 'package:flutter_store/theme/colors.dart';
@@ -16,7 +16,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final cartsStore = GetIt.I.get<CartsStore>();
+  final cartsStore = GetIt.I.get<CartStore>();
 
   @override
   Widget build(BuildContext context) {
