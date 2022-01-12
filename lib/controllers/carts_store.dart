@@ -33,4 +33,26 @@ abstract class _CartsStoreBase with Store {
     total += productsModel.price * p.quantity;
     print(total);
   }
+
+  @action
+  addProducts(ProductsModel productsModel) {
+    var index = products!.indexWhere((p) => p.productId == productsModel.id);
+    if (index <= 0) {
+      var update = products![index];
+      update.quantity++;
+      products![index] = update;
+    } else {
+      products!.add(addProducts(productsModel));
+    }
+    print("Produto foi adicionado no carrinho");
+  }
+
+  @action
+  removeProducts(ProductsModel productsModel) {
+    var index = products!.indexWhere((p) => p.productId == productsModel.id);
+    if (index <= 0) {
+      products!.removeAt(index).quantity--;
+    }
+    print("Produto foi removido do carrinho");
+  }
 }

@@ -106,6 +106,28 @@ mixin _$CartsStore on _CartsStoreBase, Store {
   }
 
   @override
+  dynamic addProducts(ProductsModel productsModel) {
+    final _$actionInfo = _$_CartsStoreBaseActionController.startAction(
+        name: '_CartsStoreBase.addProducts');
+    try {
+      return super.addProducts(productsModel);
+    } finally {
+      _$_CartsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic removeProducts(ProductsModel productsModel) {
+    final _$actionInfo = _$_CartsStoreBaseActionController.startAction(
+        name: '_CartsStoreBase.removeProducts');
+    try {
+      return super.removeProducts(productsModel);
+    } finally {
+      _$_CartsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 cartModel: ${cartModel},
