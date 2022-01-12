@@ -95,6 +95,17 @@ mixin _$CartsStore on _CartsStoreBase, Store {
   }
 
   @override
+  void getTotal(ProductsModel productsModel, Products p) {
+    final _$actionInfo = _$_CartsStoreBaseActionController.startAction(
+        name: '_CartsStoreBase.getTotal');
+    try {
+      return super.getTotal(productsModel, p);
+    } finally {
+      _$_CartsStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 cartModel: ${cartModel},
