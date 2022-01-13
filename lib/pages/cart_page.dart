@@ -16,7 +16,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  final cartsStore = GetIt.I.get<CartStore>();
+  final cartStore = GetIt.I.get<CartStore>();
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +70,7 @@ class _CartPageState extends State<CartPage> {
                       fontWeight: FontWeight.w400,
                     ),
                     TextPlus(
-                      'R\$1000',
+                      ' R\$ ${cartStore.total.toStringAsFixed(2)}',
                       fontSize: 15,
                       color: Colors.white54,
                       fontWeight: FontWeight.w500,
@@ -108,7 +108,7 @@ class _CartPageState extends State<CartPage> {
                       fontSize: 18,
                     ),
                     TextPlus(
-                      cartsStore.amount.toString(),
+                      ' R\$ ${cartStore.total.toStringAsFixed(2)}',
                       color: Colors.red[700],
                       fontWeight: FontWeight.w700,
                       fontSize: 18,
@@ -125,7 +125,7 @@ class _CartPageState extends State<CartPage> {
                   color: buttonColor,
                   enabled: true,
                   child: TextPlus(
-                    'FINALIZAR R\$ 950',
+                    'FINALIZAR R\$ ${cartStore.total.toStringAsFixed(2)}',
                     color: Colors.white,
                   ),
                   onPressed: () {
