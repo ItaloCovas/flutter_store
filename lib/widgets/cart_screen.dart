@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
@@ -8,12 +6,6 @@ import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/main.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
-import 'package:provider/provider.dart';
-
-void main() {
-  runApp(ChangeNotifierProvider(
-      create: (context) => const CartScreen(), child: const MyApp()));
-}
 
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -31,11 +23,15 @@ class _CartScreenState extends State<CartScreen> {
         backgroundColor: primaryBlack,
         appBar: _AppBar(),
         body: Observer(builder: (_) {
-          return cartStore.products!.length == 0
+          return cartStore.products!.isEmpty
               ? Center(
                   child: TextPlus('Carrinho Vazio'),
                 )
-              : ListView();
+              : ListView.builder(
+                  itemCount: cartStore.products!.length,
+                  itemBuilder: (ctx, index) {
+                    return ContainerPlus();
+                  });
         }));
   }
 

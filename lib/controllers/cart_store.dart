@@ -36,14 +36,12 @@ abstract class _CartStoreBase with Store {
   addProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.productId == productsModel.id);
     if (index > 0) {
-      var update = products![index];
-      update.quantity++;
-      products![index] = update;
+      products!.elementAt(index).quantity++;
+      print("Produto foi adicionado no carrinho");
     } else {
       products!.add(addProducts(productsModel));
+      print("Produto nao foi adicionado no carrinho");
     }
-    // ignore: avoid_print
-    print("Produto foi adicionado no carrinho");
   }
 
   @action
@@ -52,7 +50,6 @@ abstract class _CartStoreBase with Store {
     if (index > 0) {
       products!.removeAt(index).quantity--;
     }
-    // ignore: avoid_print
     print("Produto foi removido do carrinho");
   }
 }
