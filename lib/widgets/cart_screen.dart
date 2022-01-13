@@ -3,8 +3,8 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
-import 'package:flutter_store/main.dart';
 import 'package:flutter_store/theme/colors.dart';
+import 'package:flutter_store/widgets/home_page.dart';
 import 'package:get_it/get_it.dart';
 
 class CartScreen extends StatefulWidget {
@@ -25,13 +25,106 @@ class _CartScreenState extends State<CartScreen> {
         body: Observer(builder: (_) {
           return cartStore.products!.isEmpty
               ? Center(
-                  child: TextPlus('Carrinho Vazio'),
+                  child: TextPlus(
+                    'Carrinho Vazio',
+                    color: Colors.white,
+                    fontSize: 15,
+                  ),
                 )
-              : ListView.builder(
-                  itemCount: cartStore.products!.length,
-                  itemBuilder: (ctx, index) {
-                    return ContainerPlus();
-                  });
+              : Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: ListView.builder(
+                      itemCount: cartStore.products!.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (ctx, index) => Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: ContainerPlus(
+                              padding:
+                                  EdgeInsets.only(top: 10, left: 5, right: 5),
+                              width: double.infinity,
+                              height: 115,
+                              margin: EdgeInsets.symmetric(
+                                  horizontal: 7, vertical: 2),
+                              radius: RadiusPlus.all(10),
+                              child: Dismissible(
+                                key: ValueKey(
+                                    cartStore.products![index].products.id),
+                                background: ContainerPlus(
+                                  radius: RadiusPlus.all(5),
+                                  color: Colors.redAccent[700],
+                                  alignment: Alignment.centerRight,
+                                  padding: const EdgeInsets.all(5),
+                                  child: const Icon(
+                                    Icons.delete_forever,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        ClipOval(
+                                          child: Image(
+                                            image: NetworkImage(cartStore
+                                                .products![index]
+                                                .products
+                                                .image),
+                                            width: 70,
+                                            height: 70,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 20,
+                                        ),
+                                        Expanded(
+                                            child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            TextPlus(
+                                              cartStore.products![index]
+                                                  .products.title,
+                                              fontSize: 15,
+                                              color: Colors.white,
+                                            ),
+                                            const SizedBox(
+                                              height: 12,
+                                            ),
+                                            Text.rich(TextSpan(
+                                                text:
+                                                    'R\$ ${cartStore.products![index].products.price.toStringAsFixed(2)}',
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Colors.grey[700],
+                                                ),
+                                                children: [
+                                                  TextSpan(
+                                                    text:
+                                                        '   x${cartStore.products![index].quantity.toString()} u',
+                                                    style: TextStyle(
+                                                        color:
+                                                            Colors.grey[700]),
+                                                  )
+                                                ])),
+                                          ],
+                                        )),
+                                      ],
+                                    ),
+                                    const Padding(
+                                      padding: const EdgeInsets.only(top: 12),
+                                      child: Divider(
+                                        height: 1,
+                                        thickness: 2,
+                                        color: secondaryBlack,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )),
+                );
         }));
   }
 
@@ -53,7 +146,7 @@ class _CartScreenState extends State<CartScreen> {
                 fontWeight: FontWeight.w600,
               ),
               TextPlus(
-                '1 item',
+                '${cartStore.products!.length} item(s)',
                 color: Colors.grey[500],
                 fontSize: 14,
               ),

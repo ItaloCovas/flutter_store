@@ -7,7 +7,7 @@ class CartStore = _CartStoreBase with _$CartStore;
 
 abstract class _CartStoreBase with Store {
   @observable
-  ObservableList<CartProducts>? products;
+  ObservableList<CartProducts>? products = ObservableList.of(<CartProducts>[]);
 
   @observable
   double total = 0;
@@ -28,25 +28,28 @@ abstract class _CartStoreBase with Store {
   @action
   void getTotal(ProductsModel productsModel, CartProducts p) {
     total += productsModel.price * p.quantity;
-    // ignore: avoid_print
-    print(total);
   }
 
   @action
   addProducts(ProductsModel productsModel) {
-    var index = products!.indexWhere((p) => p.productId == productsModel.id);
+    var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index > 0) {
-      products!.elementAt(index).quantity++;
-      print("Produto foi adicionado no carrinho");
+      products!.elementAt(index).quantity += amount;
     } else {
-      products!.add(addProducts(productsModel));
-      print("Produto nao foi adicionado no carrinho");
+      products!.add(CartProducts(products: productsModel, quantity: amount));
+    }
+    for (var item in products as List) {
+      print('Id: ' +
+          item.products.id.toString() +
+          ' | ' +
+          'quantity: ' +
+          item.quantity.toString());
     }
   }
 
   @action
   removeProducts(ProductsModel productsModel) {
-    var index = products!.indexWhere((p) => p.productId == productsModel.id);
+    var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index > 0) {
       products!.removeAt(index).quantity--;
     }

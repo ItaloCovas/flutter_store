@@ -125,7 +125,7 @@ class _CartPageState extends State<CartPage> {
                   color: buttonColor,
                   enabled: true,
                   child: TextPlus(
-                    'FINALIZAR R\$ ${cartStore.total.toStringAsFixed(2)}',
+                    'FINALIZAR R\$ ${cartStore.total}',
                     color: Colors.white,
                   ),
                   onPressed: () {
