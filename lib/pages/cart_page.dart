@@ -130,6 +130,16 @@ class _CartPageState extends State<CartPage> {
                           color: Colors.white,
                         ),
                         onPressed: () {
+                          dialogPlus.showDefault(
+                              title: 'SUCESSO',
+                              message:
+                                  "Pedido finalizado com sucesso! Todos os dados serão enviados por email. Que a força esteja com você!",
+                              elementsSpacing: 16,
+                              buttonOneText: 'OK',
+                              buttonOneColor: buttonColor,
+                              buttonOneCallback: () {
+                                navigatorPlus.back();
+                              });
                           cartStore.clearCart();
                         },
                       )

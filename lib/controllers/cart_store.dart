@@ -1,5 +1,7 @@
+import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/model/products_model.dart';
+import 'package:flutter_store/theme/colors.dart';
 import 'package:mobx/mobx.dart';
 part 'cart_store.g.dart';
 
@@ -37,6 +39,18 @@ abstract class _CartStoreBase with Store {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index >= 0) {
       products!.elementAt(index).quantity += amount;
+      if (amount == 0) {
+        dialogPlus.showDefault(
+            title: 'ERRO',
+            message: "Insira uma quantidade válida!",
+            elementsSpacing: 16,
+            buttonOneText: 'OK',
+            buttonOneColor: buttonColor,
+            buttonOneCallback: () {
+              navigatorPlus.back();
+            });
+      } else {}
+      amount = 0;
     } else {
       products!.add(CartProducts(products: productsModel, quantity: amount));
     }
