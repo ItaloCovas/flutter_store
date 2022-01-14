@@ -17,13 +17,14 @@ class CartScreen extends StatefulWidget {
 class _CartScreenState extends State<CartScreen> {
   final homeApiStore = GetIt.I.get<HomeApiStore>();
   final cartStore = GetIt.I.get<CartStore>();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: primaryBlack,
-        appBar: _AppBar(),
-        body: Observer(builder: (_) {
-          return cartStore.products!.isEmpty
+    return Observer(builder: (_) {
+      return Scaffold(
+          backgroundColor: primaryBlack,
+          appBar: _AppBar(),
+          body: cartStore.products!.isEmpty
               ? Center(
                   child: TextPlus(
                     'Carrinho Vazio',
@@ -39,16 +40,20 @@ class _CartScreenState extends State<CartScreen> {
                       itemBuilder: (ctx, index) => Padding(
                             padding: const EdgeInsets.only(top: 5),
                             child: ContainerPlus(
-                              padding:
-                                  EdgeInsets.only(top: 10, left: 5, right: 5),
+                              padding: const EdgeInsets.only(
+                                  top: 10, left: 5, right: 5),
                               width: double.infinity,
                               height: 115,
-                              margin: EdgeInsets.symmetric(
+                              margin: const EdgeInsets.symmetric(
                                   horizontal: 7, vertical: 2),
                               radius: RadiusPlus.all(10),
                               child: Dismissible(
                                 key: ValueKey(
                                     cartStore.products![index].products.id),
+                                onDismissed: (direction) {
+                                  cartStore.removeProducts(
+                                      cartStore.products![index].products);
+                                },
                                 background: ContainerPlus(
                                   radius: RadiusPlus.all(5),
                                   color: Colors.redAccent[700],
@@ -101,7 +106,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 children: [
                                                   TextSpan(
                                                     text:
-                                                        '   x${cartStore.products![index].quantity.toString()} u',
+                                                        '  ${cartStore.products![index].quantity.toString()}x',
                                                     style: TextStyle(
                                                         color:
                                                             Colors.grey[700]),
@@ -112,7 +117,7 @@ class _CartScreenState extends State<CartScreen> {
                                       ],
                                     ),
                                     const Padding(
-                                      padding: const EdgeInsets.only(top: 12),
+                                      padding: EdgeInsets.only(top: 12),
                                       child: Divider(
                                         height: 1,
                                         thickness: 2,
@@ -123,9 +128,8 @@ class _CartScreenState extends State<CartScreen> {
                                 ),
                               ),
                             ),
-                          )),
-                );
-        }));
+                          ))));
+    });
   }
 
   _AppBar() {
@@ -135,23 +139,25 @@ class _CartScreenState extends State<CartScreen> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         backgroundColor: primaryBlack,
-        title: Padding(
-          padding: const EdgeInsets.only(top: 15),
-          child: Column(
-            children: [
-              TextPlus(
-                'Detalhes da Compra',
-                color: Colors.white,
-                fontSize: 21,
-                fontWeight: FontWeight.w600,
-              ),
-              TextPlus(
-                '${cartStore.products!.length} item(s)',
-                color: Colors.grey[500],
-                fontSize: 14,
-              ),
-            ],
-          ),
-        ));
+        title: Observer(builder: (_) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 15),
+            child: Column(
+              children: [
+                TextPlus(
+                  'Detalhes da Compra',
+                  color: Colors.white,
+                  fontSize: 21,
+                  fontWeight: FontWeight.w600,
+                ),
+                TextPlus(
+                  '${cartStore.products!.length} item(s)',
+                  color: Colors.grey[500],
+                  fontSize: 14,
+                ),
+              ],
+            ),
+          );
+        }));
   }
 }

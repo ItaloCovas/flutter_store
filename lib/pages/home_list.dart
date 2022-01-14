@@ -227,6 +227,10 @@ class _HomeListState extends State<HomeList> {
                                                       homeApiStore
                                                               .productsModel![
                                                           index]);
+                                                  cartStore.getTotal(
+                                                      homeApiStore
+                                                              .productsModel![
+                                                          index]);
                                                 },
                                               ),
                                             ],

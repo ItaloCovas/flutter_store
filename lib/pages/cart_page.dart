@@ -20,123 +20,123 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: primaryBlack,
-      body: const CartScreen(),
-      bottomNavigationBar: ContainerPlus(
-        height: 250,
-        color: primaryBlack,
-        radius: RadiusPlus.only(topLeft: 30, topRight: 30),
-        shadows: [
-          ShadowPlus(
-            color: secondaryBlack.withOpacity(0.20),
-            blur: 10,
-            spread: 15,
-            moveRight: 17,
-          ),
-          ShadowPlus(
-            color: secondaryBlack.withOpacity(0.20),
-            blur: 10,
-            spread: -15,
-            moveRight: -17,
-          ),
-        ],
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 25, 20, 10),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    ContainerPlus(
-                      child: TextPlus('Informações',
-                          fontSize: 20,
-                          fontFamily: 'RobotoMonoS',
-                          color: Colors.white.withOpacity(0.8),
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ],
+    return Observer(builder: (_) {
+      return Scaffold(
+          backgroundColor: primaryBlack,
+          body: const CartScreen(),
+          bottomNavigationBar: ContainerPlus(
+              height: 250,
+              color: primaryBlack,
+              radius: RadiusPlus.only(topLeft: 30, topRight: 30),
+              shadows: [
+                ShadowPlus(
+                  color: secondaryBlack.withOpacity(0.20),
+                  blur: 10,
+                  spread: 15,
+                  moveRight: 17,
                 ),
-                const SizedBox(
-                  height: 20,
+                ShadowPlus(
+                  color: secondaryBlack.withOpacity(0.20),
+                  blur: 10,
+                  spread: -15,
+                  moveRight: -17,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextPlus(
-                      'Subtotal',
-                      fontSize: 15,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    TextPlus(
-                      ' R\$ ${cartStore.total.toStringAsFixed(2)}',
-                      fontSize: 15,
-                      color: Colors.white54,
-                      fontWeight: FontWeight.w500,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextPlus(
-                      'Desconto',
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    TextPlus(
-                      '0%',
-                      color: Colors.white54,
-                      fontWeight: FontWeight.w500,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    TextPlus(
-                      'Total',
-                      color: Colors.blue,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                    ),
-                    TextPlus(
-                      ' R\$ ${cartStore.total.toStringAsFixed(2)}',
-                      color: Colors.red[700],
-                      fontWeight: FontWeight.w700,
-                      fontSize: 18,
-                    )
-                  ],
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ButtonPlus(
-                  width: MediaQuery.of(context).size.width,
-                  height: 40,
-                  radius: RadiusPlus.all(12),
-                  color: buttonColor,
-                  enabled: true,
-                  child: TextPlus(
-                    'FINALIZAR R\$ ${cartStore.total}',
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    print('FINALIZAR');
-                  },
-                )
               ],
-            ),
-          ),
-        ),
-      ),
-    );
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 25, 20, 10),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          ContainerPlus(
+                            child: TextPlus('Informações',
+                                fontSize: 20,
+                                fontFamily: 'RobotoMonoS',
+                                color: Colors.white.withOpacity(0.8),
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextPlus(
+                            'Subtotal',
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          TextPlus(
+                            ' R\$ ${cartStore.total.toStringAsFixed(2)}',
+                            fontSize: 15,
+                            color: Colors.white54,
+                            fontWeight: FontWeight.w500,
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextPlus(
+                            'Desconto',
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
+                          ),
+                          TextPlus(
+                            '0%',
+                            color: Colors.white54,
+                            fontWeight: FontWeight.w500,
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextPlus(
+                            'Total',
+                            color: Colors.blue,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 18,
+                          ),
+                          TextPlus(
+                            ' R\$ ${cartStore.total.toStringAsFixed(2)}',
+                            color: Colors.red[700],
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ButtonPlus(
+                        width: MediaQuery.of(context).size.width,
+                        height: 40,
+                        radius: RadiusPlus.all(12),
+                        color: buttonColor,
+                        enabled: true,
+                        child: TextPlus(
+                          'FINALIZAR   R\$ ${cartStore.total.toStringAsFixed(2)}',
+                          color: Colors.white,
+                        ),
+                        onPressed: () {
+                          cartStore.clearCart();
+                        },
+                      )
+                    ],
+                  ),
+                ),
+              )));
+    });
   }
 }

@@ -10,10 +10,10 @@ abstract class _CartStoreBase with Store {
   ObservableList<CartProducts>? products = ObservableList.of(<CartProducts>[]);
 
   @observable
-  double total = 0;
+  double total = 0.0;
 
   @observable
-  int amount = 0;
+  int amount = 1;
 
   @action
   void increment() {
@@ -22,18 +22,20 @@ abstract class _CartStoreBase with Store {
 
   @action
   void decrement() {
-    amount <= 0 ? amount = 0 : amount--;
+    amount <= 1 ? amount = 1 : amount--;
   }
 
   @action
-  void getTotal(ProductsModel productsModel, CartProducts p) {
-    total += productsModel.price * p.quantity;
+  void getTotal(ProductsModel productsModel) {
+    for (var item in products!) {
+      total += item.products.price * item.quantity;
+    }
   }
 
   @action
   addProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
-    if (index > 0) {
+    if (index >= 0) {
       products!.elementAt(index).quantity += amount;
     } else {
       products!.add(CartProducts(products: productsModel, quantity: amount));
@@ -50,9 +52,15 @@ abstract class _CartStoreBase with Store {
   @action
   removeProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
-    if (index > 0) {
+    if (index >= 0) {
       products!.removeAt(index).quantity--;
     }
     print("Produto foi removido do carrinho");
+  }
+
+  @action
+  clearCart() {
+    products = ObservableList.of(<CartProducts>[]);
+    total = 0;
   }
 }

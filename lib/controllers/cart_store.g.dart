@@ -80,11 +80,11 @@ mixin _$CartStore on _CartStoreBase, Store {
   }
 
   @override
-  void getTotal(ProductsModel productsModel, CartProducts p) {
+  void getTotal(ProductsModel productsModel) {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction(
         name: '_CartStoreBase.getTotal');
     try {
-      return super.getTotal(productsModel, p);
+      return super.getTotal(productsModel);
     } finally {
       _$_CartStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -107,6 +107,17 @@ mixin _$CartStore on _CartStoreBase, Store {
         name: '_CartStoreBase.removeProducts');
     try {
       return super.removeProducts(productsModel);
+    } finally {
+      _$_CartStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic clearCart() {
+    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
+        name: '_CartStoreBase.clearCart');
+    try {
+      return super.clearCart();
     } finally {
       _$_CartStoreBaseActionController.endAction(_$actionInfo);
     }
