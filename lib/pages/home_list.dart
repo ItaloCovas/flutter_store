@@ -223,21 +223,35 @@ class _HomeListState extends State<HomeList> {
                                                 radius: RadiusPlus.all(8),
                                                 width: 200,
                                                 onPressed: () {
-                                                  dialogPlus.showDefault(
-                                                      title: 'SUCESSO',
-                                                      message:
-                                                          "Produto adicionado com sucesso!",
-                                                      elementsSpacing: 16,
-                                                      buttonOneText: 'OK',
-                                                      buttonOneColor:
-                                                          buttonColor,
-                                                      buttonOneCallback: () {
-                                                        navigatorPlus.back();
-                                                      });
-                                                  cartStore.addProducts(
-                                                      homeApiStore
-                                                              .productsModel![
-                                                          index]);
+                                                  if (cartStore.amount != 0) {
+                                                    cartStore.addProducts(
+                                                        homeApiStore
+                                                                .productsModel![
+                                                            index]);
+                                                    dialogPlus.showDefault(
+                                                        title: 'SUCESSO',
+                                                        message:
+                                                            "Produto adicionado com sucesso!",
+                                                        elementsSpacing: 16,
+                                                        buttonOneText: 'OK',
+                                                        buttonOneColor:
+                                                            buttonColor,
+                                                        buttonOneCallback: () {
+                                                          navigatorPlus.back();
+                                                        });
+                                                  } else {
+                                                    dialogPlus.showDefault(
+                                                        title: 'ERRO',
+                                                        message:
+                                                            "Insira uma quantidade válida!",
+                                                        elementsSpacing: 16,
+                                                        buttonOneText: 'OK',
+                                                        buttonOneColor:
+                                                            buttonColor,
+                                                        buttonOneCallback: () {
+                                                          navigatorPlus.back();
+                                                        });
+                                                  }
                                                   cartStore.getTotal(
                                                       homeApiStore
                                                               .productsModel![

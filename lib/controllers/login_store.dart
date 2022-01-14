@@ -87,7 +87,7 @@ abstract class _LoginStore with Store {
   }
 
   @action
-  Future<void> login() async {
+  login() async {
     loading = true;
 
     // PROCESSO

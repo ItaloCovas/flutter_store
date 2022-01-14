@@ -24,7 +24,7 @@ abstract class _CartStoreBase with Store {
 
   @action
   void decrement() {
-    amount <= 1 ? amount = 1 : amount--;
+    amount <= 0 ? amount : amount--;
   }
 
   @action
@@ -39,18 +39,6 @@ abstract class _CartStoreBase with Store {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index >= 0) {
       products!.elementAt(index).quantity += amount;
-      if (amount == 0) {
-        dialogPlus.showDefault(
-            title: 'ERRO',
-            message: "Insira uma quantidade válida!",
-            elementsSpacing: 16,
-            buttonOneText: 'OK',
-            buttonOneColor: buttonColor,
-            buttonOneCallback: () {
-              navigatorPlus.back();
-            });
-      } else {}
-      amount = 0;
     } else {
       products!.add(CartProducts(products: productsModel, quantity: amount));
     }

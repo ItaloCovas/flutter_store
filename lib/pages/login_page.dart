@@ -128,8 +128,9 @@ class LoginPage extends StatelessWidget {
                                                 suffixIcon: IconButton(
                                                   icon: loginStore
                                                           .passwordVisible
-                                                      ? Icon(Icons.visibility)
-                                                      : Icon(
+                                                      ? const Icon(
+                                                          Icons.visibility)
+                                                      : const Icon(
                                                           Icons.visibility_off),
                                                   iconSize: 18,
                                                   color: Colors.black,
@@ -138,19 +139,19 @@ class LoginPage extends StatelessWidget {
                                                 ),
                                                 fillColor: Colors.white,
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                    const OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(10)),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                    const OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(10)),
                                                 ),
                                                 disabledBorder:
-                                                    OutlineInputBorder(
+                                                    const OutlineInputBorder(
                                                   borderRadius:
                                                       BorderRadius.all(
                                                           Radius.circular(10)),
@@ -160,14 +161,14 @@ class LoginPage extends StatelessWidget {
                                           );
                                         },
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 15,
                                       ),
                                       TextPlus("Esqueceu sua senha?",
                                           color: Colors.white,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 15),
-                                      SizedBox(height: 25),
+                                      const SizedBox(height: 25),
                                       Observer(
                                         builder: (_) {
                                           return Center(
@@ -175,8 +176,6 @@ class LoginPage extends StatelessWidget {
                                               onPressed: loginStore.isFormValid
                                                   ? () async {
                                                       await loginStore.login();
-                                                      navigatorPlus
-                                                          .show(HomePage());
                                                     }
                                                   : null,
                                               height: 60,
@@ -190,7 +189,7 @@ class LoginPage extends StatelessWidget {
                                                   ? true
                                                   : false,
                                               child: loginStore.loading
-                                                  ? CircularProgressIndicator(
+                                                  ? const CircularProgressIndicator(
                                                       valueColor:
                                                           AlwaysStoppedAnimation(
                                                               Colors.white),
@@ -225,7 +224,7 @@ class LoginPage extends StatelessWidget {
                                       children: <Widget>[
                                         TextPlus("Nome de usuário",
                                             color: Colors.white),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         TextFieldPlus(
@@ -241,17 +240,17 @@ class LoginPage extends StatelessWidget {
                                             color: Colors.grey,
                                             fontSize: 14,
                                           ),
-                                          prefixWidget: Icon(
+                                          prefixWidget: const Icon(
                                               Icons.alternate_email,
                                               size: 18,
                                               color: Colors.black),
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         TextPlus(
                                           "Senha",
                                           color: Colors.white,
                                         ),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         SizedBox(
@@ -260,9 +259,9 @@ class LoginPage extends StatelessWidget {
                                             obscureText: true,
                                             onChanged:
                                                 loginStore.setRegisterPassword,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            decoration: InputDecoration(
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            decoration: const InputDecoration(
                                               prefixIconConstraints:
                                                   BoxConstraints(
                                                 maxHeight: 20,
@@ -274,7 +273,7 @@ class LoginPage extends StatelessWidget {
                                                   color: Colors.grey,
                                                   fontSize: 14),
                                               prefixIcon: Padding(
-                                                padding: const EdgeInsets.only(
+                                                padding: EdgeInsets.only(
                                                     left: 5, right: 5),
                                                 child: Icon(
                                                   Icons.lock,
@@ -294,10 +293,10 @@ class LoginPage extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         TextPlus("Repita sua senha",
                                             color: Colors.white),
-                                        SizedBox(
+                                        const SizedBox(
                                           height: 5,
                                         ),
                                         SizedBox(
@@ -306,9 +305,9 @@ class LoginPage extends StatelessWidget {
                                             obscureText: true,
                                             onChanged:
                                                 loginStore.setRegisterPassword,
-                                            style:
-                                                TextStyle(color: Colors.black),
-                                            decoration: InputDecoration(
+                                            style: const TextStyle(
+                                                color: Colors.black),
+                                            decoration: const InputDecoration(
                                               prefixIconConstraints:
                                                   BoxConstraints(
                                                 maxHeight: 20,
@@ -320,7 +319,7 @@ class LoginPage extends StatelessWidget {
                                                   color: Colors.grey,
                                                   fontSize: 14),
                                               prefixIcon: Padding(
-                                                padding: const EdgeInsets.only(
+                                                padding: EdgeInsets.only(
                                                     left: 5, right: 5),
                                                 child: Icon(
                                                   Icons.lock,
@@ -340,7 +339,7 @@ class LoginPage extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 15),
+                                        const SizedBox(height: 15),
                                         Center(
                                           child: ButtonPlus(
                                             onPressed: loginStore

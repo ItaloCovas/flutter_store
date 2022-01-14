@@ -160,7 +160,7 @@ mixin _$LoginStore on _LoginStore, Store {
   final _$loginAsyncAction = AsyncAction('_LoginStore.login');
 
   @override
-  Future<void> login() {
+  Future login() {
     return _$loginAsyncAction.run(() => super.login());
   }
 
