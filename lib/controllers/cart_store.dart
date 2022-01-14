@@ -49,6 +49,7 @@ abstract class _CartStoreBase with Store {
           'quantity: ' +
           item.quantity.toString());
     }
+    this.products = this.products;
   }
 
   @action

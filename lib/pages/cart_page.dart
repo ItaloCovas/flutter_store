@@ -131,10 +131,10 @@ class _CartPageState extends State<CartPage> {
                         ),
                         onPressed: () {
                           dialogPlus.showDefault(
-                              title: 'SUCESSO',
+                              title: 'SUCESSO 🚀💜',
                               message:
-                                  "Pedido finalizado com sucesso! Todos os dados serão enviados por email. Que a força esteja com você!",
-                              elementsSpacing: 16,
+                                  "Pedido finalizado com sucesso! Todos os dados serão enviados por email.\n Que a força esteja com você!",
+                              elementsSpacing: 15,
                               buttonOneText: 'OK',
                               buttonOneColor: buttonColor,
                               buttonOneCallback: () {

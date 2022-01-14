@@ -106,7 +106,7 @@ class _CartScreenState extends State<CartScreen> {
                                                 children: [
                                                   TextSpan(
                                                     text:
-                                                        '  ${cartStore.products![index].quantity.toString()}x',
+                                                        '  ${cartStore.products![index].quantity}x',
                                                     style: TextStyle(
                                                         color:
                                                             Colors.grey[700]),
