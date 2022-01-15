@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
-import 'package:flutter_store/controllers/home_store.dart';
-import 'package:flutter_store/widgets/home_page.dart';
+
 import 'package:flutter_store/theme/colors.dart';
 import 'package:flutter_store/widgets/cart_screen.dart';
 import 'package:get_it/get_it.dart';
@@ -130,17 +129,30 @@ class _CartPageState extends State<CartPage> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          dialogPlus.showDefault(
-                              title: 'SUCESSO 🚀💜',
-                              message:
-                                  "Pedido finalizado com sucesso! Todos os dados serão enviados por email.\n Que a força esteja com você!",
-                              elementsSpacing: 15,
-                              buttonOneText: 'OK',
-                              buttonOneColor: buttonColor,
-                              buttonOneCallback: () {
-                                navigatorPlus.back();
-                              });
-                          cartStore.clearCart();
+                          if (cartStore.products!.isEmpty) {
+                            dialogPlus.showDefault(
+                                title: 'ERRO',
+                                message:
+                                    "Não foi possível finalizar sua compra, antes adicione ao menos um item no carrinho!",
+                                elementsSpacing: 15,
+                                buttonOneText: 'OK',
+                                buttonOneColor: buttonColor,
+                                buttonOneCallback: () {
+                                  navigatorPlus.back();
+                                });
+                          } else {
+                            dialogPlus.showDefault(
+                                title: 'SUCESSO 🚀💜',
+                                message:
+                                    "Pedido finalizado com sucesso! Todos os dados serão enviados por email.\n Que a força esteja com você!",
+                                elementsSpacing: 15,
+                                buttonOneText: 'OK',
+                                buttonOneColor: buttonColor,
+                                buttonOneCallback: () {
+                                  navigatorPlus.back();
+                                });
+                            cartStore.clearCart();
+                          }
                         },
                       )
                     ],

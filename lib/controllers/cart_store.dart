@@ -1,7 +1,5 @@
-import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/model/products_model.dart';
-import 'package:flutter_store/theme/colors.dart';
 import 'package:mobx/mobx.dart';
 part 'cart_store.g.dart';
 
@@ -49,7 +47,7 @@ abstract class _CartStoreBase with Store {
           'quantity: ' +
           item.quantity.toString());
     }
-    this.products = this.products;
+    products = products;
   }
 
   @action
@@ -58,7 +56,7 @@ abstract class _CartStoreBase with Store {
     if (index >= 0) {
       products!.removeAt(index).quantity--;
     }
-    print("Produto foi removido do carrinho");
+    print("Produto foi removido do carrinho ");
   }
 
   @action
