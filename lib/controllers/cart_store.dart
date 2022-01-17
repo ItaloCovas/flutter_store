@@ -57,6 +57,7 @@ abstract class _CartStoreBase with Store {
     if (index >= 0) {
       products!.removeAt(index).quantity--;
       total -= products!.elementAt(index).quantity * productsModel.price;
+      print(total);
     }
 
     print("Produto foi removido do carrinho ");

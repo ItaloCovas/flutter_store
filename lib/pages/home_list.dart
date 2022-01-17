@@ -35,10 +35,11 @@ class _HomeListState extends State<HomeList> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: ContainerPlus(
-        color: primaryBlack,
+    return ContainerPlus(
+      color: primaryBlack,
+      width: size.width,
+      height: size.height,
+      child: SingleChildScrollView(
         child: Column(
           children: [
             TextPlus('Olá! Seja bem-vindo à Loja Padawans.👋',
