@@ -7,7 +7,7 @@ import 'package:flutter_store/controllers/users_store.dart';
 import 'package:flutter_store/pages/login_page.dart';
 import 'package:get_it/get_it.dart';
 
-void main() {
+void main() async {
   //Iniciando o GetIt
   GetIt getIt = GetIt.instance;
   getIt.registerSingleton<LoginStore>(LoginStore());

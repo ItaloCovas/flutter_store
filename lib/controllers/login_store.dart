@@ -111,7 +111,7 @@ abstract class _LoginStore with Store {
       return;
     } else {
       assignId();
-      navigatorPlus.show(HomePage());
+      navigatorPlus.show(const HomePage());
     }
     loading = false;
   }

@@ -29,7 +29,9 @@ abstract class _CartStoreBase with Store {
   void getTotal(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index >= 0) {
-      total += products!.elementAt(index).quantity * productsModel.price;
+      for (var item in products!) {
+        total += products!.elementAt(index).quantity * productsModel.price;
+      }
     }
   }
 
