@@ -26,13 +26,13 @@ abstract class _CartStoreBase with Store {
   }
 
   @action
-  void getTotal(ProductsModel productsModel) {
-    var index = products!.indexWhere((p) => p.products.id == productsModel.id);
-    if (index >= 0) {
-      for (var item in products!) {
-        total += products!.elementAt(index).quantity * productsModel.price;
-      }
+  getTotal() {
+    double totalCarrinho = 0;
+    for (var item in products!) {
+      totalCarrinho += item.products.price * item.quantity;
     }
+    total = totalCarrinho;
+    return totalCarrinho;
   }
 
   @action
@@ -57,9 +57,8 @@ abstract class _CartStoreBase with Store {
   removeProducts(ProductsModel productsModel) {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index >= 0) {
-      products!.removeAt(index).quantity--;
-      total -= products!.elementAt(index).quantity * productsModel.price;
-      print(total);
+      products!.removeAt(index);
+      getTotal();
     }
 
     print("Produto foi removido do carrinho ");

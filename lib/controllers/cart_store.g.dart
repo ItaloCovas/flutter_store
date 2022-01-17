@@ -80,11 +80,11 @@ mixin _$CartStore on _CartStoreBase, Store {
   }
 
   @override
-  void getTotal(ProductsModel productsModel) {
+  dynamic getTotal() {
     final _$actionInfo = _$_CartStoreBaseActionController.startAction(
         name: '_CartStoreBase.getTotal');
     try {
-      return super.getTotal(productsModel);
+      return super.getTotal();
     } finally {
       _$_CartStoreBaseActionController.endAction(_$actionInfo);
     }

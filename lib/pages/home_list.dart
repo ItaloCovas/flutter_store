@@ -253,10 +253,7 @@ class _HomeListState extends State<HomeList> {
                                                           navigatorPlus.back();
                                                         });
                                                   }
-                                                  cartStore.getTotal(
-                                                      homeApiStore
-                                                              .productsModel![
-                                                          index]);
+                                                  cartStore.getTotal();
                                                 },
                                               ),
                                             ],
