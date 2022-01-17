@@ -16,7 +16,6 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   final cartStore = GetIt.I.get<CartStore>();
-
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {

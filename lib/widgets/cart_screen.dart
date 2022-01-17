@@ -48,7 +48,7 @@ class _CartScreenState extends State<CartScreen> {
                               radius: RadiusPlus.all(10),
                               child: Dismissible(
                                 key: ValueKey(
-                                    cartStore.products![index].products.id),
+                                    cartStore.products![index].products.price),
                                 onDismissed: (direction) {
                                   cartStore.removeProducts(
                                       cartStore.products![index].products);

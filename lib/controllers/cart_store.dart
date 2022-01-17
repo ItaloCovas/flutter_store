@@ -27,8 +27,9 @@ abstract class _CartStoreBase with Store {
 
   @action
   void getTotal(ProductsModel productsModel) {
-    for (var item in products!) {
-      total += item.products.price * item.quantity;
+    var index = products!.indexWhere((p) => p.products.id == productsModel.id);
+    if (index >= 0) {
+      total += products!.elementAt(index).quantity * productsModel.price;
     }
   }
 
@@ -55,7 +56,9 @@ abstract class _CartStoreBase with Store {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index >= 0) {
       products!.removeAt(index).quantity--;
+      total -= products!.elementAt(index).quantity * productsModel.price;
     }
+
     print("Produto foi removido do carrinho ");
   }
 
