@@ -172,6 +172,13 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$assignIdAsyncAction = AsyncAction('_LoginStore.assignId');
+
+  @override
+  Future assignId() {
+    return _$assignIdAsyncAction.run(() => super.assignId());
+  }
+
   final _$loginAsyncAction = AsyncAction('_LoginStore.login');
 
   @override
@@ -216,17 +223,6 @@ mixin _$LoginStore on _LoginStore, Store {
         name: '_LoginStore.togglePasswordVisibility');
     try {
       return super.togglePasswordVisibility();
-    } finally {
-      _$_LoginStoreActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic assignId() {
-    final _$actionInfo =
-        _$_LoginStoreActionController.startAction(name: '_LoginStore.assignId');
-    try {
-      return super.assignId();
     } finally {
       _$_LoginStoreActionController.endAction(_$actionInfo);
     }

@@ -54,6 +54,13 @@ mixin _$CartStore on _CartStoreBase, Store {
     });
   }
 
+  final _$addProductsAsyncAction = AsyncAction('_CartStoreBase.addProducts');
+
+  @override
+  Future addProducts(ProductsModel productsModel) {
+    return _$addProductsAsyncAction.run(() => super.addProducts(productsModel));
+  }
+
   final _$_CartStoreBaseActionController =
       ActionController(name: '_CartStoreBase');
 
@@ -85,17 +92,6 @@ mixin _$CartStore on _CartStoreBase, Store {
         name: '_CartStoreBase.getTotal');
     try {
       return super.getTotal();
-    } finally {
-      _$_CartStoreBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic addProducts(ProductsModel productsModel) {
-    final _$actionInfo = _$_CartStoreBaseActionController.startAction(
-        name: '_CartStoreBase.addProducts');
-    try {
-      return super.addProducts(productsModel);
     } finally {
       _$_CartStoreBaseActionController.endAction(_$actionInfo);
     }

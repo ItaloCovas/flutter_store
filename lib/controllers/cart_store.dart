@@ -1,3 +1,4 @@
+import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:mobx/mobx.dart';
@@ -36,7 +37,7 @@ abstract class _CartStoreBase with Store {
   }
 
   @action
-  addProducts(ProductsModel productsModel) {
+  addProducts(ProductsModel productsModel) async {
     var index = products!.indexWhere((p) => p.products.id == productsModel.id);
     if (index >= 0) {
       products!.elementAt(index).quantity += amount;
@@ -50,6 +51,7 @@ abstract class _CartStoreBase with Store {
           'quantity: ' +
           item.quantity.toString());
     }
+    await localStoragePlus.write('cart', products?.toString());
     products = products;
   }
 

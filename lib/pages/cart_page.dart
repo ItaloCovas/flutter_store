@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
+import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
 
 import 'package:flutter_store/theme/colors.dart';
@@ -16,6 +17,22 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   final cartStore = GetIt.I.get<CartStore>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkCart();
+  }
+
+  checkCart() async {
+    if (await localStoragePlus.containsKey('cart')) {
+      await localStoragePlus.read('cart');
+    } else {
+      print('não tem carrinho');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Observer(builder: (_) {
