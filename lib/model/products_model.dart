@@ -1,8 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'package:dio/dio.dart';
-import 'dart:convert';
-import 'package:meta/meta.dart';
-
 class ProductsModel {
   int id;
   String title;
@@ -41,9 +36,7 @@ class ProductsModel {
     data['description'] = description;
     data['category'] = category;
     data['image'] = image;
-    if (rating != null) {
-      data['rating'] = rating.toJson();
-    }
+    data['rating'] = rating.toJson();
     return data;
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/widgets/home_page.dart';
-import 'package:flutter_store/pages/login_page.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/login_api.dart';
 part 'login_store.g.dart';

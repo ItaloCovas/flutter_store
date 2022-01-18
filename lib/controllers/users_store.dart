@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'package:dio/dio.dart';
 import 'package:mobx/mobx.dart';
 import 'package:flutter_store/api/users_api.dart';
 import 'package:flutter_store/model/users_model.dart';
@@ -15,7 +13,7 @@ abstract class _UsersApiStoreBase with Store {
   UsersModel? usersModel;
 
   @action
-   Future<void> getUsersList() async{
+  Future<void> getUsersList() async {
     await api.getUsers()!.then((user) {
       usersModel = user;
       print('users list changed');

@@ -1,9 +1,3 @@
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
-import 'package:meta/meta.dart';
-
 class UsersModel {
   UsersModel({
     required this.address,
@@ -23,8 +17,8 @@ class UsersModel {
   late final Name name;
   late final String phone;
   late final int iV;
-  
-  UsersModel.fromJson(Map<String, dynamic> json){
+
+  UsersModel.fromJson(Map<String, dynamic> json) {
     address = Address.fromJson(json['address']);
     id = json['id'];
     email = json['email'];
@@ -62,8 +56,8 @@ class Address {
   late final String street;
   late final int number;
   late final String zipcode;
-  
-  Address.fromJson(Map<String, dynamic> json){
+
+  Address.fromJson(Map<String, dynamic> json) {
     geolocation = Geolocation.fromJson(json['geolocation']);
     city = json['city'];
     street = json['street'];
@@ -89,8 +83,8 @@ class Geolocation {
   });
   late final String lat;
   late final String long;
-  
-  Geolocation.fromJson(Map<String, dynamic> json){
+
+  Geolocation.fromJson(Map<String, dynamic> json) {
     lat = json['lat'];
     long = json['long'];
   }
@@ -110,8 +104,8 @@ class Name {
   });
   late final String firstname;
   late final String lastname;
-  
-  Name.fromJson(Map<String, dynamic> json){
+
+  Name.fromJson(Map<String, dynamic> json) {
     firstname = json['firstname'];
     lastname = json['lastname'];
   }

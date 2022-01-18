@@ -1,12 +1,4 @@
-import 'package:flutter/foundation.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_store/model/products_model.dart';
-import 'dart:convert';
-import 'package:meta/meta.dart';
-import 'package:flutter/foundation.dart';
-import 'package:dio/dio.dart';
-import 'dart:convert';
-import 'package:meta/meta.dart';
 
 class CartProducts {
   ProductsModel products;
@@ -19,7 +11,7 @@ class CartProducts {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['product'] = products;
     data['quantity'] = quantity;
     return data;

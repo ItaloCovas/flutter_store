@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/pages/cart_page.dart';
 import 'package:flutter_store/pages/home_list.dart';

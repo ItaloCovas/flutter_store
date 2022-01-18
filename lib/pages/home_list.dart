@@ -1,18 +1,12 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
-import 'package:flutter_store/model/carts_model.dart';
 import 'package:flutter_store/widgets/categorias.dart';
 import 'package:flutter_store/controllers/home_store.dart';
-import 'package:get/get.dart';
-import 'package:flutter_store/api/products_api.dart';
-import 'package:flutter_store/model/products_model.dart';
+
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobx/src/api/observable_collections.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({Key? key}) : super(key: key);
