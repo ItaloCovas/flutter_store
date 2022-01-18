@@ -12,6 +12,16 @@ final api = LoginApi();
 class LoginStore = _LoginStore with _$LoginStore;
 
 abstract class _LoginStore with Store {
+  LoginStore() {
+    checkUserId() async {
+      if (await localStoragePlus.containsKey('user_id')) {
+        assignId();
+      }
+    }
+
+    checkUserId();
+  }
+
   // ******* PARTE DO LOGIN ************
   @observable
   String username = "";
@@ -49,7 +59,7 @@ abstract class _LoginStore with Store {
 
   //Verificação de username para poder atribuir um ID e futuramente capturar os dados desse user
   @action
-  assignId() {
+  assignId() async {
     switch (username) {
       case 'johnd':
         userId = 1;
@@ -85,6 +95,7 @@ abstract class _LoginStore with Store {
         userId = 0;
         break;
     }
+    return userId;
   }
 
   @observable
@@ -115,6 +126,7 @@ abstract class _LoginStore with Store {
       return;
     } else {
       assignId();
+      await localStoragePlus.write('user_id', userId);
       await localStoragePlus.write('user_login', jsonEncode(r.data));
       navigatorPlus.show(const HomePage());
     }
