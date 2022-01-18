@@ -1,14 +1,39 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/theme/colors.dart';
+import 'package:flutter_store/widgets/home_page.dart';
 import 'package:get_it/get_it.dart';
 
-class LoginPage extends StatelessWidget {
-  LoginPage({Key? key}) : super(key: key);
+class LoginPage extends StatefulWidget {
+  const LoginPage({Key? key}) : super(key: key);
 
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   LoginStore loginStore = GetIt.I.get<LoginStore>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    checkLogin();
+  }
+
+  checkLogin() async {
+    if (await localStoragePlus.containsKey('user_login')) {
+      jsonDecode(loginStore.r);
+      await localStoragePlus.read('user_login');
+      navigatorPlus.show(const HomePage());
+    } else {
+      print('não tem chave');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

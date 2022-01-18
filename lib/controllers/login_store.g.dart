@@ -127,6 +127,21 @@ mixin _$LoginStore on _LoginStore, Store {
     });
   }
 
+  final _$rAtom = Atom(name: '_LoginStore.r');
+
+  @override
+  dynamic get r {
+    _$rAtom.reportRead();
+    return super.r;
+  }
+
+  @override
+  set r(dynamic value) {
+    _$rAtom.reportWrite(value, super.r, () {
+      super.r = value;
+    });
+  }
+
   final _$userNameAtom = Atom(name: '_LoginStore.userName');
 
   @override
@@ -247,6 +262,7 @@ password: ${password},
 passwordVisible: ${passwordVisible},
 loading: ${loading},
 userId: ${userId},
+r: ${r},
 userName: ${userName},
 registerPassword: ${registerPassword},
 isUsernameValid: ${isUsernameValid},

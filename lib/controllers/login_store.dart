@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/widgets/home_page.dart';
@@ -85,12 +87,15 @@ abstract class _LoginStore with Store {
     }
   }
 
+  @observable
+  var r;
+
   @action
   login() async {
     loading = true;
 
     // PROCESSO
-    var r = await api.authenticate({
+    r = await api.authenticate({
       'username': username,
       'password': password,
     });
@@ -110,6 +115,7 @@ abstract class _LoginStore with Store {
       return;
     } else {
       assignId();
+      await localStoragePlus.write('user_login', jsonEncode(r));
       navigatorPlus.show(const HomePage());
     }
     loading = false;
