@@ -27,8 +27,7 @@ class _LoginPageState extends State<LoginPage> {
 
   checkLogin() async {
     if (await localStoragePlus.containsKey('user_login')) {
-      jsonDecode(loginStore.r);
-      await localStoragePlus.read('user_login');
+      jsonDecode(await localStoragePlus.read('user_login'));
       navigatorPlus.show(const HomePage());
     } else {
       print('não tem chave');
