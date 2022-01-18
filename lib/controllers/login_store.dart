@@ -115,7 +115,7 @@ abstract class _LoginStore with Store {
       return;
     } else {
       assignId();
-      await localStoragePlus.write('user_login', jsonEncode(r));
+      await localStoragePlus.write('user_login', jsonEncode(r.data));
       navigatorPlus.show(const HomePage());
     }
     loading = false;
