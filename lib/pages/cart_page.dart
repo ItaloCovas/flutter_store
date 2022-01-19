@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/api/products_api.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
-
 import 'package:flutter_store/theme/colors.dart';
 import 'package:flutter_store/widgets/cart_screen.dart';
 import 'package:get_it/get_it.dart';
@@ -20,7 +19,6 @@ class _CartPageState extends State<CartPage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     checkCart();
   }
