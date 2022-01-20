@@ -5,7 +5,7 @@ import 'package:mobx/mobx.dart';
 
 class ProductsApi {
   var dio = Dio();
-  static const productsApiUrl = 'https://fakestoreapi.com/products?limit=10';
+  static const productsApiUrl = 'https://fakestoreapi.com/products?limit=20';
   Future<ObservableList<ProductsModel>?> getProducts() async {
     try {
       Response response = await dio.get(productsApiUrl);

@@ -9,19 +9,19 @@ part of 'categories_store.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic
 
 mixin _$CategoriesStore on _CategoriesStoreBase, Store {
-  final _$categoriesProductsAtom =
-      Atom(name: '_CategoriesStoreBase.categoriesProducts');
+  final _$categoriesModelAtom =
+      Atom(name: '_CategoriesStoreBase.categoriesModel');
 
   @override
-  ObservableList<CategoriesApi>? get categoriesProducts {
-    _$categoriesProductsAtom.reportRead();
-    return super.categoriesProducts;
+  ObservableList<CategoriesModel>? get categoriesModel {
+    _$categoriesModelAtom.reportRead();
+    return super.categoriesModel;
   }
 
   @override
-  set categoriesProducts(ObservableList<CategoriesApi>? value) {
-    _$categoriesProductsAtom.reportWrite(value, super.categoriesProducts, () {
-      super.categoriesProducts = value;
+  set categoriesModel(ObservableList<CategoriesModel>? value) {
+    _$categoriesModelAtom.reportWrite(value, super.categoriesModel, () {
+      super.categoriesModel = value;
     });
   }
 
@@ -44,11 +44,22 @@ mixin _$CategoriesStore on _CategoriesStoreBase, Store {
       ActionController(name: '_CategoriesStoreBase');
 
   @override
-  dynamic getCategoriesList() {
+  dynamic getCategoryEletronicList() {
     final _$actionInfo = _$_CategoriesStoreBaseActionController.startAction(
-        name: '_CategoriesStoreBase.getCategoriesList');
+        name: '_CategoriesStoreBase.getCategoryEletronicList');
     try {
-      return super.getCategoriesList();
+      return super.getCategoryEletronicList();
+    } finally {
+      _$_CategoriesStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getCategoryJeweleryList() {
+    final _$actionInfo = _$_CategoriesStoreBaseActionController.startAction(
+        name: '_CategoriesStoreBase.getCategoryJeweleryList');
+    try {
+      return super.getCategoryJeweleryList();
     } finally {
       _$_CategoriesStoreBaseActionController.endAction(_$actionInfo);
     }
@@ -57,7 +68,7 @@ mixin _$CategoriesStore on _CategoriesStoreBase, Store {
   @override
   String toString() {
     return '''
-categoriesProducts: ${categoriesProducts},
+categoriesModel: ${categoriesModel},
 selectedIndex: ${selectedIndex}
     ''';
   }

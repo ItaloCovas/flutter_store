@@ -9,17 +9,24 @@ abstract class _CategoriesStoreBase with Store {
   CategoriesApi categoriesApi = CategoriesApi();
 
   @observable
-  ObservableList<CategoriesApi>? categoriesProducts =
-      ObservableList.of(<CategoriesApi>[]);
+  ObservableList<CategoriesModel>? categoriesModel;
 
   @observable
   int selectedIndex = 0;
 
   @action
-  getCategoriesList() {
-    categoriesApi.getCategories().then((categoriesList) {
-      categoriesProducts = categoriesList;
-      print(categoriesProducts);
+  getCategoryEletronicList() {
+    categoriesApi.getCategoryEletronics().then((categoryEletronicsList) {
+      categoriesModel = categoryEletronicsList;
+      print(categoriesModel);
+    });
+  }
+
+  @action
+  getCategoryJeweleryList() {
+    categoriesApi.getCategoryJewelery().then((categoryJewekeryList) {
+      categoriesModel = categoryJewekeryList;
+      print(categoriesModel);
     });
   }
 }
