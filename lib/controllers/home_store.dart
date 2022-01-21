@@ -27,8 +27,6 @@ abstract class _HomeApiStoreBase with Store {
   getEletronicList() {
     categoriesApi.getEletronics().then((eletronicsList) {
       productsModel = eletronicsList;
-      print('products list changed');
-
       print(productsModel);
     });
   }
@@ -37,6 +35,22 @@ abstract class _HomeApiStoreBase with Store {
   getJeweleryList() {
     categoriesApi.getJewelery().then((jeweleryList) {
       productsModel = jeweleryList;
+      print(productsModel);
+    });
+  }
+
+  @action
+  getMensClothingList() {
+    categoriesApi.getMensClothing().then((mensClothingList) {
+      productsModel = mensClothingList;
+      print(productsModel);
+    });
+  }
+
+  @action
+  getWomenssClothingList() {
+    categoriesApi.getWomenssClothing().then((womenssClothingList) {
+      productsModel = womenssClothingList;
       print(productsModel);
     });
   }

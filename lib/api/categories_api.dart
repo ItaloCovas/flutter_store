@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
-import 'package:flutter_store/model/categories_model.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:mobx/mobx.dart';
 

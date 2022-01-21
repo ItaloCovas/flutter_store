@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
-import 'package:flutter_store/controllers/categories_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
@@ -18,7 +17,6 @@ class ElectronicsCategory extends StatefulWidget {
 class _ElectronicsCategoryState extends State<ElectronicsCategory> {
   final homeApiStore = GetIt.I.get<HomeApiStore>();
   final cartStore = GetIt.I.get<CartStore>();
-  final categoriesStore = GetIt.I.get<CategoriesStore>();
 
   @override
   void initState() {
@@ -30,7 +28,7 @@ class _ElectronicsCategoryState extends State<ElectronicsCategory> {
   Widget build(BuildContext context) {
     return Observer(
       builder: (_) {
-        if (categoriesStore.categoriesModel != null) {
+        if (homeApiStore.productsModel != null) {
           return ContainerPlus(
             color: primaryBlack,
             padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
@@ -44,10 +42,9 @@ class _ElectronicsCategoryState extends State<ElectronicsCategory> {
               ),
               physics: const BouncingScrollPhysics(),
               addAutomaticKeepAlives: false,
-              itemCount: categoriesStore.categoriesModel?.length,
+              itemCount: homeApiStore.productsModel?.length,
               itemBuilder: (ctx, index) {
-                var productsEletronics =
-                    categoriesStore.categoriesModel![index];
+                var productsEletronics = homeApiStore.productsModel![index];
                 return GestureDetector(
                   onTap: () => {
                     bottomSheetPlus.show(
