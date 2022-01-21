@@ -9,7 +9,6 @@ import 'package:flutter_store/widgets/jewelery_category.dart';
 import 'package:flutter_store/widgets/mensclothing_category.dart';
 import 'package:flutter_store/widgets/womens_clothing.dart';
 import 'package:get_it/get_it.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({Key? key}) : super(key: key);
@@ -100,7 +99,7 @@ class _HomeListState extends State<HomeList> {
                           text: "Eletrônicos",
                         ),
                         Tab(
-                          text: "Acessrios",
+                          text: "Acessórios",
                         ),
                         Tab(
                           text: "Roupas Masculinas",
@@ -426,10 +425,10 @@ class _HomeListState extends State<HomeList> {
                         },
                       ),
                     ),
-                    SingleChildScrollView(child: ElectronicsCategory()),
-                    SingleChildScrollView(child: JeweleryCategory()),
-                    SingleChildScrollView(child: MensClothingCategory()),
-                    SingleChildScrollView(child: WomensClothingCategory())
+                    const SingleChildScrollView(child: ElectronicsCategory()),
+                    const SingleChildScrollView(child: JeweleryCategory()),
+                    const SingleChildScrollView(child: MensClothingCategory()),
+                    const SingleChildScrollView(child: WomensClothingCategory())
                   ]),
                 )
               ],
