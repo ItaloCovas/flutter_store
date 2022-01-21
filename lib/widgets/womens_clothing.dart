@@ -5,26 +5,25 @@ import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
 import 'package:flutter_store/controllers/categories_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
-import 'package:flutter_store/pages/home_list.dart';
 import 'package:flutter_store/theme/colors.dart';
 import 'package:get_it/get_it.dart';
 
-class Categorias extends StatefulWidget {
-  const Categorias({Key? key}) : super(key: key);
+class WomensClothingCategory extends StatefulWidget {
+  const WomensClothingCategory({Key? key}) : super(key: key);
 
   @override
-  _CategoriasState createState() => _CategoriasState();
+  _WomensClothingCategoryState createState() => _WomensClothingCategoryState();
 }
 
-class _CategoriasState extends State<Categorias> with TickerProviderStateMixin {
+class _WomensClothingCategoryState extends State<WomensClothingCategory> {
   final homeApiStore = GetIt.I.get<HomeApiStore>();
   final cartStore = GetIt.I.get<CartStore>();
-  final categoriesStore = CategoriesStore();
+  final categoriesStore = GetIt.I.get<CategoriesStore>();
 
   @override
   void initState() {
     super.initState();
-    categoriesStore.getCategoryEletronicList();
+    categoriesStore.getWomenssClothingList();
   }
 
   @override
@@ -47,8 +46,7 @@ class _CategoriasState extends State<Categorias> with TickerProviderStateMixin {
               addAutomaticKeepAlives: false,
               itemCount: categoriesStore.categoriesModel?.length,
               itemBuilder: (ctx, index) {
-                var productsEletronics =
-                    categoriesStore.categoriesModel![index];
+                var productsJewelery = categoriesStore.categoriesModel![index];
                 return GestureDetector(
                   onTap: () => {
                     bottomSheetPlus.show(
@@ -66,28 +64,28 @@ class _CategoriasState extends State<Categorias> with TickerProviderStateMixin {
                                 children: <Widget>[
                                   ClipOval(
                                     child: Image(
-                                      image: NetworkImage(
-                                          productsEletronics.image),
+                                      image:
+                                          NetworkImage(productsJewelery.image),
                                       width: 140,
                                       height: 140,
                                       fit: BoxFit.contain,
                                     ),
                                   ),
                                   const SizedBox(height: 20),
-                                  TextPlus(productsEletronics.title,
+                                  TextPlus(productsJewelery.title,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       textAlign: TextAlign.center),
                                   const SizedBox(height: 5),
-                                  TextPlus(productsEletronics.description,
+                                  TextPlus(productsJewelery.description,
                                       color: Colors.white,
                                       textAlign: TextAlign.center),
                                   SizedBox(
-                                      height: productsEletronics
-                                                  .description.length >
-                                              300
-                                          ? 55
-                                          : 70),
+                                      height:
+                                          productsJewelery.description.length >
+                                                  300
+                                              ? 55
+                                              : 70),
                                   Observer(builder: (_) {
                                     return Row(
                                       mainAxisAlignment:
@@ -139,11 +137,11 @@ class _CategoriasState extends State<Categorias> with TickerProviderStateMixin {
                                     );
                                   }),
                                   SizedBox(
-                                      height: productsEletronics
-                                                  .description.length >
-                                              300
-                                          ? 40
-                                          : 100),
+                                      height:
+                                          productsJewelery.description.length >
+                                                  300
+                                              ? 40
+                                              : 100),
                                   Row(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
@@ -218,7 +216,7 @@ class _CategoriasState extends State<Categorias> with TickerProviderStateMixin {
                       children: <Widget>[
                         ClipOval(
                           child: Image(
-                            image: NetworkImage(productsEletronics.image),
+                            image: NetworkImage(productsJewelery.image),
                             width: 80,
                             height: 80,
                             fit: BoxFit.contain,
@@ -227,12 +225,12 @@ class _CategoriasState extends State<Categorias> with TickerProviderStateMixin {
                         const SizedBox(
                           height: 8,
                         ),
-                        TextPlus(productsEletronics.title,
+                        TextPlus(productsJewelery.title,
                             fontSize: 10,
                             color: Colors.white,
                             textAlign: TextAlign.center),
                         const SizedBox(height: 5),
-                        TextPlus("R\$ " + productsEletronics.price.toString(),
+                        TextPlus("R\$ " + productsJewelery.price.toString(),
                             fontSize: 10,
                             color: Colors.white,
                             fontWeight: FontWeight.bold,

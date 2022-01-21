@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
-import 'package:flutter_store/widgets/categorias.dart';
+import 'package:flutter_store/widgets/electronics_category.dart';
 import 'package:flutter_store/controllers/home_store.dart';
-
 import 'package:flutter_store/theme/colors.dart';
+import 'package:flutter_store/widgets/jewelery_category.dart';
+import 'package:flutter_store/widgets/mensclothing_category.dart';
+import 'package:flutter_store/widgets/womens_clothing.dart';
 import 'package:get_it/get_it.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class HomeList extends StatefulWidget {
   const HomeList({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class HomeList extends StatefulWidget {
   _HomeListState createState() => _HomeListState();
 }
 
-class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
+class _HomeListState extends State<HomeList> {
   final homeApiStore = GetIt.I.get<HomeApiStore>();
   final cartStore = GetIt.I.get<CartStore>();
 
@@ -28,7 +31,6 @@ class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    var _tabBarController = TabController(length: 5, vsync: this);
     return Scaffold(
       backgroundColor: primaryBlack,
       body: SingleChildScrollView(
@@ -40,7 +42,7 @@ class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
               color: Colors.white,
               fontSize: 30,
               fontWeight: FontWeight.w400,
-              fontFamily: 'RobotoMono',
+              fontFamily: "RobotoMono",
             ),
           ),
           const SizedBox(
@@ -56,6 +58,7 @@ class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
               backgroundColor: secondaryBlack,
               letterSpacing: 2,
               textInputType: TextInputType.text,
+              fontWeight: FontWeight.w400,
               fontFamily: 'RobotoMono',
               radius: RadiusPlus.all(15),
               textColor: Colors.grey,
@@ -63,6 +66,8 @@ class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
                 'Procurar Produtos',
                 color: Colors.grey.shade700,
                 fontSize: 15,
+                fontFamily: 'RobotoMono',
+                fontWeight: FontWeight.w400,
               ),
               prefixWidget: Icon(
                 Icons.search_rounded,
@@ -92,10 +97,10 @@ class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
                           text: "Todos",
                         ),
                         Tab(
-                          text: "Eletronicos",
+                          text: "Eletrônicos",
                         ),
                         Tab(
-                          text: "Acessorios",
+                          text: "Acessrios",
                         ),
                         Tab(
                           text: "Roupas Masculinas",
@@ -421,19 +426,10 @@ class _HomeListState extends State<HomeList> with TickerProviderStateMixin {
                         },
                       ),
                     ),
-                    SingleChildScrollView(child: Categorias()),
-                    TextPlus(
-                      'Acessorios',
-                      color: Colors.white,
-                    ),
-                    TextPlus(
-                      'Roupas Masculinas',
-                      color: Colors.white,
-                    ),
-                    TextPlus(
-                      'Roupas Femininas',
-                      color: Colors.white,
-                    ),
+                    SingleChildScrollView(child: ElectronicsCategory()),
+                    SingleChildScrollView(child: JeweleryCategory()),
+                    SingleChildScrollView(child: MensClothingCategory()),
+                    SingleChildScrollView(child: WomensClothingCategory())
                   ]),
                 )
               ],
