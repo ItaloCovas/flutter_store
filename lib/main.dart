@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plus/flutter_plus.dart';
 import 'package:flutter_store/controllers/cart_store.dart';
+import 'package:flutter_store/controllers/categories_store.dart';
 import 'package:flutter_store/controllers/home_store.dart';
 import 'package:flutter_store/controllers/login_store.dart';
 import 'package:flutter_store/controllers/users_store.dart';
@@ -14,7 +15,7 @@ void main() async {
   getIt.registerSingleton<UsersApiStore>(UsersApiStore());
   getIt.registerSingleton<CartStore>(CartStore());
   getIt.registerSingleton<HomeApiStore>(HomeApiStore());
-
+  getIt.registerSingleton<CategoriesStore>(CategoriesStore());
   runApp(const MyApp());
 }
 

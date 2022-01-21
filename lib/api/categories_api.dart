@@ -1,5 +1,8 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter_store/model/categories_model.dart';
+import 'package:flutter_store/model/products_model.dart';
+import 'package:mobx/mobx.dart';
 
 var dio = Dio();
 const eletronicsApiUrl =
@@ -7,42 +10,67 @@ const eletronicsApiUrl =
 const jeweleryApiUrl = "https://fakestoreapi.com/products/category/jewelery";
 const mensclothingApiUrl =
     "https://fakestoreapi.com/products/category/men's%20clothing";
-const womensclothingApiUrl = "";
+const womensclothingApiUrl =
+    "https://fakestoreapi.com/products/category/women's%20clothing";
 
 class CategoriesApi {
-  Future<dynamic> getCategoryEletronics() async {
+  Future<ObservableList<CategoriesModel>?> getEletronics() async {
     try {
       Response response = await dio.get(eletronicsApiUrl);
-      return response;
+
+      List<CategoriesModel> list = (response.data as List)
+          .map((e) => CategoriesModel.fromJson(e))
+          .toList();
+
+      return ObservableList<CategoriesModel>.of(list);
     } catch (e) {
       print(e);
+      return null;
     }
   }
 
-  Future<dynamic> getCategoryJewelery() async {
+  Future<ObservableList<CategoriesModel>?> getJewelery() async {
     try {
       Response response = await dio.get(jeweleryApiUrl);
-      return response;
+
+      List<CategoriesModel> list = (response.data as List)
+          .map((e) => CategoriesModel.fromJson(e))
+          .toList();
+
+      return ObservableList<CategoriesModel>.of(list);
     } catch (e) {
       print(e);
+      return null;
     }
   }
 
-  Future<dynamic> getCategoryMensClothing() async {
+  Future<ObservableList<CategoriesModel>?> getMensClothing() async {
     try {
       Response response = await dio.get(mensclothingApiUrl);
-      return response;
+
+      List<CategoriesModel> list = (response.data as List)
+          .map((e) => CategoriesModel.fromJson(e))
+          .toList();
+
+      return ObservableList<CategoriesModel>.of(list);
     } catch (e) {
       print(e);
+      return null;
     }
   }
 
-  Future<dynamic> getCategoryWomenssClothing() async {
+  Future<ObservableList<CategoriesModel>?> getWomenssClothing() async {
     try {
       Response response = await dio.get(womensclothingApiUrl);
-      return response;
+
+      List<CategoriesModel> list = (response.data as List)
+          .map((e) => CategoriesModel.fromJson(e))
+          .toList();
+
+      return ObservableList<CategoriesModel>.of(list);
     } catch (e) {
       print(e);
+      return null;
     }
   }
 }

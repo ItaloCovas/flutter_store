@@ -1,5 +1,6 @@
 import 'package:flutter_store/api/categories_api.dart';
 import 'package:flutter_store/model/categories_model.dart';
+import 'package:flutter_store/model/products_model.dart';
 import 'package:mobx/mobx.dart';
 part 'categories_store.g.dart';
 
@@ -15,17 +16,33 @@ abstract class _CategoriesStoreBase with Store {
   int selectedIndex = 0;
 
   @action
-  getCategoryEletronicList() {
-    categoriesApi.getCategoryEletronics().then((categoryEletronicsList) {
-      categoriesModel = categoryEletronicsList;
+  getEletronicList() {
+    categoriesApi.getEletronics().then((eletronicsList) {
+      categoriesModel = eletronicsList;
       print(categoriesModel);
     });
   }
 
   @action
-  getCategoryJeweleryList() {
-    categoriesApi.getCategoryJewelery().then((categoryJewekeryList) {
-      categoriesModel = categoryJewekeryList;
+  getJeweleryList() {
+    categoriesApi.getJewelery().then((jeweleryList) {
+      categoriesModel = jeweleryList;
+      print(categoriesModel);
+    });
+  }
+
+  @action
+  getMensClothingList() {
+    categoriesApi.getMensClothing().then((mensClothingList) {
+      categoriesModel = mensClothingList;
+      print(categoriesModel);
+    });
+  }
+
+  @action
+  getWomenssClothingList() {
+    categoriesApi.getWomenssClothing().then((womenssClothingList) {
+      categoriesModel = womenssClothingList;
       print(categoriesModel);
     });
   }

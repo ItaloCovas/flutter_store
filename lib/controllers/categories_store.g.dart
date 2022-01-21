@@ -44,22 +44,44 @@ mixin _$CategoriesStore on _CategoriesStoreBase, Store {
       ActionController(name: '_CategoriesStoreBase');
 
   @override
-  dynamic getCategoryEletronicList() {
+  dynamic getEletronicList() {
     final _$actionInfo = _$_CategoriesStoreBaseActionController.startAction(
-        name: '_CategoriesStoreBase.getCategoryEletronicList');
+        name: '_CategoriesStoreBase.getEletronicList');
     try {
-      return super.getCategoryEletronicList();
+      return super.getEletronicList();
     } finally {
       _$_CategoriesStoreBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  dynamic getCategoryJeweleryList() {
+  dynamic getJeweleryList() {
     final _$actionInfo = _$_CategoriesStoreBaseActionController.startAction(
-        name: '_CategoriesStoreBase.getCategoryJeweleryList');
+        name: '_CategoriesStoreBase.getJeweleryList');
     try {
-      return super.getCategoryJeweleryList();
+      return super.getJeweleryList();
+    } finally {
+      _$_CategoriesStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getMensClothingList() {
+    final _$actionInfo = _$_CategoriesStoreBaseActionController.startAction(
+        name: '_CategoriesStoreBase.getMensClothingList');
+    try {
+      return super.getMensClothingList();
+    } finally {
+      _$_CategoriesStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getWomenssClothingList() {
+    final _$actionInfo = _$_CategoriesStoreBaseActionController.startAction(
+        name: '_CategoriesStoreBase.getWomenssClothingList');
+    try {
+      return super.getWomenssClothingList();
     } finally {
       _$_CategoriesStoreBaseActionController.endAction(_$actionInfo);
     }
