@@ -54,6 +54,28 @@ mixin _$HomeApiStore on _HomeApiStoreBase, Store {
   }
 
   @override
+  dynamic getEletronicList() {
+    final _$actionInfo = _$_HomeApiStoreBaseActionController.startAction(
+        name: '_HomeApiStoreBase.getEletronicList');
+    try {
+      return super.getEletronicList();
+    } finally {
+      _$_HomeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  dynamic getJeweleryList() {
+    final _$actionInfo = _$_HomeApiStoreBaseActionController.startAction(
+        name: '_HomeApiStoreBase.getJeweleryList');
+    try {
+      return super.getJeweleryList();
+    } finally {
+      _$_HomeApiStoreBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 productsModel: ${productsModel},

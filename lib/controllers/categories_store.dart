@@ -1,5 +1,4 @@
 import 'package:flutter_store/api/categories_api.dart';
-import 'package:flutter_store/model/categories_model.dart';
 import 'package:flutter_store/model/products_model.dart';
 import 'package:mobx/mobx.dart';
 part 'categories_store.g.dart';
@@ -10,7 +9,7 @@ abstract class _CategoriesStoreBase with Store {
   CategoriesApi categoriesApi = CategoriesApi();
 
   @observable
-  ObservableList<CategoriesModel>? categoriesModel;
+  ObservableList<ProductsModel>? categoriesModel;
 
   @observable
   int selectedIndex = 0;

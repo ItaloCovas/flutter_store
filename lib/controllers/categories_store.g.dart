@@ -13,13 +13,13 @@ mixin _$CategoriesStore on _CategoriesStoreBase, Store {
       Atom(name: '_CategoriesStoreBase.categoriesModel');
 
   @override
-  ObservableList<CategoriesModel>? get categoriesModel {
+  ObservableList<ProductsModel>? get categoriesModel {
     _$categoriesModelAtom.reportRead();
     return super.categoriesModel;
   }
 
   @override
-  set categoriesModel(ObservableList<CategoriesModel>? value) {
+  set categoriesModel(ObservableList<ProductsModel>? value) {
     _$categoriesModelAtom.reportWrite(value, super.categoriesModel, () {
       super.categoriesModel = value;
     });

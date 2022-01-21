@@ -23,7 +23,7 @@ class _ElectronicsCategoryState extends State<ElectronicsCategory> {
   @override
   void initState() {
     super.initState();
-    categoriesStore.getEletronicList();
+    homeApiStore.getEletronicList();
   }
 
   @override

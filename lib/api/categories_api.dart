@@ -14,60 +14,60 @@ const womensclothingApiUrl =
     "https://fakestoreapi.com/products/category/women's%20clothing";
 
 class CategoriesApi {
-  Future<ObservableList<CategoriesModel>?> getEletronics() async {
+  Future<ObservableList<ProductsModel>?> getEletronics() async {
     try {
       Response response = await dio.get(eletronicsApiUrl);
 
-      List<CategoriesModel> list = (response.data as List)
-          .map((e) => CategoriesModel.fromJson(e))
+      List<ProductsModel> list = (response.data as List)
+          .map((e) => ProductsModel.fromJson(e))
           .toList();
 
-      return ObservableList<CategoriesModel>.of(list);
+      return ObservableList<ProductsModel>.of(list);
     } catch (e) {
       print(e);
       return null;
     }
   }
 
-  Future<ObservableList<CategoriesModel>?> getJewelery() async {
+  Future<ObservableList<ProductsModel>?> getJewelery() async {
     try {
       Response response = await dio.get(jeweleryApiUrl);
 
-      List<CategoriesModel> list = (response.data as List)
-          .map((e) => CategoriesModel.fromJson(e))
+      List<ProductsModel> list = (response.data as List)
+          .map((e) => ProductsModel.fromJson(e))
           .toList();
 
-      return ObservableList<CategoriesModel>.of(list);
+      return ObservableList<ProductsModel>.of(list);
     } catch (e) {
       print(e);
       return null;
     }
   }
 
-  Future<ObservableList<CategoriesModel>?> getMensClothing() async {
+  Future<ObservableList<ProductsModel>?> getMensClothing() async {
     try {
       Response response = await dio.get(mensclothingApiUrl);
 
-      List<CategoriesModel> list = (response.data as List)
-          .map((e) => CategoriesModel.fromJson(e))
+      List<ProductsModel> list = (response.data as List)
+          .map((e) => ProductsModel.fromJson(e))
           .toList();
 
-      return ObservableList<CategoriesModel>.of(list);
+      return ObservableList<ProductsModel>.of(list);
     } catch (e) {
       print(e);
       return null;
     }
   }
 
-  Future<ObservableList<CategoriesModel>?> getWomenssClothing() async {
+  Future<ObservableList<ProductsModel>?> getWomenssClothing() async {
     try {
       Response response = await dio.get(womensclothingApiUrl);
 
-      List<CategoriesModel> list = (response.data as List)
-          .map((e) => CategoriesModel.fromJson(e))
+      List<ProductsModel> list = (response.data as List)
+          .map((e) => ProductsModel.fromJson(e))
           .toList();
 
-      return ObservableList<CategoriesModel>.of(list);
+      return ObservableList<ProductsModel>.of(list);
     } catch (e) {
       print(e);
       return null;
